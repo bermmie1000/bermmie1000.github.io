@@ -51,18 +51,19 @@ jobs:
           echo "📊 Build size before optimization:"
           du -sh dist
 
-          # Install optimizer if needed
-          npx html-minifier-terser --version || npm install -g html-minifier-terser
+          # Install html-minifier-terser
+          npm install -g html-minifier-terser
 
-          # Minify HTML files
-          find dist -name "*.html" -type f -exec html-minifier-terser \
-            --collapse-whitespace \
-            --remove-comments \
-            --minify-css true \
-            --minify-js true \
-            --input-dir dist \
-            --output-dir dist \
-            --file-ext html {} +
+          # Minify each HTML file
+          find dist -name "*.html" -type f | while read file; do
+            echo "Minifying: $file"
+            html-minifier-terser \
+              --collapse-whitespace \
+              --remove-comments \
+              --minify-css true \
+              --minify-js true \
+              -o "$file" "$file"
+          done
 
           echo "📊 Build size after optimization:"
           du -sh dist
