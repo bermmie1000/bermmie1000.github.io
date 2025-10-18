@@ -1,0 +1,78 @@
+name: Preview Build
+
+on:
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          npm install -g html-minifier-terser
+
+      - name: Test build
+        run: |
+          mkdir -p dist
+          html-minifier-terser \
+            --collapse-whitespace \
+            --remove-comments \
+            index.html -o dist/index.html
+
+          if [ -d "public" ]; then
+            cp -r public/* dist/ 2>/dev/null || true
+          fi
+
+          touch dist/.nojekyll
+
+          echo "Preview build completed successfully"
+          ls -la dist/
+
+      - name: Build size report
+        run: |
+          echo "## Build Size Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| File | Size |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|------|" >> $GITHUB_STEP_SUMMARY
+          find dist -type f -exec du -h {} \; | sort -h | awk '{printf "| %s | %s |\n", $2, $1}' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Total Size:** $(du -sh dist | cut -f1)" >> $GITHUB_STEP_SUMMARY
+
+      - name: Comment PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const totalSize = require('child_process').execSync('du -sh dist').toString().split('\t')[0];
+
+            const comment = `## 🚀 Preview Build Successful
+
+            **Build Size:** ${totalSize}
+
+            ✅ HTML minification completed
+            ✅ Static assets copied
+            ✅ Ready for deployment
+
+            Preview will be available after merging to main branch.
+            `;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

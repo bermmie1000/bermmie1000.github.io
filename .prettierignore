@@ -1,0 +1,23 @@
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+
+# OS
+.DS_Store
