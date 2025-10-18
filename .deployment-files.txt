@@ -1,0 +1,150 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  GitHub Pages 배포 시스템 - 생성된 파일 목록
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## GitHub Actions 워크플로우 (4개)
+
+1. .github/workflows/deploy.yml
+   - 메인 배포 워크플로우
+   - main 브랜치 push 시 자동 실행
+   - Vite 빌드 + HTML 최적화 + GitHub Pages 배포
+   - 실행 시간: 약 2-3분
+
+2. .github/workflows/preview.yml
+   - Pull Request 프리뷰
+   - 빌드 검증 및 크기 리포트
+   - PR 코멘트 자동 생성
+
+3. .github/workflows/performance-check.yml
+   - 성능 체크 워크플로우
+   - Lighthouse CI 실행
+   - 빌드 메트릭 측정
+
+4. .github/workflows/lighthouse.yml
+   - Lighthouse CI 상세 분석
+   - Core Web Vitals 측정
+   - 성능 점수 리포트
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 빌드 스크립트 (2개)
+
+1. build.sh
+   - 로컬 프로덕션 빌드
+   - Vite 빌드 + 최적화
+   - 빌드 크기 요약 출력
+   - 실행: ./build.sh
+
+2. optimize.sh
+   - 이미지 최적화 스크립트
+   - PNG/JPEG 압축 + WebP 변환
+   - 최적화 전후 비교
+   - 실행: ./optimize.sh
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 문서 (6개)
+
+1. QUICK_DEPLOY.md
+   - 5분 빠른 배포 가이드
+   - 초보자 친화적
+   - 단계별 스크린샷 가이드
+
+2. DEPLOYMENT_GUIDE.md (docs/)
+   - 상세 배포 가이드 (14개 섹션)
+   - 커스텀 도메인 설정
+   - 최적화 전략
+   - 트러블슈팅 (9가지 케이스)
+
+3. DEPLOYMENT_CHECKLIST.md
+   - 배포 체크리스트 (70+ 항목)
+   - 10개 카테고리
+   - 사전 준비부터 배포 후까지
+
+4. GITHUB_PAGES_SETUP.md (.github/)
+   - Repository Settings 가이드
+   - GitHub Pages 활성화 방법
+   - 커스텀 도메인 DNS 설정
+   - 환경 설정
+
+5. DEPLOYMENT_SUMMARY.md
+   - 시스템 전체 요약
+   - 파일 구조 및 기능 설명
+   - 배포 플로우 다이어그램
+   - 빠른 참조 가이드
+
+6. README_DEPLOYMENT.md
+   - 배포 시스템 개요
+   - 문서 네비게이션
+   - 빠른 시작 가이드
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 설정 파일 업데이트
+
+1. package.json
+   - terser 의존성 추가
+   - devDependencies에 포함
+
+2. vite.config.js (기존)
+   - base: './' (상대 경로)
+   - minify: 'terser'
+   - drop_console: true
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 전체 파일 트리
+
+wedding_invitation/
+├── .github/
+│   ├── workflows/
+│   │   ├── deploy.yml
+│   │   ├── preview.yml
+│   │   ├── performance-check.yml
+│   │   └── lighthouse.yml
+│   └── GITHUB_PAGES_SETUP.md
+│
+├── docs/
+│   └── DEPLOYMENT_GUIDE.md
+│
+├── build.sh
+├── optimize.sh
+│
+├── QUICK_DEPLOY.md
+├── DEPLOYMENT_CHECKLIST.md
+├── DEPLOYMENT_SUMMARY.md
+└── README_DEPLOYMENT.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 다음 단계
+
+1. 로컬 빌드 테스트
+   ./build.sh
+
+2. GitHub Repository 생성
+   https://github.com/new
+
+3. Git 초기화 및 푸시
+   git init
+   git remote add origin https://github.com/YOUR_USERNAME/wedding-invitation.git
+   git add .
+   git commit -m "Add CI/CD deployment system"
+   git branch -M main
+   git push -u origin main
+
+4. GitHub Pages 활성화
+   Settings → Pages → Source: GitHub Actions
+
+5. 배포 확인
+   Actions → Deploy to GitHub Pages
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+생성 일시: 2025-10-18
+버전: 1.0.0
+빌드 시스템: Vite 5.4.20
+배포 플랫폼: GitHub Pages
+CI/CD: GitHub Actions
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
