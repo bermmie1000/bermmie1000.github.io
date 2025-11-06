@@ -209,47 +209,32 @@ function fallbackCopyAddress(text) {
  * Open Kakao Map app (mobile deeplink)
  */
 function openKakaoMap() {
-  const { kakaoPlaceId, latitude, longitude, name } = VENUE_LOCATION;
+  // Direct link to the venue on Kakao Map
+  const kakaoUrl = 'https://map.kakao.com/?urlX=507877.9999999988&urlY=1106363.0000000016&urlLevel=3&itemId=10660163&q=%EC%97%98%ED%83%80%EC%9B%8C&map_type=TYPE_MAP';
 
-  // Kakao Map URL Scheme - direct place link with coordinates
-  const kakaoScheme = `kakaomap://look?p=${latitude},${longitude}`;
-
-  // Web fallback URL - direct place page
-  const kakaoWeb = `https://place.map.kakao.com/${kakaoPlaceId}`;
-
-  // Try to open app, fallback to web
-  tryOpenApp(kakaoScheme, kakaoWeb);
+  window.open(kakaoUrl, '_blank');
 }
 
 /**
  * Open Naver Map app (mobile deeplink)
  */
 function openNaverMap() {
-  const { latitude, longitude, name, address } = VENUE_LOCATION;
+  // Direct link to the venue on Naver Map
+  const naverUrl = 'https://naver.me/GOPeWn3P';
 
-  // Naver Map URL Scheme (direct place with coordinates)
-  const naverScheme = `nmap://place?lat=${latitude}&lng=${longitude}&name=${encodeURIComponent(
-    name
-  )}&appname=com.wedding.invitation`;
-
-  // Web fallback URL with coordinates
-  const naverWeb = `https://map.naver.com/v5/search/${encodeURIComponent(
-    address
-  )}`;
-
-  // Try to open app, fallback to web
-  tryOpenApp(naverScheme, naverWeb);
+  window.open(naverUrl, '_blank');
 }
 
 /**
  * Open Tmap app (mobile deeplink)
  */
 function openTmap() {
-  const { latitude, longitude, name } = VENUE_LOCATION;
+  const destinationName = '엘타워 주차장';
+  const { latitude, longitude } = VENUE_LOCATION;
 
-  // Tmap URL Scheme (목적지 설정)
+  // Tmap URL Scheme (목적지 설정 - 엘타워 주차장)
   const tmapScheme = `tmap://?rGoName=${encodeURIComponent(
-    name
+    destinationName
   )}&rGoX=${longitude}&rGoY=${latitude}`;
 
   // Web fallback: 티맵은 공식 웹 서비스가 없으므로 모바일 앱 다운로드 페이지로 연결
