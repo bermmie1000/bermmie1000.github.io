@@ -32,7 +32,7 @@
                 신랑 <span class="heart">♥</span> 신부
             </h1>
             <p class="date">2025년 12월 25일 토요일 오후 2시</p>
-            <p class="location">서울 강남구 역삼동 웨딩홀</p>
+            <p class="location">엘타워 7층 그랜드홀 (양재역)</p>
             <div class="divider"></div>
             <a href="#location" class="btn">오시는 길</a>
             <a href="#rsvp" class="btn btn-secondary">참석 여부</a>
@@ -84,10 +84,10 @@
                 <div class="info-icon">📍</div>
                 <div class="info-content">
                     <h3>장소</h3>
-                    <p>서울 강남구 역삼동 웨딩홀</p>
+                    <p>엘타워 7층 그랜드홀</p>
                     <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">
-                        서울특별시 강남구 테헤란로 123 (역삼동)<br>
-                        지하철 2호선 역삼역 3번 출구 도보 5분
+                        서울 서초구 강남대로 213 엘타워<br>
+                        지하철 3호선/신분당선 양재역 9번 출구 연결
                     </p>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                 <div class="info-icon">🚗</div>
                 <div class="info-content">
                     <h3>주차 안내</h3>
-                    <p>건물 지하 1~3층 주차 가능 (3시간 무료)</p>
+                    <p>건물 내 주차 가능 (1,700대 규모, 2시간 30분 무료)</p>
                 </div>
             </div>
 
@@ -105,8 +105,8 @@
                 <div class="info-content">
                     <h3>대중교통</h3>
                     <p>
-                        지하철: 2호선 역삼역 3번 출구<br>
-                        버스: 역삼역 정류장 (간선 146, 740, 지선 4319)
+                        지하철: 3호선/신분당선 양재역 9번 출구 연결<br>
+                        버스: 양재역, 서초문화예술회관 정류장
                     </p>
                 </div>
             </div>
@@ -117,13 +117,35 @@
     <section id="location">
         <h2 class="section-title">오시는 길</h2>
         <div class="map-container">
-            <div class="map-placeholder">
-                🗺️ 지도가 여기에 표시됩니다<br>
-                <small>(Kakao Maps 연동 예정)</small>
+            <!-- Kakao Map -->
+            <div id="kakao-map" style="width: 100%; height: 400px; border-radius: 10px; margin-bottom: 1.5rem;"></div>
+
+            <!-- Address Info -->
+            <div class="address-info">
+                <p class="address-text">
+                    <strong>서울 서초구 강남대로 213 엘타워</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--text-secondary);">7층 그랜드홀</span>
+                </p>
+                <button class="copy-address-btn" onclick="copyAddress()">📋 주소 복사</button>
             </div>
-            <div style="text-align: center; margin-top: 1rem;">
-                <a href="https://map.kakao.com/" target="_blank" class="btn">카카오맵으로 길찾기</a>
-                <a href="https://map.naver.com/" target="_blank" class="btn btn-secondary">네이버맵으로 길찾기</a>
+
+            <!-- App Navigation Buttons -->
+            <div class="app-nav-section">
+                <p class="app-nav-title">앱으로 길찾기</p>
+                <div class="app-nav-buttons">
+                    <a href="#" class="app-nav-btn" onclick="openKakaoMap(); return false;">
+                        <img src="/images/kakao-map.webp" alt="카카오맵" class="app-icon" loading="lazy">
+                        <span>카카오맵</span>
+                    </a>
+                    <a href="#" class="app-nav-btn" onclick="openNaverMap(); return false;">
+                        <img src="/images/naver-map.webp" alt="네이버지도" class="app-icon" loading="lazy">
+                        <span>네이버지도</span>
+                    </a>
+                    <a href="#" class="app-nav-btn" onclick="openTmap(); return false;">
+                        <img src="/images/tmap.png" alt="티맵" class="app-icon" loading="lazy">
+                        <span>티맵</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
