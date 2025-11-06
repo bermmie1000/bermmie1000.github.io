@@ -51,10 +51,6 @@ function loadKakaoMapScript() {
  * Initialize the application when DOM is ready
  */
 async function init() {
-  setupRSVPForm();
-  setupSmoothScroll();
-  setupScrollAnimations();
-
   // Load Kakao Maps API then initialize map
   try {
     await loadKakaoMapScript();
@@ -86,7 +82,7 @@ function initKakaoMap() {
   // 지도 생성 (기본 위치: 서울)
   const map = new kakao.maps.Map(container, {
     center: new kakao.maps.LatLng(37.5665, 126.9780),
-    level: 3,
+    level: 7,
   });
 
   // 장소 검색 객체 생성
@@ -107,12 +103,6 @@ function initKakaoMap() {
         map: map,
         position: coords,
       });
-
-      // 인포윈도우 생성
-      const infowindow = new kakao.maps.InfoWindow({
-        content: `<div style="padding:10px;font-size:14px;font-weight:600;text-align:center;">${VENUE_LOCATION.name}</div>`,
-      });
-      infowindow.open(map, marker);
 
       console.log('✅ Kakao Map initialized with keyword:', VENUE_LOCATION.keyword);
       console.log('📍 Found place:', place.place_name);
@@ -148,11 +138,6 @@ function fallbackAddressSearch(map) {
         position: coords,
       });
 
-      const infowindow = new kakao.maps.InfoWindow({
-        content: `<div style="padding:10px;font-size:14px;font-weight:600;text-align:center;">${VENUE_LOCATION.name}</div>`,
-      });
-      infowindow.open(map, marker);
-
       console.log('✅ Fallback address search successful');
       console.log('📍 Coordinates:', result[0].y, result[0].x);
     } else {
@@ -161,92 +146,6 @@ function fallbackAddressSearch(map) {
   });
 }
 
-/**
- * Setup RSVP form submission handler
- */
-function setupRSVPForm() {
-  const form = document.getElementById('rsvpForm');
-  if (!form) {
-    return;
-  }
-
-  form.addEventListener('submit', handleRSVPSubmit);
-}
-
-/**
- * Handle RSVP form submission
- * @param {Event} e - Submit event
- */
-function handleRSVPSubmit(e) {
-  e.preventDefault();
-
-  const formData = {
-    name: document.getElementById('name').value,
-    attendance: document.getElementById('attendance').value,
-    guests: document.getElementById('guests').value,
-    message: document.getElementById('message').value,
-    timestamp: new Date().toISOString(),
-  };
-
-  // TODO: Google Sheets API integration
-  console.warn('[DEV] RSVP Data (Google Sheets integration pending):', formData);
-
-  // Show success message
-  alert('참석 여부가 전달되었습니다.\n감사합니다! 💝');
-
-  // Reset form
-  e.target.reset();
-}
-
-/**
- * Setup smooth scrolling for anchor links
- */
-function setupSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      // Skip if href is just "#" or empty
-      if (!href || href === '#') {
-        return;
-      }
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
-      }
-    });
-  });
-}
-
-/**
- * Setup scroll-triggered animations using Intersection Observer
- */
-function setupScrollAnimations() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px',
-  };
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, observerOptions);
-
-  // Apply animation to all sections except hero
-  document.querySelectorAll('section:not(.hero)').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
-  });
-}
 
 /**
  * Log welcome message to console (developer Easter egg)
