@@ -219,10 +219,17 @@ function openKakaoMap() {
  * Open Naver Map app (mobile deeplink)
  */
 function openNaverMap() {
-  // Direct link to the venue on Naver Map
-  const naverUrl = 'https://naver.me/GOPeWn3P';
+  const { latitude, longitude } = VENUE_LOCATION;
+  const placeName = '엘타워';
 
-  window.open(naverUrl, '_blank');
+  // Naver Map app scheme - direct to app
+  const naverScheme = `nmap://place?lat=${latitude}&lng=${longitude}&name=${encodeURIComponent(placeName)}&appname=com.wedding.invitation`;
+
+  // Web fallback URL
+  const naverWeb = 'https://naver.me/GOPeWn3P';
+
+  // Try to open app, fallback to web
+  tryOpenApp(naverScheme, naverWeb);
 }
 
 /**
