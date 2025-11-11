@@ -351,12 +351,36 @@ function shareKakao() {
   console.log('📷 Image URL:', imageUrl);
 }
 
+/**
+ * Open contact modal
+ */
+function openContactModal() {
+  const modal = document.getElementById('contactModal');
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+}
+
+/**
+ * Close contact modal
+ */
+function closeContactModal() {
+  const modal = document.getElementById('contactModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+  }
+}
+
 // Expose functions to global scope for inline onclick handlers
 window.copyAddress = copyAddress;
 window.openKakaoMap = openKakaoMap;
 window.openNaverMap = openNaverMap;
 window.openTmap = openTmap;
 window.shareKakao = shareKakao;
+window.openContactModal = openContactModal;
+window.closeContactModal = closeContactModal;
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {

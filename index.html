@@ -40,9 +40,9 @@
             <p class="location">양재 엘타워 7층 그랜드홀</p>
             <div class="divider"></div>
             <div class="hero-buttons">
-                <a href="#location" class="btn">오시는 길</a>
-                <a href="#contact" class="btn">연락처</a>
-                <button onclick="shareKakao()" class="btn">카카오톡 공유</button>
+                <a href="#location" class="btn">약도</a>
+                <button onclick="openContactModal()" class="btn">연락처</button>
+                <button onclick="shareKakao()" class="btn">카톡 공유</button>
             </div>
         </div>
     </section>
@@ -63,12 +63,10 @@
             </p>
             <div class="divider"></div>
             <p style="margin-top: 2rem;">
-                <strong>신랑측</strong> 아버지 OOO · 어머니 OOO<br>
-                <strong style="margin-left: 3rem;">의 장남</strong> <span style="color: var(--primary-color); font-weight: 600;">천창범</span>
+                OOO·OOO의 장남 <span style="color: var(--primary-color); font-weight: 600;">창범</span>
             </p>
             <p style="margin-top: 1rem;">
-                <strong>신부측</strong> 아버지 OOO · 어머니 OOO<br>
-                <strong style="margin-left: 3rem;">의 장녀</strong> <span style="color: var(--primary-color); font-weight: 600;">박하영</span>
+                OOO·OOO의 장녀 <span style="color: var(--primary-color); font-weight: 600;">하영</span>
             </p>
         </div>
     </section>
@@ -92,7 +90,7 @@
 
             <!-- App Navigation Buttons -->
             <div class="app-nav-section">
-                <p class="app-nav-title">앱으로 길찾기</p>
+                <p class="app-nav-title">어플로 길찾기</p>
                 <div class="app-nav-buttons">
                     <a href="#" class="app-nav-btn" onclick="openKakaoMap(); return false;">
                         <img src="/images/kakao-map.webp" alt="카카오맵" class="app-icon" loading="lazy">
@@ -111,47 +109,51 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2 class="section-title">연락하기</h2>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <h3>신랑측</h3>
-                <div class="contact-list">
-                    <div class="contact-item">
-                        <span class="contact-label">부 OOO</span>
-                        <a href="tel:01012345678" class="contact-btn" aria-label="신랑 아버지에게 전화">📞</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">모 OOO</span>
-                        <a href="tel:01012345678" class="contact-btn" aria-label="신랑 어머니에게 전화">📞</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">신랑 천창범</span>
-                        <a href="tel:01063004508" class="contact-btn" aria-label="신랑에게 전화">📞</a>
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-overlay" onclick="closeContactModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeContactModal()" aria-label="닫기">✕</button>
+            <h2 class="modal-title">연락하기</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>신랑측</h3>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <span class="contact-label">부 OOO</span>
+                            <a href="tel:01012345678" class="contact-btn" aria-label="신랑 아버지에게 전화">📞</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">모 OOO</span>
+                            <a href="tel:01012345678" class="contact-btn" aria-label="신랑 어머니에게 전화">📞</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">신랑 천창범</span>
+                            <a href="tel:01063004508" class="contact-btn" aria-label="신랑에게 전화">📞</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="contact-card">
-                <h3>신부측</h3>
-                <div class="contact-list">
-                    <div class="contact-item">
-                        <span class="contact-label">부 OOO</span>
-                        <a href="tel:01087654321" class="contact-btn" aria-label="신부 아버지에게 전화">📞</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">모 OOO</span>
-                        <a href="tel:01087654321" class="contact-btn" aria-label="신부 어머니에게 전화">📞</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">신부 박하영</span>
-                        <a href="tel:01085959302" class="contact-btn" aria-label="신부에게 전화">📞</a>
+                <div class="contact-card">
+                    <h3>신부측</h3>
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <span class="contact-label">부 OOO</span>
+                            <a href="tel:01087654321" class="contact-btn" aria-label="신부 아버지에게 전화">📞</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">모 OOO</span>
+                            <a href="tel:01087654321" class="contact-btn" aria-label="신부 어머니에게 전화">📞</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">신부 박하영</span>
+                            <a href="tel:01085959302" class="contact-btn" aria-label="신부에게 전화">📞</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer>
