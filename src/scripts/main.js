@@ -328,18 +328,13 @@ function shareKakao() {
   Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {
-      title: `${WEDDING_INFO.groom} ♥ ${WEDDING_INFO.bride} 결혼합니다`,
-      description: `${WEDDING_INFO.date}\n${WEDDING_INFO.venue}`,
+      title: `${WEDDING_INFO.groom} ♥ ${WEDDING_INFO.bride}`,
+      description: `2026.05.23(토) 11:30\n양재 엘타워 7층 그랜드홀`,
       imageUrl: imageUrl,
       link: {
         mobileWebUrl: currentUrl,
         webUrl: currentUrl,
       },
-    },
-    social: {
-      likeCount: 0,
-      commentCount: 0,
-      sharedCount: 0,
     },
     buttons: [
       {
