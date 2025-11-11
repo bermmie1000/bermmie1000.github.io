@@ -13,6 +13,15 @@ const VENUE_LOCATION = {
   kakaoPlaceId: '10660163', // 카카오맵 Place ID
 };
 
+// Wedding information for sharing
+const WEDDING_INFO = {
+  bride: '박하영',
+  groom: '천창범',
+  date: '2026년 5월 23일 토요일 오전 11시 30분',
+  venue: '엘타워 7층 그랜드홀',
+  address: '서울 서초구 강남대로 213 엘타워',
+};
+
 /**
  * Load Kakao Maps API dynamically
  */
@@ -51,6 +60,9 @@ function loadKakaoMapScript() {
  * Initialize the application when DOM is ready
  */
 async function init() {
+  // Initialize Kakao SDK for sharing
+  initKakaoSDK();
+
   // Load Kakao Maps API then initialize map
   try {
     await loadKakaoMapScript();
@@ -60,6 +72,23 @@ async function init() {
   }
 
   logWelcomeMessage();
+}
+
+/**
+ * Initialize Kakao SDK for sharing functionality
+ */
+function initKakaoSDK() {
+  // Check if Kakao SDK is loaded
+  if (typeof Kakao === 'undefined') {
+    console.error('⚠️ Kakao SDK not loaded');
+    return;
+  }
+
+  // Initialize with JavaScript key (same key used for Maps)
+  if (!Kakao.isInitialized()) {
+    Kakao.init('a37c725b11400c9f5bfea1a5aa64bf79');
+    console.log('✅ Kakao SDK initialized for sharing');
+  }
 }
 
 /**
@@ -277,11 +306,62 @@ function tryOpenApp(scheme, webUrl) {
   }
 }
 
+/**
+ * Share wedding invitation to KakaoTalk
+ */
+function shareKakao() {
+  // Check if Kakao SDK is initialized
+  if (typeof Kakao === 'undefined' || !Kakao.isInitialized()) {
+    alert('카카오톡 공유 기능을 사용할 수 없습니다.');
+    console.error('⚠️ Kakao SDK not initialized');
+    return;
+  }
+
+  // Get current page URL for sharing
+  const currentUrl = window.location.href;
+
+  // Get base URL for image (works for both localhost and GitHub Pages)
+  const baseUrl = window.location.origin + window.location.pathname.replace(/\/index\.html$/, '');
+  const imageUrl = `${baseUrl}/images/main_temp.jpg`;
+
+  // Share using feed template
+  Kakao.Share.sendDefault({
+    objectType: 'feed',
+    content: {
+      title: `${WEDDING_INFO.groom} ♥ ${WEDDING_INFO.bride} 결혼합니다`,
+      description: `${WEDDING_INFO.date}\n${WEDDING_INFO.venue}`,
+      imageUrl: imageUrl,
+      link: {
+        mobileWebUrl: currentUrl,
+        webUrl: currentUrl,
+      },
+    },
+    social: {
+      likeCount: 0,
+      commentCount: 0,
+      sharedCount: 0,
+    },
+    buttons: [
+      {
+        title: '청첩장 보기',
+        link: {
+          mobileWebUrl: currentUrl,
+          webUrl: currentUrl,
+        },
+      },
+    ],
+  });
+
+  console.log('✅ Kakao share triggered');
+  console.log('📷 Image URL:', imageUrl);
+}
+
 // Expose functions to global scope for inline onclick handlers
 window.copyAddress = copyAddress;
 window.openKakaoMap = openKakaoMap;
 window.openNaverMap = openNaverMap;
 window.openTmap = openTmap;
+window.shareKakao = shareKakao;
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {

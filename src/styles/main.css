@@ -225,12 +225,44 @@ section {
   font-weight: 600;
   border: 2px solid var(--primary-color);
   margin: 0.5rem;
+  cursor: pointer;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--shadow);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
+}
+
+.btn-kakao {
+  background: #FEE500;
+  color: #3C1E1E;
+  border: 2px solid #FEE500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-kakao:hover {
+  background: #FDD835;
+  border-color: #FDD835;
+}
+
+/* Hero Buttons Container */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 /* Map Section */

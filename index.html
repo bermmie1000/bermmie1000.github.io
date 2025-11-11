@@ -18,6 +18,11 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+    <!-- Kakao SDK for sharing -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js"
+            integrity="sha384-DKYJZ8NLiK8MN4/C5P2dtSmLQ4KwPaoqAfyA/DfmEc1VDxu4yyC7wy6K1Hs90nka"
+            crossorigin="anonymous"></script>
+
     <title>천창범♥박하영 결혼합니다</title>
 
     <!-- Vite will process these imports -->
@@ -34,7 +39,15 @@
             <p class="date">2026년 5월 23일 토요일 오전 11시 30분</p>
             <p class="location">엘타워 7층 그랜드홀 (양재역)</p>
             <div class="divider"></div>
-            <a href="#location" class="btn">오시는 길</a>
+            <div class="hero-buttons">
+                <button onclick="shareKakao()" class="btn btn-kakao">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 0.5rem;">
+                        <path d="M12 3C6.48 3 2 6.58 2 11c0 2.78 1.826 5.228 4.574 6.638-.214.784-.68 2.648-.78 3.038-.124.482.174.475.366.346.144-.097 2.314-1.54 3.29-2.19C10.268 18.946 11.124 19 12 19c5.52 0 10-3.58 10-8s-4.48-8-10-8z"/>
+                    </svg>
+                    카카오톡 공유
+                </button>
+                <a href="#location" class="btn">오시는 길</a>
+            </div>
         </div>
     </section>
 
