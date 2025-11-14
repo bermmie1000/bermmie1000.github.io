@@ -257,25 +257,20 @@ section {
 }
 
 /* Contact Section */
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 0;
+.contact-section {
+  margin-bottom: 1.5rem;
 }
 
-.contact-card {
-  background: var(--white);
-  padding: 1rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px var(--shadow);
+.contact-section:last-of-type {
+  margin-bottom: 0;
 }
 
-.contact-card h3 {
+.contact-section-title {
   color: var(--primary-color);
   margin-bottom: 0.8rem;
   font-size: 1.1rem;
-  text-align: center;
+  font-weight: 600;
+  text-align: left;
 }
 
 .contact-list {
