@@ -373,6 +373,114 @@ function closeContactModal() {
   }
 }
 
+/**
+ * Gallery functionality
+ */
+const GALLERY_IMAGES = [
+  '/images/main_temp.jpg',
+  '/images/main_temp.jpg',
+  '/images/main_temp.jpg',
+  '/images/main_temp.jpg',
+  '/images/main_temp.jpg',
+  '/images/main_temp.jpg',
+  '/images/main_temp.jpg',
+  '/images/main_temp.jpg',
+  '/images/main_temp.jpg',
+];
+
+let currentImageIndex = 0;
+
+/**
+ * Update gallery counter and navigation buttons
+ */
+function updateGalleryCounter() {
+  const counter = document.getElementById('galleryCounter');
+  if (counter) {
+    counter.textContent = `${currentImageIndex + 1} / ${GALLERY_IMAGES.length}`;
+  }
+
+  // Update navigation button states
+  const prevBtn = document.querySelector('.gallery-prev');
+  const nextBtn = document.querySelector('.gallery-next');
+
+  if (prevBtn) {
+    if (currentImageIndex === 0) {
+      prevBtn.classList.add('disabled');
+    } else {
+      prevBtn.classList.remove('disabled');
+    }
+  }
+
+  if (nextBtn) {
+    if (currentImageIndex === GALLERY_IMAGES.length - 1) {
+      nextBtn.classList.add('disabled');
+    } else {
+      nextBtn.classList.remove('disabled');
+    }
+  }
+}
+
+/**
+ * Open gallery modal with specific image
+ */
+function openGallery(index) {
+  currentImageIndex = index;
+  const modal = document.getElementById('galleryModal');
+  const img = document.getElementById('galleryImage');
+
+  if (modal && img) {
+    img.src = GALLERY_IMAGES[currentImageIndex];
+    updateGalleryCounter();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+/**
+ * Close gallery modal
+ */
+function closeGallery() {
+  const modal = document.getElementById('galleryModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+/**
+ * Show previous image
+ */
+function previousImage() {
+  // Don't go before first image
+  if (currentImageIndex === 0) {
+    return;
+  }
+
+  currentImageIndex = currentImageIndex - 1;
+  const img = document.getElementById('galleryImage');
+  if (img) {
+    img.src = GALLERY_IMAGES[currentImageIndex];
+    updateGalleryCounter();
+  }
+}
+
+/**
+ * Show next image
+ */
+function nextImage() {
+  // Don't go past last image
+  if (currentImageIndex === GALLERY_IMAGES.length - 1) {
+    return;
+  }
+
+  currentImageIndex = currentImageIndex + 1;
+  const img = document.getElementById('galleryImage');
+  if (img) {
+    img.src = GALLERY_IMAGES[currentImageIndex];
+    updateGalleryCounter();
+  }
+}
+
 // Expose functions to global scope for inline onclick handlers
 window.copyAddress = copyAddress;
 window.openKakaoMap = openKakaoMap;
@@ -381,6 +489,10 @@ window.openTmap = openTmap;
 window.shareKakao = shareKakao;
 window.openContactModal = openContactModal;
 window.closeContactModal = closeContactModal;
+window.openGallery = openGallery;
+window.closeGallery = closeGallery;
+window.previousImage = previousImage;
+window.nextImage = nextImage;
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
