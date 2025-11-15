@@ -42,7 +42,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 0;
   background: var(--white);
   position: relative;
 }
@@ -110,7 +110,7 @@ body {
 section {
   max-width: 800px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 4rem 0;
 }
 
 .section-title {
@@ -346,7 +346,7 @@ section {
 /* Map Section */
 .map-container {
   background: var(--white);
-  padding: 2rem;
+  padding: 2rem 0;
   border-radius: 0;
   box-shadow: none;
   margin-top: 2rem;
@@ -605,7 +605,7 @@ section {
 /* Footer */
 footer {
   text-align: center;
-  padding: 3rem 2rem;
+  padding: 3rem 0;
   background: var(--white);
   color: var(--primary-color);
 }
