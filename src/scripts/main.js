@@ -71,7 +71,30 @@ async function init() {
     console.error('Failed to initialize Kakao Map:', error);
   }
 
+  // Initialize D-day counter
+  initDdayCounter();
+
   logWelcomeMessage();
+}
+
+/**
+ * Calculate and display D-day counter
+ */
+function initDdayCounter() {
+  const weddingDate = new Date('2026-05-23T11:30:00');
+  const today = new Date();
+
+  // Reset time to midnight for accurate day calculation
+  const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const weddingMidnight = new Date(weddingDate.getFullYear(), weddingDate.getMonth(), weddingDate.getDate());
+
+  const diffTime = weddingMidnight - todayMidnight;
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  const ddayElement = document.getElementById('dday-count');
+  if (ddayElement) {
+    ddayElement.textContent = diffDays;
+  }
 }
 
 /**
@@ -634,7 +657,30 @@ function nextImage() {
   }
 }
 
+/**
+ * Toggle background music play/pause
+ */
+function toggleMusic() {
+  const audio = document.getElementById('bgm');
+  const button = document.getElementById('musicToggle');
+  const icon = button.querySelector('.music-icon');
+
+  if (audio.paused) {
+    audio.play().then(() => {
+      button.classList.add('playing');
+      icon.textContent = '🎶';
+    }).catch(err => {
+      console.error('Failed to play audio:', err);
+    });
+  } else {
+    audio.pause();
+    button.classList.remove('playing');
+    icon.textContent = '🎵';
+  }
+}
+
 // Expose functions to global scope for inline onclick handlers
+window.toggleMusic = toggleMusic;
 window.copyAddress = copyAddress;
 window.copyAddressWithIcon = copyAddressWithIcon;
 window.copyAccount = copyAccount;

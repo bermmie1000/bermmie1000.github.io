@@ -29,6 +29,14 @@
     <link rel="stylesheet" href="/src/styles/main.css">
 </head>
 <body>
+    <!-- Music Player (Fixed Position) -->
+    <button id="musicToggle" class="music-toggle" onclick="toggleMusic()" aria-label="배경음악 재생/정지">
+        <span class="music-icon">🎵</span>
+    </button>
+    <audio id="bgm" loop preload="auto">
+        <source src="/music/bgm.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -64,6 +72,86 @@
             </p>
             <div style="margin-top: 2rem; text-align: center;">
                 <button onclick="openContactModal()" class="btn">연락처</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section>
+        <h2 class="section-title">2026년 5월</h2>
+        <p class="wedding-time-top">토요일 오전 11시 30분</p>
+        <div class="calendar-container">
+            <table class="calendar">
+                <thead>
+                    <tr>
+                        <th class="sunday">일</th>
+                        <th>월</th>
+                        <th>화</th>
+                        <th>수</th>
+                        <th>목</th>
+                        <th>금</th>
+                        <th class="saturday">토</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="sunday"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>1</td>
+                        <td class="saturday">2</td>
+                    </tr>
+                    <tr>
+                        <td class="sunday">3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td class="saturday">9</td>
+                    </tr>
+                    <tr>
+                        <td class="sunday">10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td class="saturday">16</td>
+                    </tr>
+                    <tr>
+                        <td class="sunday">17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td class="saturday wedding-day">23</td>
+                    </tr>
+                    <tr>
+                        <td class="sunday">24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+                        <td class="saturday">30</td>
+                    </tr>
+                    <tr>
+                        <td class="sunday">31</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="saturday"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="dday-counter">
+                <p>결혼식까지 <span id="dday-count"></span>일</p>
             </div>
         </div>
     </section>
