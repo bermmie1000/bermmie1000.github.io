@@ -157,36 +157,39 @@
     </section>
 
     <!-- Gallery Section -->
-    <section>
+    <section class="gallery-section">
         <h2 class="section-title">갤러리</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item" onclick="openGallery(0)">
-                <img src="/images/main_temp.jpg" alt="Wedding Photo 1" loading="lazy">
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide">
+                    <img src="/images/main_temp.jpg" alt="Wedding Photo 1" loading="lazy">
+                </div>
+                <div class="carousel-slide">
+                    <img src="/images/main_temp.jpg" alt="Wedding Photo 2" loading="lazy">
+                </div>
+                <div class="carousel-slide">
+                    <img src="/images/main_temp.jpg" alt="Wedding Photo 3" loading="lazy">
+                </div>
+                <div class="carousel-slide">
+                    <img src="/images/main_temp.jpg" alt="Wedding Photo 4" loading="lazy">
+                </div>
+                <div class="carousel-slide">
+                    <img src="/images/main_temp.jpg" alt="Wedding Photo 5" loading="lazy">
+                </div>
+                <div class="carousel-slide">
+                    <img src="/images/main_temp.jpg" alt="Wedding Photo 6" loading="lazy">
+                </div>
+                <div class="carousel-slide">
+                    <img src="/images/main_temp.jpg" alt="Wedding Photo 7" loading="lazy">
+                </div>
+                <div class="carousel-slide">
+                    <img src="/images/main_temp.jpg" alt="Wedding Photo 8" loading="lazy">
+                </div>
+                <div class="carousel-slide">
+                    <img src="/images/main_temp.jpg" alt="Wedding Photo 9" loading="lazy">
+                </div>
             </div>
-            <div class="gallery-item" onclick="openGallery(1)">
-                <img src="/images/main_temp.jpg" alt="Wedding Photo 2" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openGallery(2)">
-                <img src="/images/main_temp.jpg" alt="Wedding Photo 3" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openGallery(3)">
-                <img src="/images/main_temp.jpg" alt="Wedding Photo 4" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openGallery(4)">
-                <img src="/images/main_temp.jpg" alt="Wedding Photo 5" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openGallery(5)">
-                <img src="/images/main_temp.jpg" alt="Wedding Photo 6" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openGallery(6)">
-                <img src="/images/main_temp.jpg" alt="Wedding Photo 7" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openGallery(7)">
-                <img src="/images/main_temp.jpg" alt="Wedding Photo 8" loading="lazy">
-            </div>
-            <div class="gallery-item" onclick="openGallery(8)">
-                <img src="/images/main_temp.jpg" alt="Wedding Photo 9" loading="lazy">
-            </div>
+            <div class="carousel-indicators" id="carouselIndicators"></div>
         </div>
     </section>
 
@@ -333,18 +336,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Gallery Modal -->
-    <div id="galleryModal" class="gallery-modal">
-        <div class="gallery-modal-overlay" onclick="closeGallery()"></div>
-        <div class="gallery-modal-content">
-            <button class="gallery-close" onclick="closeGallery()" aria-label="닫기">✕</button>
-            <div class="gallery-counter" id="galleryCounter">1 / 9</div>
-            <button class="gallery-nav gallery-prev" onclick="previousImage()" aria-label="이전">‹</button>
-            <img id="galleryImage" src="" alt="Gallery Image">
-            <button class="gallery-nav gallery-next" onclick="nextImage()" aria-label="다음">›</button>
         </div>
     </div>
 
