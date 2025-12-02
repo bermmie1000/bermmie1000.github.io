@@ -281,6 +281,25 @@ function openTmap() {
 }
 
 /**
+ * Open Kakao Navi app (mobile deeplink)
+ */
+function openKakaoNavi() {
+  const { latitude, longitude } = VENUE_LOCATION;
+  const destinationName = '엘타워';
+
+  // Kakao Navi URL Scheme (목적지 설정)
+  const kakaoNaviScheme = `kakaonavi://navigate?name=${encodeURIComponent(
+    destinationName
+  )}&x=${longitude}&y=${latitude}&coord_type=wgs84`;
+
+  // Web fallback: Kakao Navi 웹 페이지
+  const kakaoNaviWeb = 'https://kakaonavi.kakao.com/';
+
+  // Try to open app, fallback to web
+  tryOpenApp(kakaoNaviScheme, kakaoNaviWeb);
+}
+
+/**
  * Try to open mobile app, fallback to web URL
  * @param {string} scheme - App URL scheme
  * @param {string} webUrl - Fallback web URL
@@ -486,6 +505,7 @@ window.copyAddress = copyAddress;
 window.openKakaoMap = openKakaoMap;
 window.openNaverMap = openNaverMap;
 window.openTmap = openTmap;
+window.openKakaoNavi = openKakaoNavi;
 window.shareKakao = shareKakao;
 window.openContactModal = openContactModal;
 window.closeContactModal = closeContactModal;
