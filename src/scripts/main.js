@@ -191,7 +191,7 @@ function logWelcomeMessage() {
 }
 
 /**
- * Copy address to clipboard
+ * Copy address to clipboard (legacy - button version)
  */
 function copyAddress() {
   const address = VENUE_LOCATION.address;
@@ -213,6 +213,63 @@ function copyAddress() {
 }
 
 /**
+ * Copy address with icon feedback (icon changes to checkmark)
+ */
+function copyAddressWithIcon() {
+  const address = VENUE_LOCATION.address;
+  const icon = document.getElementById('copyAddressIcon');
+
+  // Modern clipboard API
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard
+      .writeText(address)
+      .then(() => {
+        // Change icon to checkmark
+        icon.src = '/images/read.png';
+
+        // Revert back to copy icon after 2 seconds
+        setTimeout(() => {
+          icon.src = '/images/copy.png';
+        }, 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy:', err);
+        fallbackCopyAddressWithIcon(address, icon);
+      });
+  } else {
+    fallbackCopyAddressWithIcon(address, icon);
+  }
+}
+
+/**
+ * Fallback copy method with icon for older browsers
+ */
+function fallbackCopyAddressWithIcon(text, icon) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  try {
+    document.execCommand('copy');
+    // Change icon to checkmark
+    icon.src = '/images/read.png';
+
+    // Revert back to copy icon after 2 seconds
+    setTimeout(() => {
+      icon.src = '/images/copy.png';
+    }, 2000);
+  } catch (err) {
+    console.error('Failed to copy:', err);
+    alert('주소 복사에 실패했습니다.\n\n주소: ' + text);
+  }
+
+  document.body.removeChild(textarea);
+}
+
+/**
  * Fallback copy method for older browsers
  */
 function fallbackCopyAddress(text) {
@@ -229,6 +286,48 @@ function fallbackCopyAddress(text) {
   } catch (err) {
     console.error('Failed to copy:', err);
     alert('주소 복사에 실패했습니다.\n\n주소: ' + text);
+  }
+
+  document.body.removeChild(textarea);
+}
+
+/**
+ * Copy account number to clipboard
+ */
+function copyAccount(accountInfo) {
+  // Modern clipboard API
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard
+      .writeText(accountInfo)
+      .then(() => {
+        alert('💰 계좌번호가 복사되었습니다!\n\n' + accountInfo);
+      })
+      .catch(err => {
+        console.error('Failed to copy:', err);
+        fallbackCopyAccount(accountInfo);
+      });
+  } else {
+    fallbackCopyAccount(accountInfo);
+  }
+}
+
+/**
+ * Fallback copy method for account numbers
+ */
+function fallbackCopyAccount(text) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  try {
+    document.execCommand('copy');
+    alert('💰 계좌번호가 복사되었습니다!\n\n' + text);
+  } catch (err) {
+    console.error('Failed to copy:', err);
+    alert('계좌번호 복사에 실패했습니다.\n\n계좌: ' + text);
   }
 
   document.body.removeChild(textarea);
@@ -393,6 +492,41 @@ function closeContactModal() {
 }
 
 /**
+ * Open gift modal (account numbers)
+ * @param {string} side - 'groom' or 'bride'
+ */
+function openGiftModal(side) {
+  const modal = document.getElementById('giftModal');
+  if (!modal) return;
+
+  // Hide all sections first
+  const groomSection = modal.querySelector('.contact-section:nth-of-type(1)');
+  const brideSection = modal.querySelector('.contact-section:nth-of-type(2)');
+
+  if (side === 'groom') {
+    groomSection.style.display = 'block';
+    brideSection.style.display = 'none';
+  } else if (side === 'bride') {
+    groomSection.style.display = 'none';
+    brideSection.style.display = 'block';
+  }
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Close gift modal
+ */
+function closeGiftModal() {
+  const modal = document.getElementById('giftModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+/**
  * Gallery functionality
  */
 const GALLERY_IMAGES = [
@@ -502,6 +636,8 @@ function nextImage() {
 
 // Expose functions to global scope for inline onclick handlers
 window.copyAddress = copyAddress;
+window.copyAddressWithIcon = copyAddressWithIcon;
+window.copyAccount = copyAccount;
 window.openKakaoMap = openKakaoMap;
 window.openNaverMap = openNaverMap;
 window.openTmap = openTmap;
@@ -509,6 +645,8 @@ window.openKakaoNavi = openKakaoNavi;
 window.shareKakao = shareKakao;
 window.openContactModal = openContactModal;
 window.closeContactModal = closeContactModal;
+window.openGiftModal = openGiftModal;
+window.closeGiftModal = closeGiftModal;
 window.openGallery = openGallery;
 window.closeGallery = closeGallery;
 window.previousImage = previousImage;
