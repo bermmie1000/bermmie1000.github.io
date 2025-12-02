@@ -3,6 +3,16 @@
  * Design System: Warm, elegant, romantic
  */
 
+/* Cafe24 Oneprettynight Font */
+@font-face {
+  font-family: 'Cafe24Oneprettynight';
+  src: url('/fonts/Cafe24Oneprettynight-v2.0.woff2') format('woff2'),
+       url('/fonts/Cafe24Oneprettynight-v2.0.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --primary-color: #000000;
   --secondary-color: #000000;
@@ -27,7 +37,7 @@ div, section, header, footer {
 }
 
 body {
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'Cafe24Oneprettynight', 'Noto Serif KR', serif;
   background-color: var(--background);
   color: var(--text-primary);
   line-height: 1.6;
@@ -324,7 +334,7 @@ section {
   border: 2px solid var(--primary-color);
   margin: 0.5rem;
   cursor: pointer;
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'Cafe24Oneprettynight', 'Noto Serif KR', serif;
   font-size: 1rem;
 }
 
@@ -406,7 +416,7 @@ section {
   border: 2px solid var(--primary-color);
   padding: 0.6rem 1.5rem;
   border-radius: 0;
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'Cafe24Oneprettynight', 'Noto Serif KR', serif;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -533,7 +543,7 @@ section {
   border: 2px solid var(--primary-color);
   padding: 0.4rem 1rem;
   border-radius: 0;
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'Cafe24Oneprettynight', 'Noto Serif KR', serif;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -570,7 +580,7 @@ section {
   padding: 1rem;
   border: 2px solid var(--accent-color);
   border-radius: 10px;
-  font-family: 'Noto Serif KR', serif;
+  font-family: 'Cafe24Oneprettynight', 'Noto Serif KR', serif;
   font-size: 1rem;
 }
 
