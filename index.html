@@ -11,6 +11,9 @@
     <meta property="og:title" content="천창범♥박하영 결혼합니다">
     <meta property="og:description" content="우리의 특별한 날에 여러분을 초대합니다">
 
+    <!-- Preload custom font for faster rendering -->
+    <link rel="preload" href="/fonts/Cafe24Oneprettynight-v2.0.woff2" as="font" type="font/woff2" crossorigin>
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,8 +42,11 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <p class="subtitle">Wedding Invitation</p>
+        <div class="hero-top">
+            <p class="subtitle">Wir heiraten</p>
+            <p class="subtitle-kr">우리 결혼해요</p>
+        </div>
+        <div class="hero-bottom">
             <h1 class="names">
                 천창범 <span class="heart">♥</span> 박하영
             </h1>
@@ -64,13 +70,13 @@
                 축복해 주시면 감사하겠습니다
             </p>
             <div class="divider"></div>
-            <p style="margin-top: 2rem;">
-                OOO·OOO의 장남 <span style="color: var(--primary-color); font-weight: 600;">창범</span>
+            <p class="family-info">
+                OOO·OOO의 장남 <span class="family-name">창범</span>
             </p>
-            <p style="margin-top: 1rem;">
-                OOO·OOO의 장녀 <span style="color: var(--primary-color); font-weight: 600;">하영</span>
+            <p class="family-info">
+                OOO·OOO의 장녀 <span class="family-name">하영</span>
             </p>
-            <div style="margin-top: 2rem; text-align: center;">
+            <div class="contact-btn-container">
                 <button onclick="openContactModal()" class="btn">연락처</button>
             </div>
         </div>
@@ -162,31 +168,19 @@
         <div class="carousel-container">
             <div class="carousel-track" id="carouselTrack">
                 <div class="carousel-slide">
-                    <img src="/images/main_temp.jpg" alt="Wedding Photo 1" loading="lazy">
+                    <img src="/images/IMG_4448.jpg" alt="Wedding Photo 1" loading="lazy">
                 </div>
                 <div class="carousel-slide">
-                    <img src="/images/main_temp.jpg" alt="Wedding Photo 2" loading="lazy">
+                    <img src="/images/IMG_6164.jpg" alt="Wedding Photo 2" loading="lazy">
                 </div>
                 <div class="carousel-slide">
-                    <img src="/images/main_temp.jpg" alt="Wedding Photo 3" loading="lazy">
+                    <img src="/images/IMG_6271.jpg" alt="Wedding Photo 3" loading="lazy">
                 </div>
                 <div class="carousel-slide">
-                    <img src="/images/main_temp.jpg" alt="Wedding Photo 4" loading="lazy">
+                    <img src="/images/IMG_7990.jpg" alt="Wedding Photo 4" loading="lazy">
                 </div>
                 <div class="carousel-slide">
-                    <img src="/images/main_temp.jpg" alt="Wedding Photo 5" loading="lazy">
-                </div>
-                <div class="carousel-slide">
-                    <img src="/images/main_temp.jpg" alt="Wedding Photo 6" loading="lazy">
-                </div>
-                <div class="carousel-slide">
-                    <img src="/images/main_temp.jpg" alt="Wedding Photo 7" loading="lazy">
-                </div>
-                <div class="carousel-slide">
-                    <img src="/images/main_temp.jpg" alt="Wedding Photo 8" loading="lazy">
-                </div>
-                <div class="carousel-slide">
-                    <img src="/images/main_temp.jpg" alt="Wedding Photo 9" loading="lazy">
+                    <img src="/images/IMG_8601.jpg" alt="Wedding Photo 5" loading="lazy">
                 </div>
             </div>
             <div class="carousel-indicators" id="carouselIndicators"></div>
@@ -208,7 +202,7 @@
 
         <div class="map-container">
             <!-- Kakao Map -->
-            <div id="kakao-map" style="width: 100%; height: 400px; border-radius: 10px; margin-bottom: 1.5rem;"></div>
+            <div id="kakao-map"></div>
 
             <!-- App Navigation Buttons -->
             <div class="app-nav-section">
@@ -340,7 +334,7 @@
     </div>
 
     <!-- Share Section -->
-    <section style="text-align: center; padding: 3rem 0;">
+    <section class="share-section">
         <button onclick="shareKakao()" class="btn">카톡 공유</button>
     </section>
 
@@ -348,7 +342,7 @@
     <footer>
         <p>Thank you for celebrating with us</p>
         <p>천창범 <span class="footer-heart">♥</span> 박하영</p>
-        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+        <p class="footer-credits">
             Made with love · Powered by GitHub Pages
         </p>
     </footer>
