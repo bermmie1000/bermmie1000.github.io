@@ -138,7 +138,13 @@ function initKakaoMap() {
   const map = new kakao.maps.Map(container, {
     center: new kakao.maps.LatLng(37.5665, 126.9780),
     level: 7,
+    draggable: false,
+    scrollwheel: false,
+    disableDoubleClickZoom: true,
   });
+
+  // 줌 컨트롤 비활성화
+  map.setZoomable(false);
 
   // 장소 검색 객체 생성
   const ps = new kakao.maps.services.Places();
