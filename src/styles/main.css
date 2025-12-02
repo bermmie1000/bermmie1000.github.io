@@ -222,14 +222,17 @@ section {
 /* Share Section */
 .share-section {
   text-align: center;
-  padding: 3rem 0;
+  padding: 3rem 1.5rem;
 }
 
 /* Footer Credits */
 .footer-credits {
-  margin-top: 2rem;
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
   font-size: 0.9rem;
-  opacity: 0.8;
+  background: #6b7280;
+  color: #fff;
+  border: 2px solid #6b7280;
 }
 
 /* Calendar Section */
@@ -451,6 +454,14 @@ section {
   cursor: pointer;
   font-family: 'Cafe24Oneprettynight', 'Noto Serif KR', serif;
   font-size: 1rem;
+}
+
+.btn-share {
+  display: block;
+  width: 100%;
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
 }
 
 
