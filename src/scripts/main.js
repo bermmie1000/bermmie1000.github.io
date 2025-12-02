@@ -559,7 +559,6 @@ let carouselCurrentIndex = 0;
 let carouselTrack = null;
 let carouselSlides = [];
 let touchStartX = 0;
-let touchEndX = 0;
 let isDragging = false;
 let startTranslate = 0;
 let currentTranslate = 0;
