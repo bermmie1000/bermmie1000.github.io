@@ -559,18 +559,13 @@ function closeGiftModal() {
 }
 
 /**
- * Carousel Gallery functionality
+ * Carousel Gallery functionality (CSS Scroll Snap based)
  */
-let carouselCurrentIndex = 0;
 let carouselTrack = null;
 let carouselSlides = [];
-let touchStartX = 0;
-let isDragging = false;
-let startTranslate = 0;
-let currentTranslate = 0;
 
 /**
- * Initialize carousel
+ * Initialize carousel with CSS Scroll Snap
  */
 function initCarousel() {
   carouselTrack = document.getElementById('carouselTrack');
@@ -591,115 +586,35 @@ function initCarousel() {
     });
   }
 
-  // Touch events
-  carouselTrack.addEventListener('touchstart', handleTouchStart, { passive: true });
-  carouselTrack.addEventListener('touchmove', handleTouchMove, { passive: false });
-  carouselTrack.addEventListener('touchend', handleTouchEnd, { passive: true });
+  // Listen for scroll to update indicators
+  carouselTrack.addEventListener('scroll', handleScroll, { passive: true });
 
-  // Mouse events for desktop
-  carouselTrack.addEventListener('mousedown', handleMouseDown);
-  carouselTrack.addEventListener('mousemove', handleMouseMove);
-  carouselTrack.addEventListener('mouseup', handleMouseUp);
-  carouselTrack.addEventListener('mouseleave', handleMouseUp);
-
-  console.log('✅ Carousel initialized with', carouselSlides.length, 'slides');
+  console.log('✅ Carousel initialized with CSS Scroll Snap,', carouselSlides.length, 'slides');
 }
 
-function handleTouchStart(e) {
-  touchStartX = e.touches[0].clientX;
-  isDragging = true;
-  startTranslate = currentTranslate;
-  carouselTrack.style.transition = 'none';
-}
-
-function handleTouchMove(e) {
-  if (!isDragging) return;
-  const currentX = e.touches[0].clientX;
-  const diff = currentX - touchStartX;
-  const containerWidth = carouselTrack.parentElement.offsetWidth;
-  currentTranslate = startTranslate + diff;
-
-  // Limit dragging at edges
-  const maxTranslate = 0;
-  const minTranslate = -containerWidth * (carouselSlides.length - 1);
-  currentTranslate = Math.max(minTranslate - 50, Math.min(maxTranslate + 50, currentTranslate));
-
-  carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
-}
-
-function handleTouchEnd(e) {
-  if (!isDragging) return;
-  isDragging = false;
-
-  const containerWidth = carouselTrack.parentElement.offsetWidth;
-  const movedBy = currentTranslate - startTranslate;
-
-  // Determine if we should change slides
-  if (Math.abs(movedBy) > containerWidth * 0.2) {
-    if (movedBy < 0 && carouselCurrentIndex < carouselSlides.length - 1) {
-      carouselCurrentIndex++;
-    } else if (movedBy > 0 && carouselCurrentIndex > 0) {
-      carouselCurrentIndex--;
-    }
-  }
-
-  goToSlide(carouselCurrentIndex);
-}
-
-function handleMouseDown(e) {
-  touchStartX = e.clientX;
-  isDragging = true;
-  startTranslate = currentTranslate;
-  carouselTrack.style.transition = 'none';
-  carouselTrack.style.cursor = 'grabbing';
-}
-
-function handleMouseMove(e) {
-  if (!isDragging) return;
-  e.preventDefault();
-  const currentX = e.clientX;
-  const diff = currentX - touchStartX;
-  const containerWidth = carouselTrack.parentElement.offsetWidth;
-  currentTranslate = startTranslate + diff;
-
-  const maxTranslate = 0;
-  const minTranslate = -containerWidth * (carouselSlides.length - 1);
-  currentTranslate = Math.max(minTranslate - 50, Math.min(maxTranslate + 50, currentTranslate));
-
-  carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
-}
-
-function handleMouseUp() {
-  if (!isDragging) return;
-  isDragging = false;
-  carouselTrack.style.cursor = 'grab';
-
-  const containerWidth = carouselTrack.parentElement.offsetWidth;
-  const movedBy = currentTranslate - startTranslate;
-
-  if (Math.abs(movedBy) > containerWidth * 0.2) {
-    if (movedBy < 0 && carouselCurrentIndex < carouselSlides.length - 1) {
-      carouselCurrentIndex++;
-    } else if (movedBy > 0 && carouselCurrentIndex > 0) {
-      carouselCurrentIndex--;
-    }
-  }
-
-  goToSlide(carouselCurrentIndex);
-}
-
-function goToSlide(index) {
-  const containerWidth = carouselTrack.parentElement.offsetWidth;
-  carouselCurrentIndex = index;
-  currentTranslate = -index * containerWidth;
-
-  carouselTrack.style.transition = 'transform 0.3s ease-out';
-  carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
+/**
+ * Handle scroll event to update indicators
+ */
+function handleScroll() {
+  const scrollLeft = carouselTrack.scrollLeft;
+  const slideWidth = carouselTrack.offsetWidth;
+  const currentIndex = Math.round(scrollLeft / slideWidth);
 
   // Update indicators
   const indicators = document.querySelectorAll('.carousel-indicator');
   indicators.forEach((ind, i) => {
-    ind.classList.toggle('active', i === index);
+    ind.classList.toggle('active', i === currentIndex);
+  });
+}
+
+/**
+ * Go to specific slide
+ */
+function goToSlide(index) {
+  const slideWidth = carouselTrack.offsetWidth;
+  carouselTrack.scrollTo({
+    left: index * slideWidth,
+    behavior: 'smooth'
   });
 }
 
