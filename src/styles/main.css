@@ -84,7 +84,7 @@ body {
 
 /* Hero Section */
 .hero {
-  min-height: 100dvh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -92,7 +92,9 @@ body {
   text-align: center;
   padding: 0;
   background: url('/images/main_temp.jpg') center center / cover no-repeat;
+  background-attachment: scroll;
   position: relative;
+  overflow: hidden;
 }
 
 .hero-top {
