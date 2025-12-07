@@ -562,7 +562,49 @@ function initCarousel() {
   // Listen for scroll to update indicators
   carouselTrack.addEventListener('scroll', handleScroll, { passive: true });
 
+  // Prevent vertical scroll while swiping horizontally
+  initCarouselTouchHandler();
+
   console.log('✅ Carousel initialized with CSS Scroll Snap,', carouselSlides.length, 'slides');
+}
+
+/**
+ * Prevent vertical scroll during horizontal swipe on carousel
+ * This fixes jittering in KakaoTalk in-app browser
+ */
+function initCarouselTouchHandler() {
+  let startX = 0;
+  let startY = 0;
+  let isHorizontalSwipe = false;
+
+  carouselTrack.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    isHorizontalSwipe = false;
+  }, { passive: true });
+
+  carouselTrack.addEventListener('touchmove', (e) => {
+    if (!startX || !startY) return;
+
+    const diffX = Math.abs(e.touches[0].clientX - startX);
+    const diffY = Math.abs(e.touches[0].clientY - startY);
+
+    // Determine swipe direction on first significant move
+    if (!isHorizontalSwipe && (diffX > 5 || diffY > 5)) {
+      isHorizontalSwipe = diffX > diffY;
+    }
+
+    // If horizontal swipe, prevent vertical scroll
+    if (isHorizontalSwipe) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  carouselTrack.addEventListener('touchend', () => {
+    startX = 0;
+    startY = 0;
+    isHorizontalSwipe = false;
+  }, { passive: true });
 }
 
 /**
