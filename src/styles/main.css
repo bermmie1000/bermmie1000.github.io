@@ -37,10 +37,15 @@
   --footer-credits-bg: #6b7280;
 }
 
-* {
+*,
+button,
+input,
+select,
+textarea {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: inherit;
 }
 
 html {
