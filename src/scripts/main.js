@@ -60,6 +60,9 @@ function loadKakaoMapScript() {
  * Initialize the application when DOM is ready
  */
 async function init() {
+  // Fix hero height to prevent resize on mobile
+  fixHeroHeight();
+
   // Initialize Kakao SDK for sharing
   initKakaoSDK();
 
@@ -78,6 +81,20 @@ async function init() {
   initCarousel();
 
   logWelcomeMessage();
+}
+
+/**
+ * Fix hero section height to prevent resize when address bar hides
+ */
+function fixHeroHeight() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  // Set fixed height based on initial viewport
+  const initialHeight = window.innerHeight;
+  hero.style.height = `${initialHeight}px`;
+
+  console.log('✅ Hero height fixed to', initialHeight, 'px');
 }
 
 /**
