@@ -13,6 +13,14 @@
   font-display: swap;
 }
 
+/* Cafe24 LovingU Font for Hero subtitle */
+@font-face {
+  font-family: 'Cafe24LovingU';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Lovingu.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+
 :root {
   /* Layout */
   --container-width: 480px;
@@ -126,13 +134,14 @@ body {
 
 .hero-bottom {
   padding-bottom: 3rem;
-  color: var(--primary-color);
+  color: var(--white);
 }
 
 .subtitle {
+  font-family: 'Cafe24LovingU', cursive;
   font-size: 3rem;
   color: var(--white);
-  font-weight: 1000;
+  font-weight: normal;
   letter-spacing: 0.3em;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
@@ -147,27 +156,27 @@ body {
 .names {
   font-size: 3rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--white);
   margin-bottom: 2rem;
   line-height: 1.2;
 }
 
 .names .heart {
   display: inline-block;
-  color: var(--primary-color);
+  color: var(--white);
   margin: 0 0.5rem;
 }
 
 .date {
   font-size: 1.5rem;
-  color: var(--primary-color);
+  color: var(--white);
   margin-bottom: 1rem;
   font-weight: 400;
 }
 
 .location {
   font-size: 1.1rem;
-  color: var(--primary-color);
+  color: var(--white);
   margin-bottom: 3rem;
 }
 
