@@ -84,7 +84,8 @@ body {
 
 /* Hero Section */
 .hero {
-  height: 100svh;
+  /* height is set by JavaScript (fixHeroHeight) for cross-browser compatibility */
+  min-height: 100vh; /* fallback before JS loads */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -238,13 +239,19 @@ section {
 }
 
 /* Calendar Section */
-.wedding-time-top {
+.wedding-date-text {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: var(--text-primary);
   font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.wedding-time-text {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
 }
 
 .calendar-container {
