@@ -686,41 +686,69 @@ section {
 }
 
 
-/* Gallery Section - Transform-based Carousel */
+/* Gallery Section - Button-based Navigation */
 .gallery-section {
   padding: var(--section-padding);
   width: 100%;
 }
 
-.carousel-container {
+.gallery-container {
   position: relative;
-  margin: 0 10%;
-  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+}
+
+.gallery-frame {
+  flex: 1;
+  max-width: 80%;
   overflow: hidden;
 }
 
-.carousel-track {
-  display: flex;
-  touch-action: pan-y;
-  user-select: none;
-  -webkit-user-drag: none;
-  will-change: transform;
-}
-
-.carousel-slide {
-  flex: 0 0 100%;
-  min-width: 100%;
-}
-
-.carousel-slide img {
+.gallery-frame img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
-  pointer-events: none;
 }
 
-.carousel-indicators {
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-arrow:active {
+  background: rgba(255, 255, 255, 1);
+}
+
+.gallery-arrow svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-primary);
+}
+
+.gallery-arrow-left {
+  left: 0.5rem;
+}
+
+.gallery-arrow-right {
+  right: 0.5rem;
+}
+
+.gallery-indicators {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
@@ -728,7 +756,7 @@ section {
   padding: 0 1rem;
 }
 
-.carousel-indicator {
+.gallery-indicator {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -738,7 +766,7 @@ section {
   transition: opacity 0.3s, transform 0.3s;
 }
 
-.carousel-indicator.active {
+.gallery-indicator.active {
   opacity: 1;
   transform: scale(1.2);
 }

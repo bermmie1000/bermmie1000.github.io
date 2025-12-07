@@ -85,26 +85,22 @@
     <!-- Gallery Section -->
     <section class="gallery-section">
         <h2 class="section-title">갤러리</h2>
-        <div class="carousel-container">
-            <div class="carousel-track" id="carouselTrack">
-                <div class="carousel-slide">
-                    <img src="/images/IMG_4448.jpg" alt="Wedding Photo 1" loading="lazy">
-                </div>
-                <div class="carousel-slide">
-                    <img src="/images/IMG_6164.jpg" alt="Wedding Photo 2" loading="lazy">
-                </div>
-                <div class="carousel-slide">
-                    <img src="/images/IMG_6271.jpg" alt="Wedding Photo 3" loading="lazy">
-                </div>
-                <div class="carousel-slide">
-                    <img src="/images/IMG_7990.jpg" alt="Wedding Photo 4" loading="lazy">
-                </div>
-                <div class="carousel-slide">
-                    <img src="/images/IMG_8601.jpg" alt="Wedding Photo 5" loading="lazy">
-                </div>
+        <div class="gallery-container">
+            <button class="gallery-arrow gallery-arrow-left" id="galleryPrev" aria-label="이전 사진">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <div class="gallery-frame">
+                <img id="galleryImage" src="/images/IMG_4448.jpg" alt="Wedding Photo">
             </div>
-            <div class="carousel-indicators" id="carouselIndicators"></div>
+            <button class="gallery-arrow gallery-arrow-right" id="galleryNext" aria-label="다음 사진">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 6 15 12 9 18"></polyline>
+                </svg>
+            </button>
         </div>
+        <div class="gallery-indicators" id="galleryIndicators"></div>
     </section>
 
     <!-- Calendar Section -->
