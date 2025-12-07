@@ -586,6 +586,8 @@ section {
 .app-nav-section {
   text-align: center;
   margin-top: 1.5rem;
+  background: #f0f0f0;
+  padding: 1rem 0;
 }
 
 .app-nav-title {
@@ -598,8 +600,8 @@ section {
 .app-nav-buttons {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
 }
 
 .app-nav-btn {
@@ -609,17 +611,23 @@ section {
   text-decoration: none;
   color: var(--text-primary);
   cursor: pointer;
+  padding: 0 1rem;
+}
+
+/* Divider between app buttons */
+.app-nav-btn:not(:last-child) {
+  border-right: 1px solid #ccc;
 }
 
 .app-nav-btn span {
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  margin-top: 0.3rem;
   font-weight: 600;
 }
 
 .app-icon {
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
 }
 
