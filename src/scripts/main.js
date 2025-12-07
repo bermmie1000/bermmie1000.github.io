@@ -85,6 +85,7 @@ async function init() {
 
 /**
  * Fix hero section height to prevent resize when address bar hides
+ * Uses !important to override any CSS rules
  */
 function fixHeroHeight() {
   const hero = document.querySelector('.hero');
@@ -92,7 +93,9 @@ function fixHeroHeight() {
 
   // Set fixed height based on initial viewport
   const initialHeight = window.innerHeight;
-  hero.style.height = `${initialHeight}px`;
+
+  // Use cssText with !important to ensure it overrides CSS
+  hero.style.cssText += `height: ${initialHeight}px !important; min-height: ${initialHeight}px !important;`;
 
   console.log('✅ Hero height fixed to', initialHeight, 'px');
 }
