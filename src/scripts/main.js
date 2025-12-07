@@ -532,13 +532,23 @@ function closeGiftModal() {
 }
 
 /**
- * Carousel Gallery functionality (CSS Scroll Snap based)
+ * Carousel Gallery functionality (Transform-based)
+ * Uses touch-action: pan-y to let browser handle vertical scroll
+ * while JS handles horizontal swipe via transform
  */
 let carouselTrack = null;
 let carouselSlides = [];
+let currentSlide = 0;
+let slideWidth = 0;
+
+// Touch state
+let touchStartX = 0;
+let touchCurrentX = 0;
+let isDragging = false;
+let startTranslate = 0;
 
 /**
- * Initialize carousel with CSS Scroll Snap
+ * Initialize carousel with transform-based swipe
  */
 function initCarousel() {
   carouselTrack = document.getElementById('carouselTrack');
@@ -546,6 +556,9 @@ function initCarousel() {
 
   carouselSlides = carouselTrack.querySelectorAll('.carousel-slide');
   if (carouselSlides.length === 0) return;
+
+  // Calculate slide width
+  slideWidth = carouselTrack.parentElement.offsetWidth;
 
   // Create indicators
   const indicatorsContainer = document.getElementById('carouselIndicators');
@@ -559,83 +572,109 @@ function initCarousel() {
     });
   }
 
-  // Listen for scroll to update indicators
-  carouselTrack.addEventListener('scroll', handleScroll, { passive: true });
+  // Touch event handlers
+  carouselTrack.addEventListener('touchstart', handleTouchStart, { passive: true });
+  carouselTrack.addEventListener('touchmove', handleTouchMove, { passive: true });
+  carouselTrack.addEventListener('touchend', handleTouchEnd, { passive: true });
 
-  // Prevent vertical scroll while swiping horizontally
-  initCarouselTouchHandler();
+  // Recalculate on resize
+  window.addEventListener('resize', () => {
+    slideWidth = carouselTrack.parentElement.offsetWidth;
+    goToSlide(currentSlide, false);
+  });
 
-  console.log('✅ Carousel initialized with CSS Scroll Snap,', carouselSlides.length, 'slides');
+  console.log('✅ Carousel initialized with transform-based swipe,', carouselSlides.length, 'slides');
 }
 
 /**
- * Prevent vertical scroll during horizontal swipe on carousel
- * This fixes jittering in KakaoTalk in-app browser
+ * Handle touch start
  */
-function initCarouselTouchHandler() {
-  let startX = 0;
-  let startY = 0;
-  let directionDecided = false;
-  let isHorizontalSwipe = false;
+function handleTouchStart(e) {
+  isDragging = true;
+  touchStartX = e.touches[0].clientX;
+  touchCurrentX = touchStartX;
+  startTranslate = -currentSlide * slideWidth;
 
-  carouselTrack.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    directionDecided = false;
-    isHorizontalSwipe = false;
-  }, { passive: true });
-
-  carouselTrack.addEventListener('touchmove', (e) => {
-    if (!startX || !startY) return;
-
-    const currentX = e.touches[0].clientX;
-    const currentY = e.touches[0].clientY;
-    const diffX = Math.abs(currentX - startX);
-    const diffY = Math.abs(currentY - startY);
-
-    // Determine swipe direction once (on first significant move)
-    if (!directionDecided && (diffX > 10 || diffY > 10)) {
-      directionDecided = true;
-      isHorizontalSwipe = diffX > diffY;
-    }
-
-    // If horizontal swipe, prevent vertical scroll but allow horizontal
-    if (directionDecided && isHorizontalSwipe && diffY > 0) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-
-  carouselTrack.addEventListener('touchend', () => {
-    startX = 0;
-    startY = 0;
-    directionDecided = false;
-    isHorizontalSwipe = false;
-  }, { passive: true });
+  // Remove transition during drag for immediate response
+  carouselTrack.style.transition = 'none';
 }
 
 /**
- * Handle scroll event to update indicators
+ * Handle touch move - update transform in real-time
  */
-function handleScroll() {
-  const scrollLeft = carouselTrack.scrollLeft;
-  const slideWidth = carouselTrack.offsetWidth;
-  const currentIndex = Math.round(scrollLeft / slideWidth);
+function handleTouchMove(e) {
+  if (!isDragging) return;
+
+  touchCurrentX = e.touches[0].clientX;
+  const diff = touchCurrentX - touchStartX;
+  const newTranslate = startTranslate + diff;
+
+  // Apply transform with bounds check
+  const minTranslate = -(carouselSlides.length - 1) * slideWidth;
+  const boundedTranslate = Math.max(minTranslate, Math.min(0, newTranslate));
+
+  // Allow slight overscroll for natural feel
+  const overscrollResistance = 0.3;
+  let finalTranslate;
+  if (newTranslate > 0) {
+    finalTranslate = newTranslate * overscrollResistance;
+  } else if (newTranslate < minTranslate) {
+    finalTranslate = minTranslate + (newTranslate - minTranslate) * overscrollResistance;
+  } else {
+    finalTranslate = newTranslate;
+  }
+
+  carouselTrack.style.transform = `translate3d(${finalTranslate}px, 0, 0)`;
+}
+
+/**
+ * Handle touch end - snap to nearest slide
+ */
+function handleTouchEnd() {
+  if (!isDragging) return;
+  isDragging = false;
+
+  const diff = touchCurrentX - touchStartX;
+  const threshold = slideWidth * 0.2; // 20% threshold for slide change
+
+  let newSlide = currentSlide;
+
+  if (Math.abs(diff) > threshold) {
+    if (diff > 0 && currentSlide > 0) {
+      newSlide = currentSlide - 1;
+    } else if (diff < 0 && currentSlide < carouselSlides.length - 1) {
+      newSlide = currentSlide + 1;
+    }
+  }
+
+  goToSlide(newSlide);
+}
+
+/**
+ * Go to specific slide with smooth animation
+ */
+function goToSlide(index, animate = true) {
+  currentSlide = Math.max(0, Math.min(index, carouselSlides.length - 1));
+
+  if (animate) {
+    carouselTrack.style.transition = 'transform 0.3s ease-out';
+  } else {
+    carouselTrack.style.transition = 'none';
+  }
+
+  carouselTrack.style.transform = `translate3d(${-currentSlide * slideWidth}px, 0, 0)`;
 
   // Update indicators
-  const indicators = document.querySelectorAll('.carousel-indicator');
-  indicators.forEach((ind, i) => {
-    ind.classList.toggle('active', i === currentIndex);
-  });
+  updateIndicators();
 }
 
 /**
- * Go to specific slide
+ * Update indicator states
  */
-function goToSlide(index) {
-  const slideWidth = carouselTrack.offsetWidth;
-  carouselTrack.scrollTo({
-    left: index * slideWidth,
-    behavior: 'smooth'
+function updateIndicators() {
+  const indicators = document.querySelectorAll('.carousel-indicator');
+  indicators.forEach((ind, i) => {
+    ind.classList.toggle('active', i === currentSlide);
   });
 }
 
