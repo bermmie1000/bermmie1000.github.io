@@ -685,7 +685,7 @@ section {
 }
 
 
-/* Gallery Section - CSS Scroll Snap Carousel */
+/* Gallery Section - Transform-based Carousel */
 .gallery-section {
   padding: var(--section-padding);
   width: 100%;
@@ -695,29 +695,20 @@ section {
   position: relative;
   margin: 0 10%;
   width: 80%;
+  overflow: hidden;
 }
 
 .carousel-track {
   display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  touch-action: pan-x;
+  touch-action: pan-y pinch-zoom;
   user-select: none;
   -webkit-user-drag: none;
-}
-
-.carousel-track::-webkit-scrollbar {
-  display: none;
+  will-change: transform;
 }
 
 .carousel-slide {
   flex: 0 0 100%;
-  scroll-snap-align: start;
+  min-width: 100%;
 }
 
 .carousel-slide img {
@@ -725,6 +716,7 @@ section {
   height: auto;
   display: block;
   object-fit: cover;
+  pointer-events: none;
 }
 
 .carousel-indicators {
