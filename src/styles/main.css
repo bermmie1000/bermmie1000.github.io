@@ -141,6 +141,7 @@ body {
   font-family: 'Cafe24LovingU', cursive;
   font-size: 7rem;
   color: var(--white);
+  line-height: 1;
 }
 
 .subtitle-kr {
