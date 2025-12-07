@@ -14,12 +14,19 @@
 }
 
 :root {
+  /* Layout */
+  --container-width: 480px;
+  --section-padding: 4rem 0;
+  --content-padding: 0 2rem;
+
+  /* Colors */
   --primary-color: #000000;
   --secondary-color: #000000;
   --accent-color: #000000;
   --text-primary: #000000;
   --text-secondary: #000000;
   --background: #ffffff;
+  --background-outer: #e8e4e0;
   --white: #ffffff;
   --shadow: rgba(0, 0, 0, 0);
 }
@@ -30,12 +37,18 @@
   box-sizing: border-box;
 }
 
+html {
+  background: var(--background-outer);
+}
+
 body {
   font-family: 'Cafe24Oneprettynight', 'Noto Serif KR', serif;
   background-color: var(--background);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: var(--container-width);
+  margin: 0 auto;
 }
 
 /* Music Toggle Button */
@@ -159,9 +172,8 @@ body {
 
 /* Section Styles */
 section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 4rem 0;
+  width: 100%;
+  padding: var(--section-padding);
 }
 
 .section-title {
@@ -255,8 +267,8 @@ section {
 }
 
 .calendar-container {
-  max-width: 400px;
-  margin: 0 auto;
+  width: 100%;
+  padding: var(--content-padding);
   text-align: center;
 }
 
@@ -603,9 +615,8 @@ section {
 
 /* Gift Section */
 .gift-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  width: 100%;
+  padding: var(--content-padding);
 }
 
 .gift-description {
@@ -678,8 +689,8 @@ section {
 
 /* Gallery Section - CSS Scroll Snap Carousel */
 .gallery-section {
-  padding: 4rem 0;
-  max-width: 100%;
+  padding: var(--section-padding);
+  width: 100%;
 }
 
 .carousel-container {
