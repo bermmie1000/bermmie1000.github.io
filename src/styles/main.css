@@ -107,8 +107,8 @@ body {
 }
 
 .music-icon {
-  font-size: 1.4rem;
-  line-height: 1;
+  width: 24px;
+  height: 24px;
 }
 
 .music-toggle.playing {
