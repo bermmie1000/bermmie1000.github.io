@@ -3,6 +3,9 @@
  * Handles RSVP form, smooth scrolling, animations, and map integration
  */
 
+// ==================== Constants ====================
+const KAKAO_API_KEY = 'a37c725b11400c9f5bfea1a5aa64bf79';
+
 // Wedding venue location - 엘타워 7층 그랜드홀
 const VENUE_LOCATION = {
   name: '엘타워 7층 그랜드홀',
@@ -36,7 +39,7 @@ function loadKakaoMapScript() {
     // Create script element (with services library for geocoding)
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = '//dapi.kakao.com/v2/maps/sdk.js?appkey=a37c725b11400c9f5bfea1a5aa64bf79&autoload=false&libraries=services';
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_API_KEY}&autoload=false&libraries=services`;
 
     script.onload = () => {
       console.log('✅ Kakao Maps API script loaded');
@@ -132,7 +135,7 @@ function initKakaoSDK() {
 
   // Initialize with JavaScript key (same key used for Maps)
   if (!Kakao.isInitialized()) {
-    Kakao.init('a37c725b11400c9f5bfea1a5aa64bf79');
+    Kakao.init(KAKAO_API_KEY);
     console.log('✅ Kakao SDK initialized for sharing');
   }
 }
@@ -242,89 +245,47 @@ function logWelcomeMessage() {
   );
 }
 
-/**
- * Copy address to clipboard (legacy - button version)
- */
-function copyAddress() {
-  const address = VENUE_LOCATION.address;
-
-  // Modern clipboard API
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard
-      .writeText(address)
-      .then(() => {
-        alert('📋 주소가 복사되었습니다!\n\n' + address);
-      })
-      .catch(err => {
-        console.error('Failed to copy:', err);
-        fallbackCopyAddress(address);
-      });
-  } else {
-    fallbackCopyAddress(address);
-  }
-}
+// ==================== Clipboard Utilities ====================
 
 /**
- * Copy address with icon feedback (icon changes to checkmark)
+ * Universal clipboard copy function
+ * @param {string} text - Text to copy
+ * @param {Object} options - Optional settings
+ * @param {string} options.successMessage - Alert message on success
+ * @param {HTMLElement} options.iconElement - Icon element to change on success
+ * @param {string} options.successIcon - Icon src on success
+ * @param {string} options.defaultIcon - Icon src to revert to
  */
-function copyAddressWithIcon() {
-  const address = VENUE_LOCATION.address;
-  const icon = document.getElementById('copyAddressIcon');
-
-  // Modern clipboard API
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard
-      .writeText(address)
-      .then(() => {
-        // Change icon to checkmark
-        icon.src = '/images/read.png';
-
-        // Revert back to copy icon after 2 seconds
-        setTimeout(() => {
-          icon.src = '/images/copy.png';
-        }, 2000);
-      })
-      .catch(err => {
-        console.error('Failed to copy:', err);
-        fallbackCopyAddressWithIcon(address, icon);
-      });
-  } else {
-    fallbackCopyAddressWithIcon(address, icon);
-  }
-}
-
-/**
- * Fallback copy method with icon for older browsers
- */
-function fallbackCopyAddressWithIcon(text, icon) {
-  const textarea = document.createElement('textarea');
-  textarea.value = text;
-  textarea.style.position = 'fixed';
-  textarea.style.opacity = '0';
-  document.body.appendChild(textarea);
-  textarea.select();
+async function copyToClipboard(text, options = {}) {
+  const { successMessage, iconElement, successIcon, defaultIcon } = options;
 
   try {
-    document.execCommand('copy');
-    // Change icon to checkmark
-    icon.src = '/images/read.png';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      // Fallback for older browsers
+      fallbackCopy(text);
+    }
 
-    // Revert back to copy icon after 2 seconds
-    setTimeout(() => {
-      icon.src = '/images/copy.png';
-    }, 2000);
+    // Handle success
+    if (iconElement && successIcon && defaultIcon) {
+      iconElement.src = successIcon;
+      setTimeout(() => {
+        iconElement.src = defaultIcon;
+      }, 2000);
+    } else if (successMessage) {
+      alert(successMessage + '\n\n' + text);
+    }
   } catch (err) {
     console.error('Failed to copy:', err);
-    alert('주소 복사에 실패했습니다.\n\n주소: ' + text);
+    alert('복사에 실패했습니다.\n\n' + text);
   }
-
-  document.body.removeChild(textarea);
 }
 
 /**
  * Fallback copy method for older browsers
  */
-function fallbackCopyAddress(text) {
+function fallbackCopy(text) {
   const textarea = document.createElement('textarea');
   textarea.value = text;
   textarea.style.position = 'fixed';
@@ -334,55 +295,39 @@ function fallbackCopyAddress(text) {
 
   try {
     document.execCommand('copy');
-    alert('📋 주소가 복사되었습니다!\n\n' + text);
-  } catch (err) {
-    console.error('Failed to copy:', err);
-    alert('주소 복사에 실패했습니다.\n\n주소: ' + text);
+  } finally {
+    document.body.removeChild(textarea);
   }
+}
 
-  document.body.removeChild(textarea);
+/**
+ * Copy address to clipboard
+ */
+function copyAddress() {
+  copyToClipboard(VENUE_LOCATION.address, {
+    successMessage: '📋 주소가 복사되었습니다!'
+  });
+}
+
+/**
+ * Copy address with icon feedback
+ */
+function copyAddressWithIcon() {
+  const icon = document.getElementById('copyAddressIcon');
+  copyToClipboard(VENUE_LOCATION.address, {
+    iconElement: icon,
+    successIcon: '/images/read.png',
+    defaultIcon: '/images/copy.png'
+  });
 }
 
 /**
  * Copy account number to clipboard
  */
 function copyAccount(accountInfo) {
-  // Modern clipboard API
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard
-      .writeText(accountInfo)
-      .then(() => {
-        alert('💰 계좌번호가 복사되었습니다!\n\n' + accountInfo);
-      })
-      .catch(err => {
-        console.error('Failed to copy:', err);
-        fallbackCopyAccount(accountInfo);
-      });
-  } else {
-    fallbackCopyAccount(accountInfo);
-  }
-}
-
-/**
- * Fallback copy method for account numbers
- */
-function fallbackCopyAccount(text) {
-  const textarea = document.createElement('textarea');
-  textarea.value = text;
-  textarea.style.position = 'fixed';
-  textarea.style.opacity = '0';
-  document.body.appendChild(textarea);
-  textarea.select();
-
-  try {
-    document.execCommand('copy');
-    alert('💰 계좌번호가 복사되었습니다!\n\n' + text);
-  } catch (err) {
-    console.error('Failed to copy:', err);
-    alert('계좌번호 복사에 실패했습니다.\n\n계좌: ' + text);
-  }
-
-  document.body.removeChild(textarea);
+  copyToClipboard(accountInfo, {
+    successMessage: '💰 계좌번호가 복사되었습니다!'
+  });
 }
 
 /**
@@ -521,26 +466,44 @@ function shareKakao() {
   console.log('📷 Image URL:', imageUrl);
 }
 
+// ==================== Modal Utilities ====================
+
+/**
+ * Open a modal by ID
+ * @param {string} modalId - Modal element ID
+ */
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+/**
+ * Close a modal by ID
+ * @param {string} modalId - Modal element ID
+ */
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
 /**
  * Open contact modal
  */
 function openContactModal() {
-  const modal = document.getElementById('contactModal');
-  if (modal) {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-  }
+  openModal('contactModal');
 }
 
 /**
  * Close contact modal
  */
 function closeContactModal() {
-  const modal = document.getElementById('contactModal');
-  if (modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
-  }
+  closeModal('contactModal');
 }
 
 /**
@@ -551,31 +514,21 @@ function openGiftModal(side) {
   const modal = document.getElementById('giftModal');
   if (!modal) return;
 
-  // Hide all sections first
+  // Toggle sections visibility
   const groomSection = modal.querySelector('.contact-section:nth-of-type(1)');
   const brideSection = modal.querySelector('.contact-section:nth-of-type(2)');
 
-  if (side === 'groom') {
-    groomSection.style.display = 'block';
-    brideSection.style.display = 'none';
-  } else if (side === 'bride') {
-    groomSection.style.display = 'none';
-    brideSection.style.display = 'block';
-  }
+  groomSection.style.display = side === 'groom' ? 'block' : 'none';
+  brideSection.style.display = side === 'bride' ? 'block' : 'none';
 
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  openModal('giftModal');
 }
 
 /**
  * Close gift modal
  */
 function closeGiftModal() {
-  const modal = document.getElementById('giftModal');
-  if (modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
+  closeModal('giftModal');
 }
 
 /**
