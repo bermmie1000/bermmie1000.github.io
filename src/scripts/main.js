@@ -575,27 +575,32 @@ function initCarousel() {
 function initCarouselTouchHandler() {
   let startX = 0;
   let startY = 0;
+  let directionDecided = false;
   let isHorizontalSwipe = false;
 
   carouselTrack.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
+    directionDecided = false;
     isHorizontalSwipe = false;
   }, { passive: true });
 
   carouselTrack.addEventListener('touchmove', (e) => {
     if (!startX || !startY) return;
 
-    const diffX = Math.abs(e.touches[0].clientX - startX);
-    const diffY = Math.abs(e.touches[0].clientY - startY);
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+    const diffX = Math.abs(currentX - startX);
+    const diffY = Math.abs(currentY - startY);
 
-    // Determine swipe direction on first significant move
-    if (!isHorizontalSwipe && (diffX > 5 || diffY > 5)) {
+    // Determine swipe direction once (on first significant move)
+    if (!directionDecided && (diffX > 10 || diffY > 10)) {
+      directionDecided = true;
       isHorizontalSwipe = diffX > diffY;
     }
 
-    // If horizontal swipe, prevent vertical scroll
-    if (isHorizontalSwipe) {
+    // If horizontal swipe, prevent vertical scroll but allow horizontal
+    if (directionDecided && isHorizontalSwipe && diffY > 0) {
       e.preventDefault();
     }
   }, { passive: false });
@@ -603,6 +608,7 @@ function initCarouselTouchHandler() {
   carouselTrack.addEventListener('touchend', () => {
     startX = 0;
     startY = 0;
+    directionDecided = false;
     isHorizontalSwipe = false;
   }, { passive: true });
 }
