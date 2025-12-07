@@ -80,8 +80,8 @@ async function init() {
   // Initialize D-day counter
   initDdayCounter();
 
-  // Initialize carousel gallery
-  initCarousel();
+  // Initialize gallery
+  initGallery();
 
   logWelcomeMessage();
 }
@@ -532,149 +532,75 @@ function closeGiftModal() {
 }
 
 /**
- * Carousel Gallery functionality (Transform-based)
- * Uses touch-action: pan-y to let browser handle vertical scroll
- * while JS handles horizontal swipe via transform
+ * Gallery functionality (Button-based Navigation)
  */
-let carouselTrack = null;
-let carouselSlides = [];
-let currentSlide = 0;
-let slideWidth = 0;
+const galleryImages = [
+  '/images/IMG_4448.jpg',
+  '/images/IMG_6164.jpg',
+  '/images/IMG_6271.jpg',
+  '/images/IMG_7990.jpg',
+  '/images/IMG_8601.jpg',
+];
 
-// Touch state
-let touchStartX = 0;
-let touchCurrentX = 0;
-let isDragging = false;
-let startTranslate = 0;
+let currentImageIndex = 0;
+let galleryImageEl = null;
 
 /**
- * Initialize carousel with transform-based swipe
+ * Initialize gallery with button navigation
  */
-function initCarousel() {
-  carouselTrack = document.getElementById('carouselTrack');
-  if (!carouselTrack) return;
+function initGallery() {
+  galleryImageEl = document.getElementById('galleryImage');
+  if (!galleryImageEl) return;
 
-  carouselSlides = carouselTrack.querySelectorAll('.carousel-slide');
-  if (carouselSlides.length === 0) return;
+  const prevBtn = document.getElementById('galleryPrev');
+  const nextBtn = document.getElementById('galleryNext');
 
-  // Calculate slide width
-  slideWidth = carouselTrack.parentElement.offsetWidth;
+  // Button click handlers
+  if (prevBtn) prevBtn.addEventListener('click', showPrevImage);
+  if (nextBtn) nextBtn.addEventListener('click', showNextImage);
 
   // Create indicators
-  const indicatorsContainer = document.getElementById('carouselIndicators');
+  const indicatorsContainer = document.getElementById('galleryIndicators');
   if (indicatorsContainer) {
     indicatorsContainer.innerHTML = '';
-    carouselSlides.forEach((_, index) => {
+    galleryImages.forEach((_, index) => {
       const indicator = document.createElement('div');
-      indicator.className = 'carousel-indicator' + (index === 0 ? ' active' : '');
-      indicator.onclick = () => goToSlide(index);
+      indicator.className = 'gallery-indicator' + (index === 0 ? ' active' : '');
+      indicator.onclick = () => showImage(index);
       indicatorsContainer.appendChild(indicator);
     });
   }
 
-  // Touch event handlers
-  carouselTrack.addEventListener('touchstart', handleTouchStart, { passive: true });
-  carouselTrack.addEventListener('touchmove', handleTouchMove, { passive: true });
-  carouselTrack.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-  // Recalculate on resize
-  window.addEventListener('resize', () => {
-    slideWidth = carouselTrack.parentElement.offsetWidth;
-    goToSlide(currentSlide, false);
-  });
-
-  console.log('✅ Carousel initialized with transform-based swipe,', carouselSlides.length, 'slides');
+  console.log('✅ Gallery initialized with button navigation,', galleryImages.length, 'images');
 }
 
 /**
- * Handle touch start
+ * Show previous image
  */
-function handleTouchStart(e) {
-  isDragging = true;
-  touchStartX = e.touches[0].clientX;
-  touchCurrentX = touchStartX;
-  startTranslate = -currentSlide * slideWidth;
-
-  // Remove transition during drag for immediate response
-  carouselTrack.style.transition = 'none';
+function showPrevImage() {
+  const newIndex = currentImageIndex > 0 ? currentImageIndex - 1 : galleryImages.length - 1;
+  showImage(newIndex);
 }
 
 /**
- * Handle touch move - update transform in real-time
+ * Show next image
  */
-function handleTouchMove(e) {
-  if (!isDragging) return;
-
-  touchCurrentX = e.touches[0].clientX;
-  const diff = touchCurrentX - touchStartX;
-  const newTranslate = startTranslate + diff;
-
-  // Apply transform with bounds check
-  const minTranslate = -(carouselSlides.length - 1) * slideWidth;
-  const boundedTranslate = Math.max(minTranslate, Math.min(0, newTranslate));
-
-  // Allow slight overscroll for natural feel
-  const overscrollResistance = 0.3;
-  let finalTranslate;
-  if (newTranslate > 0) {
-    finalTranslate = newTranslate * overscrollResistance;
-  } else if (newTranslate < minTranslate) {
-    finalTranslate = minTranslate + (newTranslate - minTranslate) * overscrollResistance;
-  } else {
-    finalTranslate = newTranslate;
-  }
-
-  carouselTrack.style.transform = `translate3d(${finalTranslate}px, 0, 0)`;
+function showNextImage() {
+  const newIndex = currentImageIndex < galleryImages.length - 1 ? currentImageIndex + 1 : 0;
+  showImage(newIndex);
 }
 
 /**
- * Handle touch end - snap to nearest slide
+ * Show specific image by index
  */
-function handleTouchEnd() {
-  if (!isDragging) return;
-  isDragging = false;
-
-  const diff = touchCurrentX - touchStartX;
-  const threshold = slideWidth * 0.2; // 20% threshold for slide change
-
-  let newSlide = currentSlide;
-
-  if (Math.abs(diff) > threshold) {
-    if (diff > 0 && currentSlide > 0) {
-      newSlide = currentSlide - 1;
-    } else if (diff < 0 && currentSlide < carouselSlides.length - 1) {
-      newSlide = currentSlide + 1;
-    }
-  }
-
-  goToSlide(newSlide);
-}
-
-/**
- * Go to specific slide with smooth animation
- */
-function goToSlide(index, animate = true) {
-  currentSlide = Math.max(0, Math.min(index, carouselSlides.length - 1));
-
-  if (animate) {
-    carouselTrack.style.transition = 'transform 0.3s ease-out';
-  } else {
-    carouselTrack.style.transition = 'none';
-  }
-
-  carouselTrack.style.transform = `translate3d(${-currentSlide * slideWidth}px, 0, 0)`;
+function showImage(index) {
+  currentImageIndex = index;
+  galleryImageEl.src = galleryImages[index];
 
   // Update indicators
-  updateIndicators();
-}
-
-/**
- * Update indicator states
- */
-function updateIndicators() {
-  const indicators = document.querySelectorAll('.carousel-indicator');
+  const indicators = document.querySelectorAll('.gallery-indicator');
   indicators.forEach((ind, i) => {
-    ind.classList.toggle('active', i === currentSlide);
+    ind.classList.toggle('active', i === currentImageIndex);
   });
 }
 
