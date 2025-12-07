@@ -602,14 +602,14 @@ function toggleMusic() {
   if (audio.paused) {
     audio.play().then(() => {
       button.classList.add('playing');
-      icon.textContent = '🎶';
+      icon.src = '/images/volume.png';
     }).catch(err => {
       console.error('Failed to play audio:', err);
     });
   } else {
     audio.pause();
     button.classList.remove('playing');
-    icon.textContent = '🎵';
+    icon.src = '/images/mute.png';
   }
 }
 
