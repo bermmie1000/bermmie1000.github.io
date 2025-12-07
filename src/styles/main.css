@@ -599,9 +599,9 @@ section {
 
 .app-nav-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 0;
+  width: 100%;
 }
 
 .app-nav-btn {
@@ -611,7 +611,8 @@ section {
   text-decoration: none;
   color: var(--text-primary);
   cursor: pointer;
-  padding: 0 1rem;
+  flex: 1;
+  padding: 0.5rem 0;
 }
 
 /* Divider between app buttons */
