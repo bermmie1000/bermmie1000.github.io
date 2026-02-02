@@ -1,0 +1,92 @@
+/**
+ * Calendar Section Styles
+ */
+
+.wedding-date-text {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.wedding-time-text {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.calendar-container {
+  width: 100%;
+  padding: var(--content-padding);
+  text-align: center;
+}
+
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.calendar th,
+.calendar td {
+  padding: 0.8rem 0;
+  text-align: center;
+}
+
+.calendar th {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding-bottom: 1rem;
+}
+
+.calendar td {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.calendar .sunday {
+  color: var(--sunday-color);
+}
+
+.calendar .saturday {
+  color: var(--saturday-color);
+}
+
+.calendar .wedding-day {
+  position: relative;
+  font-weight: 700;
+  color: var(--white) !important;
+}
+
+.calendar .wedding-day::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.dday-counter {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--text-secondary);
+}
+
+.dday-counter p {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.dday-counter #dday-count {
+  color: var(--primary-color);
+  font-weight: 700;
+}

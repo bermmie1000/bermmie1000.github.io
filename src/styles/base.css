@@ -1,0 +1,122 @@
+/**
+ * Base styles and resets
+ */
+
+/* Custom Fonts */
+@font-face {
+  font-family: 'Cafe24Oneprettynight';
+  src: url('/fonts/Cafe24Oneprettynight-v2.0.woff2') format('woff2'),
+       url('/fonts/Cafe24Oneprettynight-v2.0.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cafe24LovingU';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Lovingu.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+
+/* Reset */
+*,
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html {
+  background: var(--background-outer);
+}
+
+body {
+  font-family: 'Cafe24Oneprettynight', 'Noto Serif KR', serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  touch-action: pan-y;
+}
+
+/* Utility Classes */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Section Base */
+section {
+  width: 100%;
+  padding: var(--section-padding);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: var(--primary-color);
+  margin: 3rem auto;
+}
+
+/* Button Base */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: #f0f0f0;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  margin: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-share {
+  display: block;
+  width: 100%;
+  background: var(--btn-share-bg);
+  color: var(--white);
+  border-color: var(--btn-share-bg);
+}

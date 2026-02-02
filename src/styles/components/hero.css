@@ -1,0 +1,89 @@
+/**
+ * Hero Section Styles
+ */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  background: url('/images/main_temp.jpg') center center / cover no-repeat;
+  background-attachment: scroll;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-top {
+  padding-top: 3rem;
+  color: var(--white);
+}
+
+.hero-bottom {
+  padding-bottom: 3rem;
+  color: var(--white);
+}
+
+.subtitle {
+  font-family: 'Cafe24LovingU', cursive;
+  font-size: 7rem;
+  color: var(--white);
+  line-height: 1;
+}
+
+.subtitle-kr {
+  font-size: 1.5rem;
+  color: var(--white);
+}
+
+.names {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.names .heart {
+  display: inline-block;
+  color: var(--white);
+  margin: 0 0.5rem;
+}
+
+.date {
+  font-size: 1.5rem;
+  color: var(--white);
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.location {
+  font-size: 1.1rem;
+  color: var(--white);
+  margin-bottom: 3rem;
+}
+
+/* Music Toggle */
+.music-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--white);
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.music-icon {
+  width: 24px;
+  height: 24px;
+}

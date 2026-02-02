@@ -1,0 +1,27 @@
+/**
+ * CSS Custom Properties (Variables)
+ */
+
+:root {
+  /* Layout */
+  --container-width: 480px;
+  --section-padding: 4rem 0;
+  --content-padding: 0 2rem;
+
+  /* Colors - Primary */
+  --primary-color: #000000;
+  --secondary-color: #000000;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --background: #ffffff;
+  --background-outer: #e8e4e0;
+  --white: #ffffff;
+
+  /* Colors - Calendar */
+  --sunday-color: #e74c3c;
+  --saturday-color: #3498db;
+
+  /* Colors - UI */
+  --btn-share-bg: #3b82f6;
+  --footer-credits-bg: #6b7280;
+}

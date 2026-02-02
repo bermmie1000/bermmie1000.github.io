@@ -1,0 +1,87 @@
+/**
+ * Gallery Section Styles
+ */
+
+.gallery-section {
+  padding: var(--section-padding);
+  width: 100%;
+}
+
+.gallery-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+}
+
+.gallery-frame {
+  flex: 1;
+  max-width: 80%;
+  overflow: hidden;
+}
+
+.gallery-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-arrow:active {
+  background: rgba(255, 255, 255, 1);
+}
+
+.gallery-arrow svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-primary);
+}
+
+.gallery-arrow-left {
+  left: 0.5rem;
+}
+
+.gallery-arrow-right {
+  right: 0.5rem;
+}
+
+.gallery-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.gallery-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.gallery-indicator.active {
+  opacity: 1;
+  transform: scale(1.2);
+}
