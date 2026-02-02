@@ -37,7 +37,7 @@
   align-items: center;
   text-align: center;
   padding: 0;
-  background: url('/images/main_temp.jpg') center center / cover no-repeat;
+  background: url('/images/main_temp.webp') center center / cover no-repeat;
   background-attachment: fixed;
   position: relative;
   overflow: hidden;
