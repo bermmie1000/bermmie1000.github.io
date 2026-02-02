@@ -3,6 +3,7 @@
  */
 
 import { VENUE, ICONS } from './config.js';
+import { showToast } from './toast.js';
 
 /**
  * Copy text to clipboard with optional feedback
@@ -20,12 +21,14 @@ export async function copyToClipboard(text, options = {}) {
     if (iconElement && successIcon && defaultIcon) {
       iconElement.src = successIcon;
       setTimeout(() => (iconElement.src = defaultIcon), 2000);
-    } else if (successMessage) {
-      alert(`${successMessage}\n\n${text}`);
+    }
+    
+    if (successMessage) {
+      showToast(successMessage);
     }
   } catch (err) {
     console.error('Failed to copy:', err);
-    alert(`복사에 실패했습니다.\n\n${text}`);
+    showToast('복사에 실패했습니다');
   }
 }
 
@@ -51,7 +54,7 @@ function fallbackCopy(text) {
  */
 export function copyAddress() {
   copyToClipboard(VENUE.address, {
-    successMessage: '📋 주소가 복사되었습니다!',
+    successMessage: '주소가 복사되었습니다',
   });
 }
 
@@ -64,6 +67,7 @@ export function copyAddressWithIcon() {
     iconElement: icon,
     successIcon: ICONS.copied,
     defaultIcon: ICONS.copy,
+    successMessage: '주소가 복사되었습니다',
   });
 }
 
@@ -72,6 +76,6 @@ export function copyAddressWithIcon() {
  */
 export function copyAccount(accountInfo) {
   copyToClipboard(accountInfo, {
-    successMessage: '💰 계좌번호가 복사되었습니다!',
+    successMessage: '계좌번호가 복사되었습니다',
   });
 }
