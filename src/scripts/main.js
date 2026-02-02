@@ -11,6 +11,7 @@ import { copyAddress, copyAddressWithIcon, copyAccount } from './modules/clipboa
 import { contactModal, giftModal } from './modules/modal.js';
 import { toggleMusic } from './modules/music.js';
 import { fixHeroHeight, initDdayCounter, logWelcome } from './modules/utils.js';
+import { initScrollReveal } from './modules/scroll-reveal.js';
 
 /**
  * Initialize application
@@ -20,6 +21,7 @@ async function init() {
   fixHeroHeight();
   initDdayCounter();
   initGallery();
+  initScrollReveal();
 
   // Kakao SDK
   initKakaoSDK();

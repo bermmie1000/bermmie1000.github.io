@@ -2,6 +2,33 @@
  * Hero Section Styles
  */
 
+/* Fade-in Animations */
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.fade-in-delay-1 { animation-delay: 0.3s; }
+.fade-in-delay-2 { animation-delay: 0.6s; }
+.fade-in-delay-3 { animation-delay: 0.9s; }
+.fade-in-delay-4 { animation-delay: 1.2s; }
+
 .hero {
   min-height: 100vh;
   display: flex;
@@ -11,9 +38,16 @@
   text-align: center;
   padding: 0;
   background: url('/images/main_temp.jpg') center center / cover no-repeat;
-  background-attachment: scroll;
+  background-attachment: fixed;
   position: relative;
   overflow: hidden;
+}
+
+/* Mobile: disable parallax for better performance */
+@media (max-width: 768px) {
+  .hero {
+    background-attachment: scroll;
+  }
 }
 
 .hero-top {

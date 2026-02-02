@@ -8,12 +8,20 @@
   --section-padding: 4rem 0;
   --content-padding: 0 2rem;
 
-  /* Colors - Primary */
-  --primary-color: #000000;
-  --secondary-color: #000000;
-  --text-primary: #000000;
-  --text-secondary: #000000;
+  /* Colors - Text Hierarchy */
+  --text-primary: #1a1a1a;      /* 제목, 강조 */
+  --text-secondary: #4a4a4a;    /* 본문 */
+  --text-muted: #8a8a8a;        /* 보조 정보 */
+  --text-inverse: #ffffff;      /* 어두운 배경 위 */
+  --text-accent: #8B7355;       /* 웨딩 테마 브라운 */
+
+  /* Colors - Legacy (for compatibility) */
+  --primary-color: #1a1a1a;
+  --secondary-color: #4a4a4a;
+
+  /* Colors - Background */
   --background: #ffffff;
+  --background-secondary: #f8f5f2;
   --background-outer: #e8e4e0;
   --white: #ffffff;
 

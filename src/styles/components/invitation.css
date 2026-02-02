@@ -13,11 +13,14 @@
   font-size: 1.1rem;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
+  line-height: 1.9;
 }
 
 /* Family Info */
 .family-info {
   margin-top: 2rem;
+  color: var(--text-muted);
+  font-size: 1rem;
 }
 
 .family-info + .family-info {
@@ -25,7 +28,7 @@
 }
 
 .family-name {
-  color: var(--primary-color);
+  color: var(--text-accent);
   font-weight: 600;
 }
 
