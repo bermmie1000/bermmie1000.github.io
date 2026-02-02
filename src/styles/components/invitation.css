@@ -1,0 +1,36 @@
+/**
+ * Invitation Section Styles
+ */
+
+.invitation {
+  background: var(--white);
+  padding: 3rem;
+  text-align: center;
+  line-height: 2;
+}
+
+.invitation p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Family Info */
+.family-info {
+  margin-top: 2rem;
+}
+
+.family-info + .family-info {
+  margin-top: 1rem;
+}
+
+.family-name {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Contact Button Container */
+.contact-btn-container {
+  margin-top: 2rem;
+  text-align: center;
+}

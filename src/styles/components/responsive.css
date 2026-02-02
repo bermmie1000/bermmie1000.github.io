@@ -1,0 +1,50 @@
+/**
+ * Responsive & Accessibility Styles
+ */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .names {
+    font-size: 2rem;
+  }
+
+  .date {
+    font-size: 1.2rem;
+  }
+
+  .location {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .invitation {
+    padding: 2rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .btn {
+    display: none;
+  }
+
+  body {
+    background: white;
+  }
+
+  section {
+    page-break-inside: avoid;
+  }
+}
