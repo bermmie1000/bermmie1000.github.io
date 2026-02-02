@@ -23,11 +23,11 @@ export const WEDDING = {
 };
 
 export const GALLERY_IMAGES = [
-  '/images/IMG_4448.jpg',
-  '/images/IMG_6164.jpg',
-  '/images/IMG_6271.jpg',
-  '/images/IMG_7990.jpg',
-  '/images/IMG_8601.jpg',
+  '/images/IMG_4448.webp',
+  '/images/IMG_6164.webp',
+  '/images/IMG_6271.webp',
+  '/images/IMG_7990.webp',
+  '/images/IMG_8601.webp',
 ];
 
 export const ICONS = {
