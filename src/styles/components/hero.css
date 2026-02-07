@@ -38,16 +38,9 @@
   text-align: center;
   padding: 0;
   background: url('/images/main_temp.jpg') center center / cover no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   position: relative;
   overflow: hidden;
-}
-
-/* Mobile: disable parallax for better performance */
-@media (max-width: 768px) {
-  .hero {
-    background-attachment: scroll;
-  }
 }
 
 .hero-top {
