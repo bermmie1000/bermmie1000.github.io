@@ -2,6 +2,8 @@
  * Gift Section Styles
  */
 
+/* title style moved to base.css */
+
 .gift-buttons {
   display: flex;
   gap: 1rem;

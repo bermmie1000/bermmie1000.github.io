@@ -2,6 +2,8 @@
  * Invitation Section Styles
  */
 
+/* title style moved to base.css */
+
 .invitation {
   background: var(--white);
   padding: 3rem;
@@ -20,11 +22,16 @@
 .family-info {
   margin-top: 2rem;
   color: var(--text-muted);
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .family-info + .family-info {
   margin-top: 1rem;
+}
+
+.family-relation {
+  font-size: 0.75em;
+  letter-spacing: -0.01em;
 }
 
 .family-name {
