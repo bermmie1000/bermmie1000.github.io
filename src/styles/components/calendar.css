@@ -4,8 +4,6 @@
 
 .wedding-date-text {
   text-align: center;
-  font-size: 1.3rem;
-  color: var(--text-primary);
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -58,27 +56,30 @@
 .calendar .wedding-day {
   position: relative;
   font-weight: 700;
-  color: var(--white) !important;
-  z-index: 1;
+  color: var(--text-primary) !important;
 }
 
+/* Replace circle highlight with a heart marker */
 .calendar .wedding-day::before {
-  content: '';
+  content: '♥';
   position: absolute;
-  top: 50%;
   left: 50%;
+  /* push heart down a bit so the number feels centered */
+  top: 57%;
   transform: translate(-50%, -50%);
-  width: 36px;
-  height: 36px;
-  background: var(--sunday-color);
-  border-radius: 50%;
+  /* 2x vs the original 1.8rem */
+  font-size: 3.6rem;
+  line-height: 1;
+  color: #eab6cf;
+  /* slightly less saturated / softer */
+  opacity: 0.6;
   z-index: -1;
 }
 
 .dday-counter {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--text-muted);
+  border-top: 0;
 }
 
 .dday-counter p {

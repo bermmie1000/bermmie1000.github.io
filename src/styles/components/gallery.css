@@ -7,6 +7,8 @@
   width: 100%;
 }
 
+/* title style moved to base.css */
+
 .gallery-container {
   position: relative;
   display: flex;

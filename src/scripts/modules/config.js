@@ -23,6 +23,10 @@ export const WEDDING = {
 };
 
 export const GALLERY_IMAGES = [
+  '/images/wedding/EM901075.JPG',
+  '/images/wedding/EM901881.JPG',
+  '/images/wedding/EM900504.JPG',
+  '/images/wedding/EM900658.JPG',
   '/images/IMG_4448.jpg',
   '/images/IMG_6164.jpg',
   '/images/IMG_6271.jpg',
