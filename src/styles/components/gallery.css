@@ -16,7 +16,7 @@
 
 .gallery-preview img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   display: block;
   border-radius: 4px;
