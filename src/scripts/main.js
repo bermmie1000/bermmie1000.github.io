@@ -9,7 +9,7 @@ import { initKakaoSDK, shareKakao } from './modules/share.js';
 import { initGallery } from './modules/gallery.js';
 import { copyAddress, copyAddressWithIcon, copyAccount } from './modules/clipboard.js';
 import { contactModal, giftModal } from './modules/modal.js';
-import { toggleMusic } from './modules/music.js';
+import { initMusic, toggleMusic } from './modules/music.js';
 import { fixHeroHeight, initDdayCounter, logWelcome } from './modules/utils.js';
 import { initScrollReveal } from './modules/scroll-reveal.js';
 
@@ -22,6 +22,7 @@ async function init() {
   initDdayCounter();
   initGallery();
   initScrollReveal();
+  initMusic();
 
   // Kakao SDK
   initKakaoSDK();
