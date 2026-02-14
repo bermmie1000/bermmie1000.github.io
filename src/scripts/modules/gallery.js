@@ -1,14 +1,13 @@
 /**
- * Gallery functionality with swipe and lightbox
+ * Gallery — Master-Detail Grid with Lightbox
  */
 
 import { GALLERY_IMAGES } from './config.js';
 
 let currentIndex = 0;
-let imageElement = null;
-let galleryFrame = null;
+let previewElement = null;
 
-// Touch handling
+// Touch handling (lightbox swipe)
 let touchStartX = 0;
 let touchStartY = 0;
 const SWIPE_THRESHOLD = 50;
@@ -17,78 +16,88 @@ const SWIPE_THRESHOLD = 50;
  * Initialize gallery
  */
 export function initGallery() {
-  imageElement = document.getElementById('galleryImage');
-  galleryFrame = document.querySelector('.gallery-frame');
-  if (!imageElement) return;
+  previewElement = document.getElementById('galleryPreview');
+  if (!previewElement) return;
 
-  // Button handlers
-  document.getElementById('galleryPrev')?.addEventListener('click', showPrev);
-  document.getElementById('galleryNext')?.addEventListener('click', showNext);
-
-  // Touch swipe handlers
-  if (galleryFrame) {
-    galleryFrame.addEventListener('touchstart', handleTouchStart, { passive: true });
-    galleryFrame.addEventListener('touchend', handleTouchEnd);
-  }
-
-  // Lightbox: click to open
-  imageElement.addEventListener('click', openLightbox);
-
-  // Create indicators
-  createIndicators();
-
-  // Create lightbox
+  createGrid();
   createLightbox();
 
-  console.log('✅ Gallery initialized:', GALLERY_IMAGES.length, 'images');
+  // Click preview → open lightbox
+  previewElement.addEventListener('click', openLightbox);
+
+  console.log('✅ Gallery initialized:', GALLERY_IMAGES.length, 'images (grid mode)');
 }
 
 /**
- * Touch handlers for swipe
+ * Create 3×3 thumbnail grid
  */
-function handleTouchStart(e) {
-  touchStartX = e.changedTouches[0].screenX;
-  touchStartY = e.changedTouches[0].screenY;
-}
-
-function handleTouchEnd(e) {
-  const touchEndX = e.changedTouches[0].screenX;
-  const touchEndY = e.changedTouches[0].screenY;
-  
-  const diffX = touchStartX - touchEndX;
-  const diffY = touchStartY - touchEndY;
-  
-  // Only handle horizontal swipes (ignore vertical scrolling)
-  if (Math.abs(diffX) < SWIPE_THRESHOLD || Math.abs(diffY) > Math.abs(diffX)) {
-    return;
-  }
-  
-  if (diffX > 0) {
-    showNext(); // Swipe left → next
-  } else {
-    showPrev(); // Swipe right → prev
-  }
-}
-
-/**
- * Create gallery indicators
- */
-function createIndicators() {
-  const container = document.getElementById('galleryIndicators');
+function createGrid() {
+  const container = document.getElementById('galleryGrid');
   if (!container) return;
 
-  container.innerHTML = '';
-  GALLERY_IMAGES.forEach((_, index) => {
-    const indicator = document.createElement('div');
-    indicator.className = `gallery-indicator${index === 0 ? ' active' : ''}`;
-    indicator.addEventListener('click', () => showImage(index));
-    container.appendChild(indicator);
+  GALLERY_IMAGES.forEach((src, index) => {
+    const item = document.createElement('div');
+    item.className = `gallery-grid-item${index === 0 ? ' active' : ''}`;
+    item.role = 'listitem';
+    item.tabIndex = 0;
+    item.setAttribute('aria-label', `사진 ${index + 1} / ${GALLERY_IMAGES.length}`);
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Wedding Photo ${index + 1}`;
+    img.loading = index < 3 ? 'eager' : 'lazy';
+    img.decoding = 'async';
+
+    item.appendChild(img);
+
+    // Click → select
+    item.addEventListener('click', () => selectImage(index));
+
+    // Keyboard → Enter/Space to select
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectImage(index);
+      }
+    });
+
+    container.appendChild(item);
   });
 }
 
 /**
- * Create lightbox element
+ * Select image → update preview
  */
+function selectImage(index) {
+  currentIndex = index;
+
+  if (document.startViewTransition) {
+    document.startViewTransition(() => {
+      previewElement.src = GALLERY_IMAGES[index];
+      updateActiveThumb(index);
+    });
+  } else {
+    // Fallback: CSS opacity transition
+    previewElement.style.opacity = '0';
+    setTimeout(() => {
+      previewElement.src = GALLERY_IMAGES[index];
+      previewElement.style.opacity = '1';
+      updateActiveThumb(index);
+    }, 150);
+  }
+}
+
+/**
+ * Update active thumbnail highlight
+ */
+function updateActiveThumb(index) {
+  document.querySelectorAll('.gallery-grid-item').forEach((item, i) => {
+    item.classList.toggle('active', i === index);
+  });
+}
+
+// ── Lightbox ──
+
 function createLightbox() {
   const lightbox = document.createElement('div');
   lightbox.id = 'lightbox';
@@ -101,31 +110,30 @@ function createLightbox() {
   `;
   document.body.appendChild(lightbox);
 
-  // Lightbox event listeners
   lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
-  lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); showPrev(); updateLightboxImage(); });
-  lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); showNext(); updateLightboxImage(); });
+  lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+    e.stopPropagation();
+    navigateLightbox(-1);
+  });
+  lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => {
+    e.stopPropagation();
+    navigateLightbox(1);
+  });
   lightbox.addEventListener('click', closeLightbox);
-  
+
   // Swipe in lightbox
   lightbox.addEventListener('touchstart', handleTouchStart, { passive: true });
-  lightbox.addEventListener('touchend', (e) => {
-    handleTouchEnd(e);
-    updateLightboxImage();
-  });
+  lightbox.addEventListener('touchend', handleTouchEnd);
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') { showPrev(); updateLightboxImage(); }
-    if (e.key === 'ArrowRight') { showNext(); updateLightboxImage(); }
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
   });
 }
 
-/**
- * Open lightbox
- */
 function openLightbox() {
   const lightbox = document.getElementById('lightbox');
   lightbox.classList.add('active');
@@ -133,18 +141,20 @@ function openLightbox() {
   document.body.style.overflow = 'hidden';
 }
 
-/**
- * Close lightbox
- */
 function closeLightbox() {
   const lightbox = document.getElementById('lightbox');
   lightbox.classList.remove('active');
   document.body.style.overflow = '';
 }
 
-/**
- * Update lightbox image
- */
+function navigateLightbox(direction) {
+  const len = GALLERY_IMAGES.length;
+  currentIndex = (currentIndex + direction + len) % len;
+  updateLightboxImage();
+  updateActiveThumb(currentIndex);
+  previewElement.src = GALLERY_IMAGES[currentIndex];
+}
+
 function updateLightboxImage() {
   const lightboxImg = document.getElementById('lightbox-image');
   if (lightboxImg) {
@@ -152,31 +162,18 @@ function updateLightboxImage() {
   }
 }
 
-/**
- * Show previous image
- */
-function showPrev() {
-  const newIndex = currentIndex > 0 ? currentIndex - 1 : GALLERY_IMAGES.length - 1;
-  showImage(newIndex);
+// ── Touch helpers (lightbox swipe) ──
+
+function handleTouchStart(e) {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
 }
 
-/**
- * Show next image
- */
-function showNext() {
-  const newIndex = currentIndex < GALLERY_IMAGES.length - 1 ? currentIndex + 1 : 0;
-  showImage(newIndex);
-}
+function handleTouchEnd(e) {
+  const diffX = touchStartX - e.changedTouches[0].screenX;
+  const diffY = touchStartY - e.changedTouches[0].screenY;
 
-/**
- * Show image by index
- */
-function showImage(index) {
-  currentIndex = index;
-  imageElement.src = GALLERY_IMAGES[index];
+  if (Math.abs(diffX) < SWIPE_THRESHOLD || Math.abs(diffY) > Math.abs(diffX)) return;
 
-  // Update indicators
-  document.querySelectorAll('.gallery-indicator').forEach((ind, i) => {
-    ind.classList.toggle('active', i === currentIndex);
-  });
+  navigateLightbox(diffX > 0 ? 1 : -1);
 }
