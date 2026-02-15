@@ -4,6 +4,46 @@
 
 /* title style moved to base.css */
 
+/* Account notice text - Korean line break optimization */
+.account-notice {
+  /* 한국어 단어 단위 줄바꿈 (공백 기준) */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+
+  /* 반응형 폰트 크기 */
+  font-size: clamp(14px, 3.8vw, 16px);
+  line-height: 1.65;
+
+  /* 중앙 정렬 */
+  text-align: center;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  /* iOS Safari 텍스트 자동 조정 비활성화 */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* <br> 존중 */
+  white-space: pre-line;
+}
+
+/* iPhone 16 Pro 최적화 (393px viewport) */
+@media (max-width: 430px) {
+  .account-notice {
+    font-size: 15px;
+    max-width: 340px;
+  }
+}
+
+/* 작은 모바일 (iPhone SE: 375px) */
+@media (max-width: 390px) {
+  .account-notice {
+    font-size: 14px;
+    max-width: 320px;
+  }
+}
+
 .gift-buttons {
   display: flex;
   gap: 1rem;

@@ -24,14 +24,14 @@ export const WEDDING = {
 
 export const GALLERY_IMAGES = [
   '/images/wedding/EM901075.JPG',
-  '/images/wedding/EM901881.JPG',
-  '/images/wedding/EM900504.JPG',
   '/images/wedding/EM900658.JPG',
-  '/images/IMG_4448.jpg',
-  '/images/IMG_6164.jpg',
-  '/images/IMG_6271.jpg',
-  '/images/IMG_7990.jpg',
-  '/images/IMG_8601.jpg',
+  '/images/wedding/EM900504.JPG',
+  '/images/wedding/EM902094.JPG',
+  '/images/wedding/EM901881.JPG',
+  '/images/wedding/EM902457.JPG',
+  '/images/wedding/EM903151.JPG',
+  '/images/wedding/EM903919.JPG',
+  '/images/wedding/EM904181.JPG',
 ];
 
 export const ICONS = {
