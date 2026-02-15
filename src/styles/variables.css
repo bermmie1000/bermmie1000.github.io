@@ -19,10 +19,10 @@
   --primary-color: #1a1a1a;
   --secondary-color: #4a4a4a;
 
-  /* Colors - Background */
-  --background: #ffffff;
-  --background-secondary: #f8f5f2;
-  --background-outer: #e8e4e0;
+  /* Colors - Background (Beige paper tone) */
+  --background: #faf8f5;
+  --background-secondary: #f5f1eb;
+  --background-outer: #ebe7e0;
   --white: #ffffff;
 
   /* Colors - Calendar */
