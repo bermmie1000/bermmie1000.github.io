@@ -18,13 +18,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
 
       - name: Install Lighthouse CI
         run: npm install -g @lhci/cli@0.13.x
 
       - name: Start HTTP Server
         run: |
-          npx http-server . -p 8080 &
+          npx http-server dist -p 8080 &
           sleep 5
 
       - name: Run Lighthouse CI
@@ -45,26 +52,33 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const results = JSON.parse(fs.readFileSync('.lighthouseci/manifest.json', 'utf8'));
+            const path = '.lighthouseci/manifest.json';
+            if (!fs.existsSync(path)) {
+              console.log('No manifest.json found, skipping comment.');
+              return;
+            }
+            const results = JSON.parse(fs.readFileSync(path, 'utf8'));
             const report = results[0];
+            if (!report || !report.summary) {
+              console.log('No summary in report, skipping comment.');
+              return;
+            }
 
-            const comment = `
-            ## 🔍 Lighthouse CI Results
+            const score = (key) => {
+              const val = report.summary[key];
+              return val != null ? (val * 100).toFixed(0) + '%' : 'N/A';
+            };
+
+            const comment = `## 🔍 Lighthouse CI Results
 
             | Category | Score |
             |----------|-------|
-            | 🚀 Performance | ${(report.summary.performance * 100).toFixed(0)}% |
-            | ♿ Accessibility | ${(report.summary.accessibility * 100).toFixed(0)}% |
-            | 🎯 Best Practices | ${(report.summary['best-practices'] * 100).toFixed(0)}% |
-            | 🔍 SEO | ${(report.summary.seo * 100).toFixed(0)}% |
-            | 📱 PWA | ${(report.summary.pwa * 100).toFixed(0)}% |
+            | 🚀 Performance | ${score('performance')} |
+            | ♿ Accessibility | ${score('accessibility')} |
+            | 🎯 Best Practices | ${score('best-practices')} |
+            | 🔍 SEO | ${score('seo')} |
 
-            ### Core Web Vitals
-            - **LCP**: ${report.summary.lcp}ms
-            - **TBT**: ${report.summary.tbt}ms
-            - **CLS**: ${report.summary.cls}
-
-            [View Full Report](${report.url})
+            [View Full Report](${report.url || 'N/A'})
             `;
 
             github.rest.issues.createComment({

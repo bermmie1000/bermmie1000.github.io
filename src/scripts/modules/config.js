@@ -16,7 +16,7 @@ export const VENUE = {
 export const WEDDING = {
   bride: '박하영',
   groom: '천창범',
-  date: '2026년 5월 23일 토요일 오전 11시 30분',
+  date: '2026.05.23 (토) 11:30',
   dateObj: new Date('2026-05-23T11:30:00'),
   venue: '엘타워 7층 그랜드홀',
   address: '서울 서초구 강남대로 213 엘타워',
@@ -24,14 +24,14 @@ export const WEDDING = {
 
 export const GALLERY_IMAGES = [
   '/images/wedding/EM901075.JPG',
-  '/images/wedding/EM901881.JPG',
-  '/images/wedding/EM900504.JPG',
   '/images/wedding/EM900658.JPG',
-  '/images/IMG_4448.jpg',
-  '/images/IMG_6164.jpg',
-  '/images/IMG_6271.jpg',
-  '/images/IMG_7990.jpg',
-  '/images/IMG_8601.jpg',
+  '/images/wedding/EM900504.JPG',
+  '/images/wedding/EM902094.JPG',
+  '/images/wedding/EM901881.JPG',
+  '/images/wedding/EM902457.JPG',
+  '/images/wedding/EM903151.JPG',
+  '/images/wedding/EM903919.JPG',
+  '/images/wedding/EM904181.JPG',
 ];
 
 export const ICONS = {

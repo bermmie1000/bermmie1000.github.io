@@ -19,6 +19,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'LuxuriousScript';
+  src: url('/fonts/LuxuriousScript-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Reset */
 *,
 button,
@@ -44,6 +52,24 @@ body {
   max-width: var(--container-width);
   margin: 0 auto;
   touch-action: pan-y;
+
+  /* Paper texture effect */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 115, 85, 0.015) 2px,
+      rgba(139, 115, 85, 0.015) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 115, 85, 0.015) 2px,
+      rgba(139, 115, 85, 0.015) 4px
+    );
+  background-size: 100% 100%;
 }
 
 /* Utility Classes */

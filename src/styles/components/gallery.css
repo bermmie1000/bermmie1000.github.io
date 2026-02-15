@@ -1,5 +1,5 @@
 /**
- * Gallery Section Styles — Master-Detail Grid
+ * Gallery Section Styles — Grid with Lightbox
  */
 
 .gallery-section {
@@ -7,24 +7,7 @@
   width: 100%;
 }
 
-/* ── Detail: Preview Frame ── */
-
-.gallery-preview {
-  padding: 0 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.gallery-preview img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  display: block;
-  border-radius: 4px;
-  view-transition-name: gallery-preview;
-  transition: opacity 0.25s ease;
-}
-
-/* ── Master: 3×3 Thumbnail Grid ── */
+/* ── 3×3 Thumbnail Grid ── */
 
 .gallery-grid {
   display: grid;
@@ -47,15 +30,6 @@
   object-fit: cover;
   display: block;
   transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-/* Active (selected) thumbnail */
-.gallery-grid-item.active::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 2px solid var(--text-accent);
-  pointer-events: none;
 }
 
 /* Tap feedback */
@@ -133,22 +107,10 @@
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* ── View Transition animations ── */
-
-::view-transition-old(gallery-preview),
-::view-transition-new(gallery-preview) {
-  animation-duration: 0.25s;
-}
-
 /* ── Reduced motion ── */
 
 @media (prefers-reduced-motion: reduce) {
-  .gallery-preview img,
   .gallery-grid-item img {
     transition: none;
-  }
-  ::view-transition-old(gallery-preview),
-  ::view-transition-new(gallery-preview) {
-    animation: none;
   }
 }

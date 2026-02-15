@@ -5,7 +5,7 @@
 /* title style moved to base.css */
 
 .invitation {
-  background: var(--white);
+  background: transparent;
   padding: 3rem;
   text-align: center;
   line-height: 2;

@@ -1,11 +1,10 @@
 /**
- * Gallery — Master-Detail Grid with Lightbox
+ * Gallery — Grid with Lightbox
  */
 
 import { GALLERY_IMAGES } from './config.js';
 
 let currentIndex = 0;
-let previewElement = null;
 
 // Touch handling (lightbox swipe)
 let touchStartX = 0;
@@ -16,16 +15,10 @@ const SWIPE_THRESHOLD = 50;
  * Initialize gallery
  */
 export function initGallery() {
-  previewElement = document.getElementById('galleryPreview');
-  if (!previewElement) return;
-
   createGrid();
   createLightbox();
 
-  // Click preview → open lightbox
-  previewElement.addEventListener('click', openLightbox);
-
-  console.log('✅ Gallery initialized:', GALLERY_IMAGES.length, 'images (grid mode)');
+  console.log('✅ Gallery initialized:', GALLERY_IMAGES.length, 'images (grid → lightbox mode)');
 }
 
 /**
@@ -37,7 +30,7 @@ function createGrid() {
 
   GALLERY_IMAGES.forEach((src, index) => {
     const item = document.createElement('div');
-    item.className = `gallery-grid-item${index === 0 ? ' active' : ''}`;
+    item.className = 'gallery-grid-item';
     item.role = 'listitem';
     item.tabIndex = 0;
     item.setAttribute('aria-label', `사진 ${index + 1} / ${GALLERY_IMAGES.length}`);
@@ -50,49 +43,22 @@ function createGrid() {
 
     item.appendChild(img);
 
-    // Click → select
-    item.addEventListener('click', () => selectImage(index));
+    // Click → open lightbox
+    item.addEventListener('click', () => {
+      currentIndex = index;
+      openLightbox();
+    });
 
-    // Keyboard → Enter/Space to select
+    // Keyboard → Enter/Space to open lightbox
     item.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        selectImage(index);
+        currentIndex = index;
+        openLightbox();
       }
     });
 
     container.appendChild(item);
-  });
-}
-
-/**
- * Select image → update preview
- */
-function selectImage(index) {
-  currentIndex = index;
-
-  if (document.startViewTransition) {
-    document.startViewTransition(() => {
-      previewElement.src = GALLERY_IMAGES[index];
-      updateActiveThumb(index);
-    });
-  } else {
-    // Fallback: CSS opacity transition
-    previewElement.style.opacity = '0';
-    setTimeout(() => {
-      previewElement.src = GALLERY_IMAGES[index];
-      previewElement.style.opacity = '1';
-      updateActiveThumb(index);
-    }, 150);
-  }
-}
-
-/**
- * Update active thumbnail highlight
- */
-function updateActiveThumb(index) {
-  document.querySelectorAll('.gallery-grid-item').forEach((item, i) => {
-    item.classList.toggle('active', i === index);
   });
 }
 
@@ -151,8 +117,6 @@ function navigateLightbox(direction) {
   const len = GALLERY_IMAGES.length;
   currentIndex = (currentIndex + direction + len) % len;
   updateLightboxImage();
-  updateActiveThumb(currentIndex);
-  previewElement.src = GALLERY_IMAGES[currentIndex];
 }
 
 function updateLightboxImage() {
