@@ -28,6 +28,7 @@
 
 .invitation-couple-item {
   margin: 0;
+  position: relative;
 }
 
 .invitation-couple-item img {
@@ -38,6 +39,32 @@
   display: block;
 }
 
+/* Caption overlay on image */
+.invitation-couple-caption {
+  position: absolute;
+  z-index: 2;
+  margin: 0; /* override .family-info margin-top */
+  padding: 0.5rem 0.7rem;
+  border-radius: 12px;
+  background: rgba(248, 245, 242, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+.invitation-couple-item--groom .invitation-couple-caption {
+  top: 12px;
+  left: 12px;
+  text-align: left;
+}
+
+.invitation-couple-item--bride .invitation-couple-caption {
+  right: 12px;
+  bottom: 12px;
+  text-align: right;
+}
+
 /* Family Info */
 .family-info {
   margin-top: 0.75rem;
@@ -46,11 +73,7 @@
   line-height: 1.7;
 }
 
-/* If caption is placed above the image */
-.invitation-couple-item > figcaption.family-info:first-child {
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-}
+/* Caption positioning is handled by .invitation-couple-caption */
 
 .family-relation {
   font-size: 0.7em; /* 2-step smaller than main line */
