@@ -15,6 +15,13 @@
   margin-bottom: 2rem;
 }
 
+/* Move calendar block up slightly */
+.wedding-date-text,
+.wedding-time-text,
+.calendar-container {
+  transform: translateY(-16px);
+}
+
 .calendar-container {
   width: 100%;
   padding: var(--content-padding);
