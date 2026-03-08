@@ -260,7 +260,7 @@
   content: '';
   position: absolute;
   inset: -0.15rem -0.4rem;
-  background: rgba(120, 90, 60, 0.38);
+  background: rgba(110, 80, 55, 0.48);
   filter: blur(8px);
   border-radius: 999px;
   z-index: -1;
@@ -282,7 +282,7 @@
   content: '';
   position: absolute;
   inset: -0.15rem -0.4rem;
-  background: rgba(120, 90, 60, 0.38);
+  background: rgba(110, 80, 55, 0.48);
   filter: blur(8px);
   border-radius: 999px;
   z-index: -1;
