@@ -249,7 +249,10 @@
   margin-bottom: 1rem;
   font-weight: 400;
   position: relative;
-  display: inline-block;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0.1rem 0.4rem;
 }
 
@@ -268,7 +271,10 @@
   color: var(--white);
   margin-bottom: 3rem;
   position: relative;
-  display: inline-block;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0.1rem 0.4rem;
 }
 
