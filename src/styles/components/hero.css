@@ -44,7 +44,7 @@
   isolation: isolate; /* keep blend-mode effects inside hero */
 }
 
-/* Petals overlay (sakura-like, white) */
+/* Drifting stars overlay (white, glossy) */
 .hero-sparkles {
   position: absolute;
   inset: 0;
@@ -58,7 +58,7 @@
   top: -12vh;
   left: 50%;
   width: var(--petal-size, 14px);
-  height: calc(var(--petal-size, 14px) * 1.15);
+  height: var(--petal-size, 14px);
   opacity: var(--petal-opacity, 0.75);
   transform: translate3d(var(--petal-x, 0px), -20vh, 0) rotate(var(--petal-rot, 0deg));
   animation:
@@ -67,25 +67,35 @@
     petal-spin var(--petal-spin-duration, 6s) linear infinite;
 }
 
-/* Simple sakura petal silhouette */
+/* Glossy sparkle highlight */
 .hero-sparkles .petal::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.70) 55%, rgba(255, 255, 255, 0.0) 75%);
-  filter: blur(0.2px);
+  inset: -35%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.90), rgba(255, 255, 255, 0) 60%);
+  filter: blur(8px);
+  opacity: 0.75;
 }
 
+/* 5-point star */
 .hero-sparkles .petal::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.88);
-  border-radius: 70% 70% 85% 85% / 60% 60% 100% 100%;
-  clip-path: path('M 0.50 0.02 C 0.85 0.10 1.00 0.45 0.80 0.78 C 0.68 0.98 0.52 1.02 0.50 1.00 C 0.48 1.02 0.32 0.98 0.20 0.78 C 0.00 0.45 0.15 0.10 0.50 0.02 Z');
-  box-shadow:
-    0 0 10px rgba(255, 255, 255, 0.35),
-    0 6px 14px rgba(0, 0, 0, 0.08);
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 1) 0 25%, rgba(255, 255, 255, 0.65) 55%, rgba(255, 255, 255, 0.25) 75%);
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.45)) drop-shadow(0 8px 14px rgba(0, 0, 0, 0.10));
 }
 
 @keyframes petal-fall {
@@ -104,9 +114,9 @@
 }
 
 @keyframes petal-spin {
-  0% { filter: brightness(1); }
-  50% { filter: brightness(1.18); }
-  100% { filter: brightness(1); }
+  0% { filter: brightness(0.95); }
+  40% { filter: brightness(1.35); }
+  100% { filter: brightness(0.98); }
 }
 
 @media (prefers-reduced-motion: reduce) {
