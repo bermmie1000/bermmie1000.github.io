@@ -18,15 +18,32 @@
   line-height: 1.9;
 }
 
-/* Family Info */
-.family-info {
-  margin-top: 2rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
+/* Couple photos + captions (2-column) */
+.invitation-couple-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-.family-info + .family-info {
-  margin-top: 1rem;
+.invitation-couple-item {
+  margin: 0;
+}
+
+.invitation-couple-item img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+/* Family Info */
+.family-info {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .family-relation {
