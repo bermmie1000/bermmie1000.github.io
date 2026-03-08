@@ -35,7 +35,7 @@
 .address-text {
   font-size: 1rem;
   color: var(--text-primary);
-  font-weight: 800;
+  font-weight: 400;
 }
 
 .address-text-second {
