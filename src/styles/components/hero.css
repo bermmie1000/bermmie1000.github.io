@@ -221,8 +221,6 @@
   font-size: 1.2rem;
   color: var(--white);
   margin-top: -0.25rem;
-  display: inline-block;
-  transform: rotate(-6deg);
 }
 
 .names {
