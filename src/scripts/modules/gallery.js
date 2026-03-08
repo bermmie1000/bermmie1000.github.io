@@ -71,6 +71,7 @@ function createLightbox() {
   lightbox.innerHTML = `
     <button class="lightbox-close" aria-label="닫기">✕</button>
     <button class="lightbox-nav lightbox-prev" aria-label="이전">‹</button>
+    <div class="lightbox-counter" aria-live="polite"></div>
     <img id="lightbox-image" src="" alt="Gallery Image">
     <button class="lightbox-nav lightbox-next" aria-label="다음">›</button>
   `;
@@ -147,6 +148,11 @@ function updateLightboxImage() {
   const lightboxImg = document.getElementById('lightbox-image');
   if (lightboxImg) {
     lightboxImg.src = GALLERY_ITEMS[currentIndex].full || GALLERY_ITEMS[currentIndex].thumb;
+  }
+
+  const counter = document.querySelector('.lightbox-counter');
+  if (counter) {
+    counter.textContent = `${currentIndex + 1} / ${GALLERY_ITEMS.length}`;
   }
 }
 

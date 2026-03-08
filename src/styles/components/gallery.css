@@ -69,6 +69,20 @@
   border-radius: 4px;
 }
 
+.lightbox-counter {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  z-index: 2001;
+}
+
 .lightbox-close {
   position: absolute;
   top: 1rem;
