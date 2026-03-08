@@ -93,8 +93,8 @@
   position: absolute;
   inset: -60%;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0) 0 46%, rgba(255, 255, 255, 0.95) 49.5% 50.5%, rgba(255, 255, 255, 0) 54% 100%),
-    linear-gradient(0deg, rgba(255, 255, 255, 0) 0 46%, rgba(255, 255, 255, 0.95) 49.5% 50.5%, rgba(255, 255, 255, 0) 54% 100%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0) 0 48%, rgba(255, 255, 255, 0.95) 49.6% 50.4%, rgba(255, 255, 255, 0) 52% 100%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0) 0 48%, rgba(255, 255, 255, 0.95) 49.6% 50.4%, rgba(255, 255, 255, 0) 52% 100%);
   filter: blur(0.6px);
   opacity: 0.9;
 }
