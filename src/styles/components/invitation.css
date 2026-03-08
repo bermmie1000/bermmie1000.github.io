@@ -63,6 +63,14 @@
   right: 12px;
   bottom: 12px;
   text-align: right;
+
+  /* slightly more "fluffy" / cloud-like shape */
+  border-radius: 22px;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.10),
+    0 0 0 3px rgba(248, 245, 242, 0.40),
+    10px -6px 0 -6px rgba(248, 245, 242, 0.65),
+    -10px 8px 0 -8px rgba(248, 245, 242, 0.55);
 }
 
 /* Family Info */
