@@ -46,7 +46,7 @@
   margin: 0; /* override .family-info margin-top */
   padding: 0.5rem 0.7rem;
   border-radius: 12px;
-  background: rgba(248, 245, 242, 0.38);
+  background: rgba(248, 245, 242, 0.75);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   color: var(--text-secondary);
