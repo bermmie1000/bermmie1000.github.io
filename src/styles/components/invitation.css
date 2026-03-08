@@ -54,8 +54,8 @@
 }
 
 .invitation-couple-item--groom .invitation-couple-caption {
-  top: 12px;
   left: 12px;
+  bottom: 12px;
   text-align: left;
 }
 
