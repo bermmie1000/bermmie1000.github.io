@@ -70,9 +70,9 @@
   /* 2x vs the original 1.8rem */
   font-size: 3.6rem;
   line-height: 1;
-  color: #eab6cf;
+  color: #f2a9a9;
   /* slightly less saturated / softer */
-  opacity: 0.6;
+  opacity: 0.55;
   z-index: -1;
 }
 
