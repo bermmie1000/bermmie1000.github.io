@@ -16,8 +16,9 @@ const SWIPE_THRESHOLD = 50;
  */
 export function initGallery() {
   createGrid();
+  createLightbox();
 
-  console.log('✅ Gallery initialized:', GALLERY_ITEMS.length, 'images (grid only)');
+  console.log('✅ Gallery initialized:', GALLERY_ITEMS.length, 'images (grid → lightbox mode)');
 }
 
 /**
@@ -42,8 +43,20 @@ function createGrid() {
 
     item.appendChild(img);
 
-    // No lightbox / zoom — gallery is a simple thumbnail grid only
-    // (Intentionally no click/keyboard handlers)
+    // Click → open lightbox
+    item.addEventListener('click', () => {
+      currentIndex = index;
+      openLightbox();
+    });
+
+    // Keyboard → Enter/Space to open lightbox
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        currentIndex = index;
+        openLightbox();
+      }
+    });
 
     container.appendChild(item);
   });
@@ -62,6 +75,30 @@ function createLightbox() {
     <button class="lightbox-nav lightbox-next" aria-label="다음">›</button>
   `;
   document.body.appendChild(lightbox);
+
+  const lightboxImg = lightbox.querySelector('#lightbox-image');
+
+  // Prevent pinch-to-zoom only when viewing the enlarged image (lightbox).
+  // iOS Safari: gesture events
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach((type) => {
+    lightbox.addEventListener(
+      type,
+      (e) => {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
+  });
+  // Generic multi-touch prevention (2+ fingers)
+  lightbox.addEventListener(
+    'touchmove',
+    (e) => {
+      if (e.touches && e.touches.length > 1) e.preventDefault();
+    },
+    { passive: false }
+  );
+  // Hint for browsers that support it
+  if (lightboxImg) lightboxImg.style.touchAction = 'none';
 
   lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
   lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => {

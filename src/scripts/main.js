@@ -24,9 +24,6 @@ async function init() {
   initScrollReveal();
   initMusic();
 
-  // iOS Safari pinch-zoom prevention (scoped to gallery)
-  preventGalleryPinchZoom();
-
   // Kakao SDK
   initKakaoSDK();
 
@@ -45,37 +42,6 @@ async function init() {
 }
 
 /**
- * Prevent pinch-to-zoom gestures on gallery images.
- *
- * Note: viewport meta user-scalable=no is not always sufficient on iOS Safari.
- * This adds a best-effort JS prevention scoped to the gallery section.
- */
-function preventGalleryPinchZoom() {
-  const gallery = document.querySelector('.gallery-section');
-  if (!gallery) return;
-
-  // iOS Safari (gesture events)
-  ['gesturestart', 'gesturechange', 'gestureend'].forEach((type) => {
-    gallery.addEventListener(
-      type,
-      (e) => {
-        e.preventDefault();
-      },
-      { passive: false }
-    );
-  });
-
-  // Generic multi-touch prevention (2+ fingers)
-  gallery.addEventListener(
-    'touchmove',
-    (e) => {
-      if (e.touches && e.touches.length > 1) e.preventDefault();
-    },
-    { passive: false }
-  );
-}
-
-/**
  * Setup all event listeners (replacing inline onclick handlers)
  */
 function setupEventListeners() {
@@ -86,15 +52,15 @@ function setupEventListeners() {
   document.querySelector('[data-action="open-contact"]')?.addEventListener('click', contactModal.open);
 
   // Gift modal buttons
-  document.querySelectorAll('[data-action="open-gift"]').forEach(btn => {
+  document.querySelectorAll('[data-action="open-gift"]').forEach((btn) => {
     btn.addEventListener('click', () => giftModal.open(btn.dataset.side));
   });
 
   // Modal close buttons
-  document.querySelectorAll('[data-action="close-contact"]').forEach(el => {
+  document.querySelectorAll('[data-action="close-contact"]').forEach((el) => {
     el.addEventListener('click', contactModal.close);
   });
-  document.querySelectorAll('[data-action="close-gift"]').forEach(el => {
+  document.querySelectorAll('[data-action="close-gift"]').forEach((el) => {
     el.addEventListener('click', giftModal.close);
   });
 
@@ -102,13 +68,25 @@ function setupEventListeners() {
   document.getElementById('copyAddressIcon')?.addEventListener('click', copyAddressWithIcon);
 
   // Navigation apps
-  document.querySelector('[data-nav="kakao-map"]')?.addEventListener('click', e => { e.preventDefault(); openKakaoMap(); });
-  document.querySelector('[data-nav="naver-map"]')?.addEventListener('click', e => { e.preventDefault(); openNaverMap(); });
-  document.querySelector('[data-nav="tmap"]')?.addEventListener('click', e => { e.preventDefault(); openTmap(); });
-  document.querySelector('[data-nav="kakao-navi"]')?.addEventListener('click', e => { e.preventDefault(); openKakaoNavi(); });
+  document.querySelector('[data-nav="kakao-map"]')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openKakaoMap();
+  });
+  document.querySelector('[data-nav="naver-map"]')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openNaverMap();
+  });
+  document.querySelector('[data-nav="tmap"]')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openTmap();
+  });
+  document.querySelector('[data-nav="kakao-navi"]')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openKakaoNavi();
+  });
 
   // Account copy buttons
-  document.querySelectorAll('[data-account]').forEach(btn => {
+  document.querySelectorAll('[data-account]').forEach((btn) => {
     btn.addEventListener('click', () => copyAccount(btn.dataset.account));
   });
 
