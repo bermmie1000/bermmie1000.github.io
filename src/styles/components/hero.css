@@ -77,7 +77,7 @@
   opacity: 0.75;
 }
 
-/* Cross sparkle: bright core + 4-way spikes */
+/* 8-point sparkle: bright core + cross + diagonal spikes */
 .hero-sparkles .petal::after {
   content: '';
   position: absolute;
@@ -86,18 +86,21 @@
 
   /* Layered backgrounds:
      - core bloom
-     - vertical + horizontal spikes
+     - vertical + horizontal spikes (thin)
+     - diagonal spikes (thin)
      - faint halo */
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 1) 0 32%, rgba(255, 255, 255, 0.65) 52%, rgba(255, 255, 255, 0.0) 76%),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.0) 0 32%, rgba(255, 255, 255, 0.85) 46% 54%, rgba(255, 255, 255, 0.0) 68% 100%),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.0) 0 32%, rgba(255, 255, 255, 0.85) 46% 54%, rgba(255, 255, 255, 0.0) 68% 100%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.0) 72%);
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 1) 0 28%, rgba(255, 255, 255, 0.65) 50%, rgba(255, 255, 255, 0.0) 74%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.0) 0 35%, rgba(255, 255, 255, 0.9) 48% 52%, rgba(255, 255, 255, 0.0) 65% 100%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.0) 0 35%, rgba(255, 255, 255, 0.9) 48% 52%, rgba(255, 255, 255, 0.0) 65% 100%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.0) 0 36%, rgba(255, 255, 255, 0.75) 49% 51%, rgba(255, 255, 255, 0.0) 64% 100%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.0) 0 36%, rgba(255, 255, 255, 0.75) 49% 51%, rgba(255, 255, 255, 0.0) 64% 100%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.0) 72%);
 
   filter:
-    drop-shadow(0 0 6px rgba(255, 255, 255, 0.55))
-    drop-shadow(0 0 10px rgba(255, 200, 240, 0.16))
-    drop-shadow(0 0 10px rgba(180, 220, 255, 0.14));
+    drop-shadow(0 0 7px rgba(255, 255, 255, 0.6))
+    drop-shadow(0 0 12px rgba(255, 200, 240, 0.18))
+    drop-shadow(0 0 12px rgba(180, 220, 255, 0.16));
 }
 
 @keyframes petal-fall {
