@@ -64,37 +64,40 @@
   bottom: 12px;
   text-align: right;
 
-  /* "mist" look: almost no border, very soft glow */
-  border-radius: 32px;
-  background: rgba(255, 255, 255, 0.55);
+  /* flower-like feel: soft white center + petal blobs */
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
   box-shadow:
     0 10px 26px rgba(0, 0, 0, 0.08),
-    0 0 28px rgba(255, 255, 255, 0.55);
+    0 0 26px rgba(255, 255, 255, 0.55);
 }
 
-/* Mist blobs */
-.invitation-couple-item--bride .invitation-couple-caption::before,
+/* Petals (multi-blob) */
+.invitation-couple-item--bride .invitation-couple-caption::before {
+  content: '';
+  position: absolute;
+  inset: -34px;
+  z-index: -1;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.75) 0 42%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 80% 35%, rgba(255, 255, 255, 0.70) 0 40%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.70) 0 40%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.75) 0 42%, rgba(255, 255, 255, 0) 62%),
+    radial-gradient(circle at 20% 70%, rgba(255, 255, 255, 0.70) 0 40%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(circle at 20% 35%, rgba(255, 255, 255, 0.70) 0 40%, rgba(255, 255, 255, 0) 60%);
+  filter: blur(10px);
+}
+
+/* small highlight */
 .invitation-couple-item--bride .invitation-couple-caption::after {
   content: '';
   position: absolute;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.45);
-  filter: blur(18px);
+  inset: -10px;
   z-index: -1;
-}
-
-.invitation-couple-item--bride .invitation-couple-caption::before {
-  width: 140%;
-  height: 120%;
-  right: -28px;
-  bottom: -22px;
-}
-
-.invitation-couple-item--bride .invitation-couple-caption::after {
-  width: 110%;
-  height: 100%;
-  left: -30px;
-  top: -22px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0) 60%);
+  filter: blur(12px);
 }
 
 /* Family Info */
