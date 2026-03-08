@@ -77,7 +77,7 @@
   opacity: 0.75;
 }
 
-/* Thin X sparkle: bright core + diagonal spikes */
+/* Thin X sparkle: sharper, less blocky */
 .hero-sparkles .petal::after {
   content: '';
   position: absolute;
@@ -85,18 +85,22 @@
   border-radius: 999px;
 
   /* Layered backgrounds:
-     - core bloom
-     - diagonal spikes (thin)
+     - smaller core bloom
+     - very thin diagonal spikes
      - faint halo */
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 1) 0 26%, rgba(255, 255, 255, 0.6) 48%, rgba(255, 255, 255, 0.0) 72%),
-    linear-gradient(45deg, rgba(255, 255, 255, 0.0) 0 38%, rgba(255, 255, 255, 0.9) 49% 51%, rgba(255, 255, 255, 0.0) 62% 100%),
-    linear-gradient(-45deg, rgba(255, 255, 255, 0.0) 0 38%, rgba(255, 255, 255, 0.9) 49% 51%, rgba(255, 255, 255, 0.0) 62% 100%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.0) 70%);
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 1) 0 18%, rgba(255, 255, 255, 0.55) 38%, rgba(255, 255, 255, 0.0) 64%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.0) 0 44%, rgba(255, 255, 255, 0.95) 49.2% 50.8%, rgba(255, 255, 255, 0.0) 56% 100%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.0) 0 44%, rgba(255, 255, 255, 0.95) 49.2% 50.8%, rgba(255, 255, 255, 0.0) 56% 100%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.0) 68%);
+
+  /* soften any blocky edges by tapering outwards */
+  -webkit-mask: radial-gradient(circle, rgba(0, 0, 0, 1) 0 42%, rgba(0, 0, 0, 0.45) 58%, rgba(0, 0, 0, 0) 78%);
+  mask: radial-gradient(circle, rgba(0, 0, 0, 1) 0 42%, rgba(0, 0, 0, 0.45) 58%, rgba(0, 0, 0, 0) 78%);
 
   filter:
-    drop-shadow(0 0 6px rgba(255, 255, 255, 0.6))
-    drop-shadow(0 0 10px rgba(200, 220, 255, 0.16));
+    drop-shadow(0 0 5px rgba(255, 255, 255, 0.6))
+    drop-shadow(0 0 9px rgba(200, 220, 255, 0.16));
 }
 
 @keyframes petal-fall {
