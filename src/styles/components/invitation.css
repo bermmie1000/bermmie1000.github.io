@@ -41,9 +41,9 @@
 /* Family Info */
 .family-info {
   margin-top: 0.75rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.5;
+  color: var(--text-secondary);
+  font-size: 1.1rem; /* match invitation paragraph size */
+  line-height: 1.7;
 }
 
 /* If caption is placed above the image */
@@ -53,7 +53,7 @@
 }
 
 .family-relation {
-  font-size: 0.75em;
+  font-size: 0.7em; /* 2-step smaller than main line */
   letter-spacing: -0.01em;
 }
 
