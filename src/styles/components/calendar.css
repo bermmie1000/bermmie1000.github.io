@@ -89,6 +89,6 @@
 }
 
 .dday-counter #dday-count {
-  color: var(--text-accent);
+  color: #f2a9a9;
   font-weight: 700;
 }
