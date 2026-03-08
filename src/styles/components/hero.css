@@ -77,7 +77,7 @@
   opacity: 0.75;
 }
 
-/* Thin X sparkle: sharper, less blocky */
+/* Cross sparkle: center + long thin vertical/horizontal spikes */
 .hero-sparkles .petal::after {
   content: '';
   position: absolute;
@@ -85,22 +85,22 @@
   border-radius: 999px;
 
   /* Layered backgrounds:
-     - smaller core bloom
-     - very thin diagonal spikes
+     - small core bloom
+     - long vertical/horizontal spikes
      - faint halo */
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 1) 0 18%, rgba(255, 255, 255, 0.55) 38%, rgba(255, 255, 255, 0.0) 64%),
-    linear-gradient(45deg, rgba(255, 255, 255, 0.0) 0 38%, rgba(255, 255, 255, 0.95) 49.1% 50.9%, rgba(255, 255, 255, 0.0) 62% 100%),
-    linear-gradient(-45deg, rgba(255, 255, 255, 0.0) 0 38%, rgba(255, 255, 255, 0.95) 49.1% 50.9%, rgba(255, 255, 255, 0.0) 62% 100%),
-    radial-gradient(circle, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.0) 68%);
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 1) 0 16%, rgba(255, 255, 255, 0.5) 34%, rgba(255, 255, 255, 0.0) 60%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.0) 0 22%, rgba(255, 255, 255, 0.95) 49.2% 50.8%, rgba(255, 255, 255, 0.0) 78% 100%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.0) 0 22%, rgba(255, 255, 255, 0.95) 49.2% 50.8%, rgba(255, 255, 255, 0.0) 78% 100%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.0) 68%);
 
-  /* soften any blocky edges by tapering outwards */
-  -webkit-mask: radial-gradient(circle, rgba(0, 0, 0, 1) 0 42%, rgba(0, 0, 0, 0.45) 58%, rgba(0, 0, 0, 0) 78%);
-  mask: radial-gradient(circle, rgba(0, 0, 0, 1) 0 42%, rgba(0, 0, 0, 0.45) 58%, rgba(0, 0, 0, 0) 78%);
+  /* taper edges so spikes feel sharp, not blocky */
+  -webkit-mask: radial-gradient(circle, rgba(0, 0, 0, 1) 0 38%, rgba(0, 0, 0, 0.35) 56%, rgba(0, 0, 0, 0) 78%);
+  mask: radial-gradient(circle, rgba(0, 0, 0, 1) 0 38%, rgba(0, 0, 0, 0.35) 56%, rgba(0, 0, 0, 0) 78%);
 
   filter:
     drop-shadow(0 0 5px rgba(255, 255, 255, 0.6))
-    drop-shadow(0 0 9px rgba(200, 220, 255, 0.16));
+    drop-shadow(0 0 10px rgba(200, 220, 255, 0.16));
 }
 
 @keyframes petal-fall {
