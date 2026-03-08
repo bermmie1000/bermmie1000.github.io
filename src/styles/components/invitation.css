@@ -7,9 +7,16 @@
 .invitation {
   background: transparent;
   padding: 3rem;
-  padding-top: calc(3rem - 14px);
   text-align: center;
   line-height: 2;
+}
+
+.invitation p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.9;
+  margin-top: -10px;
 }
 
 .invitation p {
