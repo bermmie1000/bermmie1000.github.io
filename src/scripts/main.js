@@ -23,6 +23,7 @@ async function init() {
   initGallery();
   initScrollReveal();
   initMusic();
+  initHeroPetals();
 
   // Kakao SDK
   initKakaoSDK();
@@ -39,6 +40,58 @@ async function init() {
   setupEventListeners();
 
   logWelcome();
+}
+
+/**
+ * Hero petals overlay
+ * - Creates multiple petal elements with randomized drift/sway/size/duration.
+ * - Scoped to the hero section only.
+ */
+function initHeroPetals() {
+  const container = document.querySelector('.hero-sparkles');
+  if (!container) return;
+
+  // Respect reduced motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Avoid duplicates on HMR reloads
+  container.innerHTML = '';
+
+  const PETAL_COUNT = 22;
+
+  for (let i = 0; i < PETAL_COUNT; i++) {
+    const el = document.createElement('i');
+    el.className = 'petal';
+
+    const size = rand(12, 22); // px
+    const x = rand(-45, 45); // vw-ish using translate var
+    const drift = rand(-80, 110); // px
+    const sway = rand(12, 32); // px
+    const duration = rand(18, 30); // s
+    const delay = rand(-30, 0); // s (start mid-animation)
+    const swayDuration = rand(2.8, 5.2); // s
+    const spinDuration = rand(4.5, 8.5); // s
+    const rot = rand(0, 360); // deg
+    const opacity = rand(0.45, 0.9);
+
+    el.style.left = `${rand(2, 98)}%`;
+    el.style.setProperty('--petal-size', `${size}px`);
+    el.style.setProperty('--petal-x', `${x}vw`);
+    el.style.setProperty('--petal-drift', `${drift}px`);
+    el.style.setProperty('--petal-sway', `${sway}px`);
+    el.style.setProperty('--petal-duration', `${duration}s`);
+    el.style.setProperty('--petal-sway-duration', `${swayDuration}s`);
+    el.style.setProperty('--petal-spin-duration', `${spinDuration}s`);
+    el.style.setProperty('--petal-rot', `${rot}deg`);
+    el.style.setProperty('--petal-opacity', `${opacity}`);
+    el.style.animationDelay = `${delay}s`;
+
+    container.appendChild(el);
+  }
+
+  function rand(min, max) {
+    return Math.random() * (max - min) + min;
+  }
 }
 
 /**

@@ -19,24 +19,6 @@
   100% { opacity: 1; }
 }
 
-/* Sparkle fall (hero overlay) */
-@keyframes sparkleFall {
-  0% {
-    transform: translate3d(0, -20%, 0);
-    opacity: 0;
-  }
-  15% { opacity: 1; }
-  100% {
-    transform: translate3d(0, 120%, 0);
-    opacity: 0;
-  }
-}
-
-@keyframes sparkleTwinkle {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.35); }
-}
-
 .fade-in {
   opacity: 0;
   animation: fadeInUp 1s ease-out forwards;
@@ -62,7 +44,7 @@
   isolation: isolate; /* keep blend-mode effects inside hero */
 }
 
-/* Sparkles overlay */
+/* Petals overlay (sakura-like, white) */
 .hero-sparkles {
   position: absolute;
   inset: 0;
@@ -71,48 +53,64 @@
   overflow: hidden;
 }
 
-.hero-sparkles::before,
-.hero-sparkles::after {
+.hero-sparkles .petal {
+  position: absolute;
+  top: -12vh;
+  left: 50%;
+  width: var(--petal-size, 14px);
+  height: calc(var(--petal-size, 14px) * 1.15);
+  opacity: var(--petal-opacity, 0.75);
+  transform: translate3d(var(--petal-x, 0px), -20vh, 0) rotate(var(--petal-rot, 0deg));
+  animation:
+    petal-fall var(--petal-duration, 20s) linear infinite,
+    petal-sway var(--petal-sway-duration, 4s) ease-in-out infinite,
+    petal-spin var(--petal-spin-duration, 6s) linear infinite;
+}
+
+/* Simple sakura petal silhouette */
+.hero-sparkles .petal::before {
   content: '';
   position: absolute;
-  inset: -40% 0 0 0; /* start above */
-  background-repeat: repeat;
-  background-size: 340px 560px;
-  opacity: 0.80;
-  animation: sparkleFall 20s linear infinite, sparkleTwinkle 3.4s ease-in-out infinite;
-  mix-blend-mode: screen;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
+  inset: 0;
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.70) 55%, rgba(255, 255, 255, 0.0) 75%);
+  filter: blur(0.2px);
 }
 
-/* small sparkles */
-.hero-sparkles::before {
-  background-image:
-    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 1) 0 1.0px, rgba(255, 255, 255, 0.92) 1.8px, rgba(255, 255, 255, 0) 4.2px),
-    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.92) 0 0.8px, rgba(255, 255, 255, 0.70) 1.6px, rgba(255, 255, 255, 0) 4.0px),
-    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.85) 0 0.7px, rgba(255, 255, 255, 0.55) 1.4px, rgba(255, 255, 255, 0) 3.8px);
-  background-position:
-    20px 30px,
-    170px 120px,
-    280px 260px;
+.hero-sparkles .petal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 70% 70% 85% 85% / 60% 60% 100% 100%;
+  clip-path: path('M 0.50 0.02 C 0.85 0.10 1.00 0.45 0.80 0.78 C 0.68 0.98 0.52 1.02 0.50 1.00 C 0.48 1.02 0.32 0.98 0.20 0.78 C 0.00 0.45 0.15 0.10 0.50 0.02 Z');
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.35),
+    0 6px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* larger, fewer sparkles, different speed/phase */
-.hero-sparkles::after {
-  opacity: 0.60;
-  background-size: 460px 740px;
-  animation-duration: 20s, 4.2s;
-  animation-delay: -2.2s, 0s;
-  background-image:
-    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.98) 0 1.3px, rgba(255, 255, 255, 0.78) 2.6px, rgba(255, 255, 255, 0) 5.4px),
-    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.92) 0 1.1px, rgba(255, 255, 255, 0.62) 2.2px, rgba(255, 255, 255, 0) 5.0px);
-  background-position:
-    60px 80px,
-    300px 220px;
+@keyframes petal-fall {
+  0% {
+    transform: translate3d(var(--petal-x, 0px), -20vh, 0) rotate(var(--petal-rot, 0deg));
+  }
+  100% {
+    transform: translate3d(calc(var(--petal-x, 0px) + var(--petal-drift, 60px)), 120vh, 0)
+      rotate(calc(var(--petal-rot, 0deg) + 90deg));
+  }
+}
+
+@keyframes petal-sway {
+  0%, 100% { margin-left: calc(var(--petal-sway, 22px) * -1); }
+  50% { margin-left: var(--petal-sway, 22px); }
+}
+
+@keyframes petal-spin {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.18); }
+  100% { filter: brightness(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-sparkles::before,
-  .hero-sparkles::after {
+  .hero-sparkles .petal {
     animation: none;
     opacity: 0;
   }
