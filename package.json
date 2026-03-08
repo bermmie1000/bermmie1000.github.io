@@ -4,9 +4,9 @@
   "description": "Beautiful mobile wedding invitation built with modern web technologies",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 3000",
+    "dev": "vite --host 0.0.0.0 --port 3000 --strictPort",
     "build": "vite build",
-    "preview": "vite preview --port 3000", 
+    "preview": "vite preview --port 3000 --strictPort",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint . --ext .js,.html",
