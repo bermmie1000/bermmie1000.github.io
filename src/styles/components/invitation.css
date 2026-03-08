@@ -57,6 +57,13 @@
   left: 12px;
   bottom: 12px;
   text-align: left;
+
+  /* flower-like feel: soft white center + petal blobs */
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.08),
+    0 0 26px rgba(255, 255, 255, 0.55);
 }
 
 .invitation-couple-item--bride .invitation-couple-caption {
@@ -73,6 +80,7 @@
 }
 
 /* Petals (multi-blob) */
+.invitation-couple-item--groom .invitation-couple-caption::before,
 .invitation-couple-item--bride .invitation-couple-caption::before {
   content: '';
   position: absolute;
@@ -90,6 +98,7 @@
 }
 
 /* small highlight */
+.invitation-couple-item--groom .invitation-couple-caption::after,
 .invitation-couple-item--bride .invitation-couple-caption::after {
   content: '';
   position: absolute;
