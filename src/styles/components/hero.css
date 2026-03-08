@@ -189,7 +189,7 @@
 }
 
 .names {
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   font-weight: 400;
   color: var(--white);
   margin-bottom: 3.5rem;
@@ -200,7 +200,7 @@
   display: inline-block;
   color: #b08a6a; /* deeper warm brown */
   margin: 0 0.5rem;
-  font-size: 0.65em;
+  font-size: 0.7em;
 }
 
 .date {
