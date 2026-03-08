@@ -70,9 +70,9 @@
   /* 2x vs the original 1.8rem */
   font-size: 3.6rem;
   line-height: 1;
-  color: #f2a9a9;
+  color: #e79090;
   /* slightly less saturated / softer */
-  opacity: 0.55;
+  opacity: 0.6;
   z-index: -1;
 }
 
@@ -89,6 +89,6 @@
 }
 
 .dday-counter #dday-count {
-  color: #f2a9a9;
+  color: #e79090;
   font-weight: 700;
 }
