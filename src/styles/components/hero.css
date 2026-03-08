@@ -212,6 +212,7 @@
   font-size: 1.9rem;
   font-weight: 400;
   color: var(--white);
+  margin-top: 10px;
   margin-bottom: 3.5rem;
   line-height: 1.2;
 }
