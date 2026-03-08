@@ -77,25 +77,46 @@
   opacity: 0.75;
 }
 
-/* 5-point star */
+/* JWST-ish star: bright core + diffraction spikes + slight chromatic glow */
 .hero-sparkles .petal::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 1) 0 25%, rgba(255, 255, 255, 0.65) 55%, rgba(255, 255, 255, 0.25) 75%);
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 57%,
-    79% 91%,
-    50% 70%,
-    21% 91%,
-    32% 57%,
-    2% 35%,
-    39% 35%
-  );
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.45)) drop-shadow(0 8px 14px rgba(0, 0, 0, 0.10));
+  border-radius: 999px;
+
+  /* Layered backgrounds:
+     - core bloom
+     - 6-spike diffraction (via conic segments)
+     - faint halo */
+  background:
+    radial-gradient(circle at 40% 35%, rgba(255, 255, 255, 1) 0 28%, rgba(255, 255, 255, 0.70) 50%, rgba(255, 255, 255, 0.0) 74%),
+    conic-gradient(
+      from 10deg,
+      rgba(255, 255, 255, 0.0) 0deg 20deg,
+      rgba(255, 255, 255, 0.65) 20deg 22deg,
+      rgba(255, 255, 255, 0.0) 22deg 60deg,
+      rgba(255, 255, 255, 0.55) 60deg 62deg,
+      rgba(255, 255, 255, 0.0) 62deg 120deg,
+      rgba(255, 255, 255, 0.65) 120deg 122deg,
+      rgba(255, 255, 255, 0.0) 122deg 180deg,
+      rgba(255, 255, 255, 0.55) 180deg 182deg,
+      rgba(255, 255, 255, 0.0) 182deg 240deg,
+      rgba(255, 255, 255, 0.65) 240deg 242deg,
+      rgba(255, 255, 255, 0.0) 242deg 300deg,
+      rgba(255, 255, 255, 0.55) 300deg 302deg,
+      rgba(255, 255, 255, 0.0) 302deg 360deg
+    ),
+    radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.0) 70%);
+
+  /* Mask spikes so they fade outward like a real diffraction pattern */
+  -webkit-mask: radial-gradient(circle, rgba(0, 0, 0, 1) 0 40%, rgba(0, 0, 0, 0.7) 58%, rgba(0, 0, 0, 0) 82%);
+  mask: radial-gradient(circle, rgba(0, 0, 0, 1) 0 40%, rgba(0, 0, 0, 0.7) 58%, rgba(0, 0, 0, 0) 82%);
+
+  filter:
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.55))
+    drop-shadow(0 0 14px rgba(255, 120, 200, 0.18))
+    drop-shadow(0 0 14px rgba(120, 220, 255, 0.16))
+    drop-shadow(0 10px 16px rgba(0, 0, 0, 0.12));
 }
 
 @keyframes petal-fall {
