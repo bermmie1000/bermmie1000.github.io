@@ -91,7 +91,7 @@
 .hero-sparkles .petal::before {
   content: '';
   position: absolute;
-  inset: -60%;
+  inset: -35%;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0) 0 49%, rgba(255, 255, 255, 0.95) 49.7% 50.3%, rgba(255, 255, 255, 0) 51% 100%),
     linear-gradient(0deg, rgba(255, 255, 255, 0) 0 49%, rgba(255, 255, 255, 0.95) 49.7% 50.3%, rgba(255, 255, 255, 0) 51% 100%);
