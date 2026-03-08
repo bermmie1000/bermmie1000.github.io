@@ -16,9 +16,8 @@ const SWIPE_THRESHOLD = 50;
  */
 export function initGallery() {
   createGrid();
-  createLightbox();
 
-  console.log('✅ Gallery initialized:', GALLERY_ITEMS.length, 'images (grid → lightbox mode)');
+  console.log('✅ Gallery initialized:', GALLERY_ITEMS.length, 'images (grid only)');
 }
 
 /**
@@ -43,20 +42,8 @@ function createGrid() {
 
     item.appendChild(img);
 
-    // Click → open lightbox
-    item.addEventListener('click', () => {
-      currentIndex = index;
-      openLightbox();
-    });
-
-    // Keyboard → Enter/Space to open lightbox
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        currentIndex = index;
-        openLightbox();
-      }
-    });
+    // No lightbox / zoom — gallery is a simple thumbnail grid only
+    // (Intentionally no click/keyboard handlers)
 
     container.appendChild(item);
   });
