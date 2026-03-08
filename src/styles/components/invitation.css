@@ -97,6 +97,11 @@
   filter: blur(10px);
 }
 
+/* Slightly smaller cloud for groom caption */
+.invitation-couple-item--groom .invitation-couple-caption::before {
+  inset: -26px;
+}
+
 /* small highlight */
 .invitation-couple-item--groom .invitation-couple-caption::after,
 .invitation-couple-item--bride .invitation-couple-caption::after {
