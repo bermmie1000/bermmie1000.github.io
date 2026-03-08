@@ -24,6 +24,9 @@ async function init() {
   initScrollReveal();
   initMusic();
 
+  // iOS Safari pinch-zoom prevention (scoped to gallery)
+  preventGalleryPinchZoom();
+
   // Kakao SDK
   initKakaoSDK();
 
@@ -39,6 +42,37 @@ async function init() {
   setupEventListeners();
 
   logWelcome();
+}
+
+/**
+ * Prevent pinch-to-zoom gestures on gallery images.
+ *
+ * Note: viewport meta user-scalable=no is not always sufficient on iOS Safari.
+ * This adds a best-effort JS prevention scoped to the gallery section.
+ */
+function preventGalleryPinchZoom() {
+  const gallery = document.querySelector('.gallery-section');
+  if (!gallery) return;
+
+  // iOS Safari (gesture events)
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach((type) => {
+    gallery.addEventListener(
+      type,
+      (e) => {
+        e.preventDefault();
+      },
+      { passive: false }
+    );
+  });
+
+  // Generic multi-touch prevention (2+ fingers)
+  gallery.addEventListener(
+    'touchmove',
+    (e) => {
+      if (e.touches && e.touches.length > 1) e.preventDefault();
+    },
+    { passive: false }
+  );
 }
 
 /**
