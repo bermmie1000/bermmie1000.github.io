@@ -78,13 +78,13 @@
 
   /* Base core + subtle diamond glint */
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 1) 0 11%, rgba(255, 255, 255, 0.4) 25%, rgba(255, 255, 255, 0.0) 50%),
-    linear-gradient(45deg, rgba(255, 255, 255, 0.0) 0 46%, rgba(255, 255, 255, 0.35) 49% 51%, rgba(255, 255, 255, 0.0) 54% 100%),
-    linear-gradient(-45deg, rgba(255, 255, 255, 0.0) 0 46%, rgba(255, 255, 255, 0.35) 49% 51%, rgba(255, 255, 255, 0.0) 54% 100%);
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 1) 0 12%, rgba(255, 255, 255, 0.45) 26%, rgba(255, 255, 255, 0.0) 52%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.0) 0 42%, rgba(255, 255, 255, 0.55) 48.5% 51.5%, rgba(255, 255, 255, 0.0) 58% 100%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.0) 0 42%, rgba(255, 255, 255, 0.55) 48.5% 51.5%, rgba(255, 255, 255, 0.0) 58% 100%);
 
   filter:
-    drop-shadow(0 0 5px rgba(255, 255, 255, 0.7))
-    drop-shadow(0 0 10px rgba(200, 220, 255, 0.18));
+    drop-shadow(0 0 7px rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 14px rgba(200, 220, 255, 0.26));
 }
 
 /* Thin line spikes (vertical + horizontal) */
