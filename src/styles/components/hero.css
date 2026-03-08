@@ -254,10 +254,10 @@
 .date-location::before {
   content: '';
   position: absolute;
-  inset: -0.25rem -0.6rem;
+  inset: -0.4rem -0.9rem;
   background: rgba(105, 75, 55, 0.82);
-  filter: blur(6px);
-  border-radius: 12px;
+  filter: blur(12px);
+  border-radius: 45% 55% 50% 60% / 60% 45% 55% 50%;
   z-index: -1;
 }
 
