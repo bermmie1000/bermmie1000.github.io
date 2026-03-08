@@ -137,6 +137,21 @@
   }
 }
 
+@keyframes heart-twinkle {
+  0%, 100% {
+    text-shadow:
+      0 0 4px rgba(255, 255, 255, 0.25),
+      0 0 10px rgba(255, 255, 255, 0.15);
+    filter: brightness(1);
+  }
+  50% {
+    text-shadow:
+      0 0 8px rgba(255, 255, 255, 0.55),
+      0 0 18px rgba(255, 255, 255, 0.3);
+    filter: brightness(1.15);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-sparkles .petal {
     animation: none;
@@ -222,6 +237,8 @@
   color: #b08a6a; /* deeper warm brown */
   margin: 0 0.5rem;
   font-size: 0.7em;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+  animation: heart-twinkle 2.8s ease-in-out infinite;
 }
 
 .date {
