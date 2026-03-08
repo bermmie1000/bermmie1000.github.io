@@ -29,7 +29,7 @@ export const GALLERY_ITEMS = [
   },
   { full: '/images/wedding/optimized/full/IMG_2623.webp', thumb: '/images/wedding/optimized/thumb/IMG_2623.webp' },
   { full: '/images/wedding/optimized/full/IMG_4259.webp', thumb: '/images/wedding/optimized/thumb/IMG_4259.webp' },
-  { full: '/images/wedding/optimized/full/IMG_4260.webp', thumb: '/images/wedding/optimized/thumb/IMG_4260.webp' },
+  { full: '/images/wedding/optimized/full/IMG_4262.webp', thumb: '/images/wedding/optimized/thumb/IMG_4262.webp' },
   { full: '/images/wedding/optimized/full/IMG_4261.webp', thumb: '/images/wedding/optimized/thumb/IMG_4261.webp' },
   { full: '/images/wedding/optimized/full/IMG_4265.webp', thumb: '/images/wedding/optimized/thumb/IMG_4265.webp' },
   { full: '/images/wedding/optimized/full/IMG_4266.webp', thumb: '/images/wedding/optimized/thumb/IMG_4266.webp' },
