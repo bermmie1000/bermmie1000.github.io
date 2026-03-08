@@ -244,49 +244,38 @@
   animation: heart-twinkle 2.8s ease-in-out infinite;
 }
 
-.date {
-  font-size: 1.05rem;
-  color: var(--white);
-  margin-bottom: 1rem;
-  font-weight: 400;
+.date-location {
   position: relative;
-  display: block;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0.1rem 0.4rem;
+  display: inline-block;
+  margin: 0 auto 3rem;
+  padding: 0.2rem 0.6rem;
 }
 
-.date::before {
+.date-location::before {
   content: '';
   position: absolute;
-  inset: -0.15rem -0.4rem;
+  inset: -0.25rem -0.6rem;
   background: rgba(105, 75, 55, 0.82);
   filter: blur(6px);
   border-radius: 12px;
   z-index: -1;
 }
 
+.date,
 .location {
   font-size: 1.05rem;
   color: var(--white);
-  margin-bottom: 3rem;
-  position: relative;
+  font-weight: 400;
   display: block;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0.1rem 0.4rem;
+  text-align: center;
 }
 
-.location::before {
-  content: '';
-  position: absolute;
-  inset: -0.15rem -0.4rem;
-  background: rgba(105, 75, 55, 0.82);
-  filter: blur(6px);
-  border-radius: 12px;
-  z-index: -1;
+.date {
+  margin-bottom: 0.55rem;
+}
+
+.location {
+  margin-bottom: 0;
 }
 
 /* Music Toggle */
