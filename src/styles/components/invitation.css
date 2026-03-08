@@ -16,7 +16,11 @@
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.9;
-  margin-top: -20px;
+}
+
+.invitation-text {
+  display: inline-block;
+  transform: translateY(-20px);
 }
 
 /* Couple photos + captions (2-column) */
