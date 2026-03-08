@@ -254,6 +254,19 @@
   font-size: 1.05rem;
   color: var(--white);
   margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+}
+
+.location::before {
+  content: '';
+  position: absolute;
+  inset: -0.15rem -0.4rem;
+  background: rgba(176, 138, 106, 0.28);
+  filter: blur(8px);
+  border-radius: 999px;
+  z-index: -1;
 }
 
 /* Music Toggle */
