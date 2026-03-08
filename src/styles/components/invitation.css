@@ -21,8 +21,8 @@
 /* Couple photos + captions (2-column) */
 .invitation-couple-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
   margin-top: 1.5rem;
 }
 
