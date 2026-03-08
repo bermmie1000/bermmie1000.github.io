@@ -1,0 +1,193 @@
+{
+  "generatedAt": "2026-03-08T10:41:44.429Z",
+  "inputDir": "/public/images/wedding",
+  "outputBase": "/public/images/wedding/optimized",
+  "fullMaxWidth": 1600,
+  "thumbMaxWidth": 480,
+  "webpQuality": {
+    "full": 78,
+    "thumb": 72
+  },
+  "items": [
+    {
+      "full": "/images/wedding/optimized/full/_talkf_wznBEMogb3_esX0zkAb6v8A9AmCAfrRik_f_8a85bcf04a05.webp",
+      "thumb": "/images/wedding/optimized/thumb/_talkf_wznBEMogb3_esX0zkAb6v8A9AmCAfrRik_f_8a85bcf04a05.webp",
+      "width": 4672,
+      "height": 7008,
+      "bytesIn": 21216395,
+      "bytesFull": 173606,
+      "bytesThumb": 19422
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_2623.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_2623.webp",
+      "width": 4530,
+      "height": 6796,
+      "bytesIn": 11267704,
+      "bytesFull": 71462,
+      "bytesThumb": 11584
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4259.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4259.webp",
+      "width": 4613,
+      "height": 6919,
+      "bytesIn": 13112590,
+      "bytesFull": 73680,
+      "bytesThumb": 9960
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4260.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4260.webp",
+      "width": 4444,
+      "height": 6666,
+      "bytesIn": 11769259,
+      "bytesFull": 96454,
+      "bytesThumb": 13372
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4261.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4261.webp",
+      "width": 4346,
+      "height": 5926,
+      "bytesIn": 9454479,
+      "bytesFull": 70428,
+      "bytesThumb": 10878
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4262.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4262.webp",
+      "width": 4478,
+      "height": 6717,
+      "bytesIn": 11031408,
+      "bytesFull": 58330,
+      "bytesThumb": 8410
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4264.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4264.webp",
+      "width": 4547,
+      "height": 6820,
+      "bytesIn": 11856981,
+      "bytesFull": 57236,
+      "bytesThumb": 8286
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4265.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4265.webp",
+      "width": 4101,
+      "height": 5593,
+      "bytesIn": 10365175,
+      "bytesFull": 76784,
+      "bytesThumb": 11206
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4266.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4266.webp",
+      "width": 4229,
+      "height": 6344,
+      "bytesIn": 12608344,
+      "bytesFull": 84752,
+      "bytesThumb": 12642
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4267.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4267.webp",
+      "width": 4411,
+      "height": 6616,
+      "bytesIn": 12251111,
+      "bytesFull": 56774,
+      "bytesThumb": 10506
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4268.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4268.webp",
+      "width": 4210,
+      "height": 5741,
+      "bytesIn": 13261573,
+      "bytesFull": 167744,
+      "bytesThumb": 14498
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4269.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4269.webp",
+      "width": 3783,
+      "height": 5674,
+      "bytesIn": 10550577,
+      "bytesFull": 201594,
+      "bytesThumb": 23476
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4270.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4270.webp",
+      "width": 4200,
+      "height": 6300,
+      "bytesIn": 12541146,
+      "bytesFull": 131258,
+      "bytesThumb": 18528
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4271.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4271.webp",
+      "width": 4538,
+      "height": 6807,
+      "bytesIn": 14174314,
+      "bytesFull": 107692,
+      "bytesThumb": 16178
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4272.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4272.webp",
+      "width": 4476,
+      "height": 6714,
+      "bytesIn": 14366740,
+      "bytesFull": 98832,
+      "bytesThumb": 12796
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4273.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4273.webp",
+      "width": 4672,
+      "height": 7008,
+      "bytesIn": 13855405,
+      "bytesFull": 75790,
+      "bytesThumb": 10818
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4274.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4274.webp",
+      "width": 4259,
+      "height": 6388,
+      "bytesIn": 12073734,
+      "bytesFull": 95838,
+      "bytesThumb": 16076
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4275.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4275.webp",
+      "width": 4500,
+      "height": 6750,
+      "bytesIn": 18349656,
+      "bytesFull": 74878,
+      "bytesThumb": 13482
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4276.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4276.webp",
+      "width": 4233,
+      "height": 6350,
+      "bytesIn": 15004814,
+      "bytesFull": 62376,
+      "bytesThumb": 11572
+    },
+    {
+      "full": "/images/wedding/optimized/full/IMG_4277.webp",
+      "thumb": "/images/wedding/optimized/thumb/IMG_4277.webp",
+      "width": 4633,
+      "height": 6949,
+      "bytesIn": 19865535,
+      "bytesFull": 107926,
+      "bytesThumb": 16070
+    }
+  ]
+}

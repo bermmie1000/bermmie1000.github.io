@@ -2,7 +2,7 @@
  * Gallery — Grid with Lightbox
  */
 
-import { GALLERY_IMAGES } from './config.js';
+import { GALLERY_ITEMS } from './config.js';
 
 let currentIndex = 0;
 
@@ -18,7 +18,7 @@ export function initGallery() {
   createGrid();
   createLightbox();
 
-  console.log('✅ Gallery initialized:', GALLERY_IMAGES.length, 'images (grid → lightbox mode)');
+  console.log('✅ Gallery initialized:', GALLERY_ITEMS.length, 'images (grid → lightbox mode)');
 }
 
 /**
@@ -28,15 +28,15 @@ function createGrid() {
   const container = document.getElementById('galleryGrid');
   if (!container) return;
 
-  GALLERY_IMAGES.forEach((src, index) => {
+  GALLERY_ITEMS.forEach((itemSrc, index) => {
     const item = document.createElement('div');
     item.className = 'gallery-grid-item';
     item.role = 'listitem';
     item.tabIndex = 0;
-    item.setAttribute('aria-label', `사진 ${index + 1} / ${GALLERY_IMAGES.length}`);
+    item.setAttribute('aria-label', `사진 ${index + 1} / ${GALLERY_ITEMS.length}`);
 
     const img = document.createElement('img');
-    img.src = src;
+    img.src = itemSrc.thumb || itemSrc.full;
     img.alt = `Wedding Photo ${index + 1}`;
     img.loading = index < 3 ? 'eager' : 'lazy';
     img.decoding = 'async';
@@ -114,7 +114,7 @@ function closeLightbox() {
 }
 
 function navigateLightbox(direction) {
-  const len = GALLERY_IMAGES.length;
+  const len = GALLERY_ITEMS.length;
   currentIndex = (currentIndex + direction + len) % len;
   updateLightboxImage();
 }
@@ -122,7 +122,7 @@ function navigateLightbox(direction) {
 function updateLightboxImage() {
   const lightboxImg = document.getElementById('lightbox-image');
   if (lightboxImg) {
-    lightboxImg.src = GALLERY_IMAGES[currentIndex];
+    lightboxImg.src = GALLERY_ITEMS[currentIndex].full || GALLERY_ITEMS[currentIndex].thumb;
   }
 }
 

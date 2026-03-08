@@ -100,3 +100,12 @@ build/
 .turbo
 .vercel
 .railway
+
+# Local agent tooling
+.claude/
+
+# Large original photos (keep only optimized WebP in repo)
+public/images/wedding/*.JPG
+public/images/wedding/*.JPEG
+public/images/wedding/*.PNG
+public/images/wedding/*.HEIC
