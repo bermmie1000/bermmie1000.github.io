@@ -16,14 +16,7 @@
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.9;
-  margin-top: -10px;
-}
-
-.invitation p {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-  line-height: 1.9;
+  margin-top: -20px;
 }
 
 /* Couple photos + captions (2-column) */
