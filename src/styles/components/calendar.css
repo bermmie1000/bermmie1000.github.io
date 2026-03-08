@@ -19,7 +19,7 @@
 .wedding-date-text,
 .wedding-time-text,
 .calendar-container {
-  transform: translateY(-16px);
+  transform: translateY(-32px);
 }
 
 .calendar-container {
