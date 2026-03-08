@@ -58,13 +58,15 @@
   position: relative;
   overflow: hidden;
   background: none;
+  z-index: 0; /* create stacking context */
+  isolation: isolate; /* keep blend-mode effects inside hero */
 }
 
 /* Sparkles overlay */
 .hero-sparkles {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 1; /* above hero background layers */
   pointer-events: none;
   overflow: hidden;
 }
@@ -76,7 +78,7 @@
   inset: -40% 0 0 0; /* start above */
   background-repeat: repeat;
   background-size: 320px 520px;
-  opacity: 0.55;
+  opacity: 0.75;
   animation: sparkleFall 6.5s linear infinite, sparkleTwinkle 2.8s ease-in-out infinite;
   mix-blend-mode: screen;
 }
@@ -95,7 +97,7 @@
 
 /* larger, fewer sparkles, different speed/phase */
 .hero-sparkles::after {
-  opacity: 0.35;
+  opacity: 0.55;
   background-size: 420px 680px;
   animation-duration: 9.5s, 3.6s;
   animation-delay: -2.2s, 0s;
@@ -129,6 +131,7 @@
   background-position: center center;
   background-attachment: scroll;
   pointer-events: none;
+  z-index: 0;
 }
 
 .hero::before {
