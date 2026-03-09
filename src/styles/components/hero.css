@@ -30,7 +30,7 @@
 .fade-in-delay-4 { animation-delay: 1.2s; }
 
 .hero {
-  min-height: 100vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -170,7 +170,7 @@
   position: absolute;
   inset: 0;
   background-image: url('/images/wedding/optimized/full/IMG_4273.webp');
-  background-position: 56% center;
+  background-position: 68% center;
   background-attachment: scroll;
   pointer-events: none;
   z-index: 0;
@@ -207,7 +207,7 @@
 
 .subtitle {
   font-family: 'LuxuriousScript', 'Cafe24LovingU', cursive;
-  font-size: 5.2rem;
+  font-size: 4.8rem;
   font-weight: 200;
   color: var(--white);
   line-height: 1;
@@ -218,7 +218,7 @@
 }
 
 .subtitle-kr {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--white);
   margin-top: -0.25rem;
   display: inline-block;
@@ -226,7 +226,7 @@
 }
 
 .names {
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: 400;
   color: var(--white);
   margin-top: 24px;
