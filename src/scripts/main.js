@@ -63,7 +63,7 @@ function initHeroPetals() {
     const el = document.createElement('i');
     el.className = 'petal';
 
-    const size = rand(6, 12); // px
+    const size = rand(4, 9); // px
     const x = rand(-45, 45); // vw-ish using translate var
     const drift = rand(-80, 110); // px
     const sway = rand(12, 32); // px
