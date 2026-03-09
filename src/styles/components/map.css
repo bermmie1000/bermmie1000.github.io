@@ -69,6 +69,31 @@
   opacity: 0.5;
 }
 
+.phone-line {
+  gap: 0.4rem;
+}
+
+.phone-call-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--primary-color);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.phone-call-btn:hover {
+  opacity: 0.8;
+}
+
+.phone-call-btn:active {
+  opacity: 0.6;
+}
+
 /* App Navigation */
 .app-nav-section {
   text-align: center;
