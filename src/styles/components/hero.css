@@ -214,7 +214,7 @@
   margin-top: 1.85rem;
   position: relative;
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
-  animation: subtitle-twinkle 3.6s ease-in-out infinite;
+  animation: none;
 }
 
 .subtitle-kr {
@@ -226,7 +226,7 @@
 }
 
 .names {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 400;
   color: var(--white);
   margin-top: 24px;
