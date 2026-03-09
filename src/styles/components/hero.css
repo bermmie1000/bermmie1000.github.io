@@ -226,7 +226,7 @@
 }
 
 .names {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   font-weight: 400;
   color: var(--white);
   margin-top: 24px;
@@ -255,7 +255,7 @@
   content: '';
   position: absolute;
   inset: -0.4rem -0.9rem;
-  background: rgba(105, 75, 55, 0.82);
+  background: rgba(80, 55, 40, 0.88);
   filter: blur(12px);
   border-radius: 45% 55% 50% 60% / 60% 45% 55% 50%;
   z-index: -1;
