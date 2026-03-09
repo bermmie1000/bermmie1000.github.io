@@ -44,7 +44,7 @@ export function initKakaoMap() {
   const map = new kakao.maps.Map(container, {
     center: new kakao.maps.LatLng(37.5665, 126.9780),
     level: 7,
-    draggable: false,
+    draggable: true,
     scrollwheel: false,
     disableDoubleClickZoom: true,
   });
