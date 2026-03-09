@@ -227,13 +227,13 @@
 }
 
 .names {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 400;
   color: var(--white);
   margin-top: 24px;
   margin-bottom: 3.5rem;
   line-height: 1.2;
-  transform: translateY(18px);
+  transform: translateY(30px);
 }
 
 .names .heart {
@@ -260,7 +260,7 @@
 
 .date,
 .location {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--white);
   font-weight: 500;
   display: block;
