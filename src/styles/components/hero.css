@@ -53,6 +53,7 @@
   overflow: hidden;
 }
 
+
 .hero-sparkles .petal {
   position: absolute;
   top: -12vh;
@@ -232,7 +233,7 @@
   margin-top: 24px;
   margin-bottom: 3.5rem;
   line-height: 1.2;
-  transform: translateY(8px);
+  transform: translateY(18px);
 }
 
 .names .heart {
@@ -249,25 +250,24 @@
   display: inline-block;
   margin: 0 auto 3rem;
   padding: 0.2rem 0.6rem;
+  transform: translateY(-52px);
 }
 
 .date-location::before {
-  content: '';
-  position: absolute;
-  inset: -0.4rem -0.9rem;
-  background: rgba(80, 55, 40, 0.88);
-  filter: blur(12px);
-  border-radius: 45% 55% 50% 60% / 60% 45% 55% 50%;
-  z-index: -1;
+  content: none;
+  display: none;
 }
 
 .date,
 .location {
   font-size: 1.05rem;
   color: var(--white);
-  font-weight: 400;
+  font-weight: 500;
   display: block;
   text-align: center;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    0 0 2px rgba(0, 0, 0, 0.45);
 }
 
 .date {
