@@ -34,7 +34,7 @@
 <body>
     <!-- Music Player (Fixed Position) -->
     <button id="musicToggle" class="music-toggle playing" aria-label="배경음악 재생/정지">
-        <img class="music-icon" src="/images/volume.png" alt="음악">
+        <img class="music-icon" src="/images/utils/volume.png" alt="음악">
     </button>
     <audio id="bgm" loop preload="auto">
         <source src="/music/bgm.mp3" type="audio/mpeg">
@@ -197,7 +197,7 @@
         <div class="address-info">
             <div class="address-line">
                 <span class="address-text">서울 서초구 강남대로 213</span>
-                <img id="copyAddressIcon" src="/images/copy.png" alt="주소 복사" class="copy-address-icon">
+                <img id="copyAddressIcon" src="/images/utils/copy.png" alt="주소 복사" class="copy-address-icon">
             </div>
             <p class="address-text-second">엘타워 7층 그랜드홀</p>
             <div class="address-line phone-line">
@@ -214,19 +214,19 @@
             <div class="app-nav-section">
                 <div class="app-nav-buttons">
                     <a href="#" class="app-nav-btn" data-nav="kakao-map">
-                        <img src="/images/kakao-map.webp" alt="카카오맵" class="app-icon" loading="lazy" decoding="async">
+                        <img src="/images/maps/kakao-map.webp" alt="카카오맵" class="app-icon" loading="lazy" decoding="async">
                         <span>카카오맵</span>
                     </a>
                     <a href="#" class="app-nav-btn" data-nav="naver-map">
-                        <img src="/images/naver-map.webp" alt="네이버지도" class="app-icon" loading="lazy" decoding="async">
+                        <img src="/images/maps/naver-map.webp" alt="네이버지도" class="app-icon" loading="lazy" decoding="async">
                         <span>네이버지도</span>
                     </a>
                     <a href="#" class="app-nav-btn" data-nav="tmap">
-                        <img src="/images/tmap.png" alt="티맵" class="app-icon" loading="lazy" decoding="async">
+                        <img src="/images/maps/tmap.png" alt="티맵" class="app-icon" loading="lazy" decoding="async">
                         <span>티맵</span>
                     </a>
                     <a href="#" class="app-nav-btn" data-nav="kakao-navi">
-                        <img src="/images/kakao-navi.webp" alt="카카오내비" class="app-icon" loading="lazy" decoding="async">
+                        <img src="/images/maps/kakao-navi.webp" alt="카카오내비" class="app-icon" loading="lazy" decoding="async">
                         <span>카카오내비</span>
                     </a>
                 </div>
@@ -301,16 +301,19 @@
                 <h3 class="contact-section-title">신랑측</h3>
                 <div class="contact-list">
                     <div class="contact-item">
-                        <span class="contact-label">부 OOO</span>
-                        <button class="contact-btn" data-account="국민은행 123-456-789012">📋</button>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">모 OOO</span>
-                        <button class="contact-btn" data-account="우리은행 987-654-321098">📋</button>
-                    </div>
-                    <div class="contact-item">
                         <span class="contact-label">신랑 천창범</span>
-                        <button class="contact-btn" data-account="신한은행 110-123-456789">📋</button>
+                        <span class="contact-account">국민 0000-0000-0000</span>
+                        <button class="contact-btn" data-account="국민 0000-0000-0000">
+                            <img src="/images/utils/copy.png" alt="복사" class="copy-icon">
+                        </button>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">부 천성욱</span>
+                        <span class="contact-account">추후 안내</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">모 주은애</span>
+                        <span class="contact-account">추후 안내</span>
                     </div>
                 </div>
             </div>
@@ -319,16 +322,19 @@
                 <h3 class="contact-section-title">신부측</h3>
                 <div class="contact-list">
                     <div class="contact-item">
-                        <span class="contact-label">부 OOO</span>
-                        <button class="contact-btn" data-account="신한은행 110-987-654321">📋</button>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-label">모 OOO</span>
-                        <button class="contact-btn" data-account="하나은행 456-789-012345">📋</button>
-                    </div>
-                    <div class="contact-item">
                         <span class="contact-label">신부 박하영</span>
-                        <button class="contact-btn" data-account="카카오뱅크 3333-12-3456789">📋</button>
+                        <span class="contact-account">우리 0000-0000-0000</span>
+                        <button class="contact-btn" data-account="우리 0000-0000-0000">
+                            <img src="/images/utils/copy.png" alt="복사" class="copy-icon">
+                        </button>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">부 박용해</span>
+                        <span class="contact-account">추후 안내</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">모 남규리</span>
+                        <span class="contact-account">추후 안내</span>
                     </div>
                 </div>
             </div>
@@ -343,9 +349,9 @@
 
     <!-- Share Section -->
     <section class="share-section">
-        <button class="btn btn-share" data-action="share-kakao">카톡으로 청첩장 공유하기</button>
+        <button class="btn btn-share" data-action="share-kakao">카톡으로 청첩장 공유하기 <img src="/images/utils/share.png" alt="공유" class="share-icon"></button>
         <p class="footer-credits">
-            Made by bermmie with love
+            Made by bermmie and hayuu with love
         </p>
     </section>
 

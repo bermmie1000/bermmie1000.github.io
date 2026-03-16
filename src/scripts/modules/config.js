@@ -47,8 +47,8 @@ export const GALLERY_ITEMS = [
 ];
 
 export const ICONS = {
-  mute: '/images/mute.png',
-  volume: '/images/volume.png',
-  copy: '/images/copy.png',
-  copied: '/images/read.png',
+  mute: '/images/utils/mute.png',
+  volume: '/images/utils/volume.png',
+  copy: '/images/utils/copy.png',
+  copied: '/images/utils/read.png',
 };

@@ -30,8 +30,10 @@
 .modal-content {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  width: 100%;
+  max-width: var(--container-width);
   background: var(--white);
   padding: 1rem 1.5rem 2rem;
   max-height: 80vh;
@@ -43,7 +45,7 @@
 }
 
 .modal.active .modal-content {
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 /* Drag Handle */
@@ -124,6 +126,14 @@
   font-weight: 500;
 }
 
+.contact-account {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  flex: 1;
+  text-align: right;
+  margin-right: 0.5rem;
+}
+
 .contact-btn {
   font-size: 1.2rem;
   text-decoration: none;
@@ -137,6 +147,11 @@
   border: none;
   border-radius: 50%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.contact-btn .copy-icon {
+  width: 18px;
+  height: 18px;
 }
 
 .contact-btn:active {

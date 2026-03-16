@@ -140,7 +140,10 @@ function setupEventListeners() {
 
   // Account copy buttons
   document.querySelectorAll('[data-account]').forEach((btn) => {
-    btn.addEventListener('click', () => copyAccount(btn.dataset.account));
+    btn.addEventListener('click', () => {
+      const icon = btn.querySelector('.copy-icon');
+      copyAccount(btn.dataset.account, icon);
+    });
   });
 
   // Share button

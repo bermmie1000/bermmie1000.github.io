@@ -74,8 +74,11 @@ export function copyAddressWithIcon() {
 /**
  * Copy account number
  */
-export function copyAccount(accountInfo) {
+export function copyAccount(accountInfo, iconElement) {
   copyToClipboard(accountInfo, {
+    iconElement,
+    successIcon: ICONS.copied,
+    defaultIcon: ICONS.copy,
     successMessage: '계좌번호가 복사되었습니다',
   });
 }
