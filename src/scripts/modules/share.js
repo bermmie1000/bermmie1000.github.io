@@ -30,7 +30,7 @@ export function shareKakao() {
 
   const currentUrl = window.location.href;
   const baseUrl = window.location.origin + window.location.pathname.replace(/\/index\.html$/, '');
-  const imageUrl = `${baseUrl}/images/main_temp.jpg`;
+  const imageUrl = `${baseUrl}/images/kakao_share.jpg`;
 
   Kakao.Share.sendDefault({
     objectType: 'feed',
