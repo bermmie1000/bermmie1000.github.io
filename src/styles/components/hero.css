@@ -208,7 +208,7 @@
 
 .subtitle {
   font-family: 'LuxuriousScript', 'Cafe24LovingU', cursive;
-  font-size: 4.8rem;
+  font-size: 3.8rem;
   font-weight: 200;
   color: rgba(255, 255, 255, 0.88);
   line-height: 1;
@@ -227,7 +227,7 @@
 }
 
 .names {
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   font-weight: 400;
   color: var(--white);
   margin-top: 24px;

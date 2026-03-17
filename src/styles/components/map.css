@@ -141,3 +141,31 @@
   height: 30px;
   object-fit: cover;
 }
+
+/* Transportation Info */
+.transport-info {
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.transport-item {
+  display: flex;
+  gap: 0.8rem;
+  align-items: baseline;
+}
+
+.transport-item strong {
+  font-size: 1.1rem;
+  color: var(--text-accent);
+  min-width: 3rem;
+  flex-shrink: 0;
+}
+
+.transport-item p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
