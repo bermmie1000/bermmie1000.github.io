@@ -227,7 +227,7 @@
 }
 
 .names {
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: var(--white);
   margin-top: 24px;
@@ -238,7 +238,7 @@
 
 .names .heart {
   display: inline-block;
-  color: #b08a6a; /* deeper warm brown */
+  color: var(--white);
   margin: 0 0.5rem;
   font-size: 0.7em;
   text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
