@@ -206,6 +206,7 @@
   color: var(--white);
   position: relative;
   z-index: 2;
+  transform: translateY(-32px);
 }
 
 .subtitle {
