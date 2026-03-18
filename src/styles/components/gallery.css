@@ -32,6 +32,21 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
+.gallery-grid-item--hidden {
+  display: none;
+}
+
+.gallery-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+
+.btn-gallery-more {
+  padding: 0.9rem 1.4rem;
+  font-size: 1rem;
+}
+
 /* Tap feedback */
 .gallery-grid-item:active img {
   transform: scale(0.95);

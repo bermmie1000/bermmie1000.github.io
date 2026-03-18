@@ -22,11 +22,13 @@ export function initGallery() {
 }
 
 /**
- * Create 3×3 thumbnail grid
+ * Create 3×3 thumbnail grid (9 items) + "더보기"
  */
 function createGrid() {
   const container = document.getElementById('galleryGrid');
   if (!container) return;
+
+  const initialCount = 9;
 
   GALLERY_ITEMS.forEach((itemSrc, index) => {
     const item = document.createElement('div');
@@ -42,6 +44,10 @@ function createGrid() {
     img.decoding = 'async';
 
     item.appendChild(img);
+
+    if (index >= initialCount) {
+      item.classList.add('gallery-grid-item--hidden');
+    }
 
     // Click → open lightbox
     item.addEventListener('click', () => {
@@ -60,6 +66,26 @@ function createGrid() {
 
     container.appendChild(item);
   });
+
+  if (GALLERY_ITEMS.length > initialCount) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'gallery-more';
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'btn btn-gallery-more';
+    button.textContent = '더보기';
+
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.gallery-grid-item--hidden').forEach((item) => {
+        item.classList.remove('gallery-grid-item--hidden');
+      });
+      wrapper.remove();
+    });
+
+    wrapper.appendChild(button);
+    container.insertAdjacentElement('afterend', wrapper);
+  }
 }
 
 // ── Lightbox ──
