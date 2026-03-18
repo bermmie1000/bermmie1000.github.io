@@ -77,8 +77,10 @@ function createGrid() {
     button.textContent = '더보기';
 
     button.addEventListener('click', () => {
-      document.querySelectorAll('.gallery-grid-item--hidden').forEach((item) => {
+      document.querySelectorAll('.gallery-grid-item--hidden').forEach((item, idx) => {
         item.classList.remove('gallery-grid-item--hidden');
+        item.classList.add('gallery-grid-item--revealing');
+        item.style.animationDelay = `${idx * 40}ms`;
       });
       wrapper.remove();
     });

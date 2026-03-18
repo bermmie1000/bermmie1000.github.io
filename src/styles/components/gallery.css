@@ -36,6 +36,19 @@
   display: none;
 }
 
+.gallery-grid-item--revealing {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: galleryReveal 0.35s ease forwards;
+}
+
+@keyframes galleryReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .gallery-more {
   display: flex;
   justify-content: center;
