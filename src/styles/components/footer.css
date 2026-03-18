@@ -61,6 +61,13 @@ footer p {
   color: var(--text-muted);
 }
 
+.kakao-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 0.3rem;
+}
+
 .share-icon {
   width: 18px;
   height: 18px;
