@@ -96,13 +96,13 @@
 .dday-overlay {
   position: absolute;
   top: 5rem;
-  left: 40px;
+  left: 80px;
   right: 0;
-  width: calc(100% - 40px);
+  width: calc(100% - 80px);
   font-size: 1.1rem;
   color: var(--white);
   font-weight: 400;
-  text-align: center;
+  text-align: left;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   z-index: 2;
 }
