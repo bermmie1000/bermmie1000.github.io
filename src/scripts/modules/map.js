@@ -44,12 +44,12 @@ export function initKakaoMap() {
   const map = new kakao.maps.Map(container, {
     center: new kakao.maps.LatLng(37.5665, 126.9780),
     level: 7,
-    draggable: false,
-    scrollwheel: false,
-    disableDoubleClickZoom: true,
+    draggable: true,
+    scrollwheel: true,
+    disableDoubleClickZoom: false,
   });
 
-  map.setZoomable(false);
+  map.setZoomable(true);
 
   // Search by keyword
   const ps = new kakao.maps.services.Places();
