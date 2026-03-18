@@ -95,7 +95,7 @@
 
 .dday-overlay {
   position: absolute;
-  top: 4rem;
+  top: 4.5rem;
   left: 0;
   right: 0;
   width: 100%;
@@ -110,7 +110,7 @@
 
 @media (max-width: 768px) {
   .dday-overlay {
-    top: 4rem;
+    top: 4.5rem;
     font-size: 1.1rem;
     padding: 0 40px 0 16px;
   }
