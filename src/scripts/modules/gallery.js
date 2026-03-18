@@ -74,7 +74,7 @@ function createGrid() {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'btn btn-gallery-more';
-    button.textContent = '더보기 ▼';
+    button.textContent = '더보기 ⌄';
 
     button.addEventListener('click', () => {
       document.querySelectorAll('.gallery-grid-item--hidden').forEach((item, idx) => {
