@@ -96,9 +96,9 @@
 .dday-overlay {
   position: absolute;
   top: 5rem;
-  left: 80px;
-  right: 0;
-  width: calc(100% - 80px);
+  left: 55%;
+  right: auto;
+  width: 45%;
   font-size: 1.1rem;
   color: var(--white);
   font-weight: 400;
