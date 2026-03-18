@@ -111,6 +111,10 @@
   font-weight: 700;
 }
 
+.dday-heart {
+  color: #ffd1d1;
+}
+
 .dday-photo {
   display: block;
   width: 100%;
