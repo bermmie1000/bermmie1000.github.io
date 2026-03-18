@@ -235,7 +235,7 @@
   margin-top: 24px;
   margin-bottom: 0.6rem;
   line-height: 1.2;
-  transform: translateY(-8px);
+  transform: translateY(-16px);
 }
 
 .names .heart {
@@ -252,7 +252,7 @@
   display: inline-block;
   margin: 0 auto 3rem;
   padding: 0.2rem 0.6rem;
-  transform: translateY(-52px);
+  transform: translateY(-64px);
 }
 
 .date-location::before {
