@@ -7,6 +7,17 @@ footer {
   padding: 3rem 0;
   background: transparent;
   color: var(--primary-color);
+  position: relative;
+}
+
+.footer-text-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1.5rem;
+  z-index: 2;
+  color: var(--white);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 .footer-photo {
