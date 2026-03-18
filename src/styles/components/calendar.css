@@ -108,6 +108,18 @@
   z-index: 2;
 }
 
+@media (max-width: 768px) {
+  .dday-overlay {
+    top: 4rem;
+    font-size: 1.1rem;
+    padding: 0 40px 0 16px;
+  }
+
+  .dday-overlay #dday-count {
+    font-size: 1.6rem;
+  }
+}
+
 .dday-overlay #dday-count {
   color: #ffd1d1;
   font-weight: 700;
