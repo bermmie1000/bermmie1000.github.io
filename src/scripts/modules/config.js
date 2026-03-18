@@ -30,10 +30,10 @@ export const GALLERY_ITEMS = [
   { full: '/images/wedding/optimized/full/IMG_4266.webp', thumb: '/images/wedding/optimized/thumb/IMG_4266.webp' },
   { full: '/images/wedding/optimized/full/IMG_4267.webp', thumb: '/images/wedding/optimized/thumb/IMG_4267.webp' },
   { full: '/images/wedding/optimized/full/IMG_4265.webp', thumb: '/images/wedding/optimized/thumb/IMG_4265.webp' },
-  { full: '/images/wedding/optimized/full/IMG_4268.webp', thumb: '/images/wedding/optimized/thumb/IMG_4268.webp' },
+  { full: '/images/wedding/optimized/full/IMG_4269.webp', thumb: '/images/wedding/optimized/thumb/IMG_4269.webp' },
   { full: '/images/wedding/optimized/full/IMG_4271.webp', thumb: '/images/wedding/optimized/thumb/IMG_4271.webp' },
   { full: '/images/wedding/optimized/full/IMG_4270.webp', thumb: '/images/wedding/optimized/thumb/IMG_4270.webp' },
-  { full: '/images/wedding/optimized/full/IMG_4269.webp', thumb: '/images/wedding/optimized/thumb/IMG_4269.webp' },
+  { full: '/images/wedding/optimized/full/IMG_4268.webp', thumb: '/images/wedding/optimized/thumb/IMG_4268.webp' },
   { full: '/images/wedding/optimized/full/IMG_4272.webp', thumb: '/images/wedding/optimized/thumb/IMG_4272.webp' },
   {
     full: '/images/wedding/optimized/full/_talkf_wznBEMogb3_esX0zkAb6v8A9AmCAfrRik_f_8a85bcf04a05.webp',
