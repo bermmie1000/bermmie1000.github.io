@@ -123,7 +123,7 @@
   color: var(--text-primary);
   cursor: pointer;
   flex: 1;
-  padding: 0.35rem 0;
+  padding: 0.5rem 0;
 }
 
 .app-nav-btn:not(:last-child) {
@@ -131,14 +131,14 @@
 }
 
 .app-nav-btn span {
-  font-size: 0.55rem;
-  margin-top: 0.21rem;
+  font-size: 0.75rem;
+  margin-top: 0.3rem;
   font-weight: 600;
 }
 
 .app-icon {
-  width: 21px;
-  height: 21px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
 }
 
