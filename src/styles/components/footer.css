@@ -14,7 +14,7 @@ footer {
   position: absolute;
   left: 0;
   right: 0;
-  top: 7rem;
+  top: 10rem;
   z-index: 2;
   color: var(--white);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
