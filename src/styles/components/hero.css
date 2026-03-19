@@ -209,7 +209,7 @@
   color: var(--white);
   position: relative;
   z-index: 2;
-  transform: translateY(-32px);
+  transform: translateY(-20px);
 }
 
 .subtitle {
@@ -233,7 +233,7 @@
 }
 
 .names {
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   font-weight: 400;
   color: var(--white);
   margin-top: 24px;
