@@ -28,7 +28,7 @@ footer::before {
   position: absolute;
   left: 1.5rem;
   right: auto;
-  bottom: 4.8rem;
+  bottom: 4.2rem;
   top: auto;
   z-index: 2;
   color: var(--white);
