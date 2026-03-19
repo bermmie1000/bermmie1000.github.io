@@ -53,6 +53,9 @@
   z-index: 1; /* above hero background layers */
   pointer-events: none;
   overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: paint;
 }
 
 
