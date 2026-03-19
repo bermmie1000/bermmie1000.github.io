@@ -48,7 +48,10 @@
 
 .hero-sparkles {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 85svh;
   z-index: 1; /* above hero background layers */
   pointer-events: none;
   overflow: hidden;
@@ -56,7 +59,7 @@
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   contain: paint;
-  height: 85svh;
+  clip-path: inset(0 0 0 0);
 }
 
 @media (max-width: 768px) {
