@@ -110,17 +110,7 @@
   text-size-adjust: 100%;
 }
 
-@media (max-width: 768px) {
-  .dday-overlay {
-    top: 5rem;
-    font-size: 1.1rem;
-    padding: 0 40px 0 16px;
-  }
-
-  .dday-overlay #dday-count {
-    font-size: 1.6rem;
-  }
-}
+/* mobile dday overrides removed to match desktop */
 
 .dday-overlay #dday-count {
   color: #ffd1d1;
