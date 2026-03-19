@@ -2,6 +2,10 @@
  * Invitation Section Styles
  */
 
+.invitation-section {
+  padding-bottom: 3rem; /* slightly tighter before calendar */
+}
+
 /* title style moved to base.css */
 
 .invitation {
