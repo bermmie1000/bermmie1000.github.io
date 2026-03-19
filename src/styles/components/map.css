@@ -2,6 +2,10 @@
  * Map Section Styles
  */
 
+#location {
+  padding-bottom: 2.5rem;
+}
+
 /* title style moved to base.css */
 
 .map-container {
