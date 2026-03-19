@@ -56,21 +56,12 @@
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   contain: paint;
+  height: 85svh;
 }
 
 @media (max-width: 768px) {
   .hero {
     overflow: clip;
-  }
-
-  .hero-sparkles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
   }
 }
 
