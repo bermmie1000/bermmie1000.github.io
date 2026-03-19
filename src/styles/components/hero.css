@@ -53,8 +53,16 @@
   pointer-events: none;
   overflow: hidden;
   will-change: transform;
-  transform: translateZ(0);
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
   contain: paint;
+}
+
+@media (max-width: 768px) {
+  .hero-sparkles {
+    position: absolute;
+    inset: 0;
+  }
 }
 
 /* Drifting stars overlay (white, glossy) */
