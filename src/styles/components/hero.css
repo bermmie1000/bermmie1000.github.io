@@ -46,9 +46,20 @@
   mask-image: linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%);
 }
 
+.hero-sparkles {
+  position: fixed;
+  inset: 0;
+  z-index: 1; /* above hero background layers */
+  pointer-events: none;
+  overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: paint;
+}
+
 /* Drifting stars overlay (white, glossy) */
 .hero-sparkles {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 1; /* above hero background layers */
   pointer-events: none;
