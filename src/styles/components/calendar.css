@@ -28,6 +28,12 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .calendar-container {
+    padding: 0 1rem;
+  }
+}
+
 .calendar {
   width: 100%;
   border-collapse: collapse;
