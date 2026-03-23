@@ -162,8 +162,8 @@
 
 .transport-dot {
   display: inline-block;
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   margin-right: 0.35rem;
   border-radius: 50%;
   background: #f59e0b;
