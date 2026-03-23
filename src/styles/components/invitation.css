@@ -15,8 +15,8 @@
   line-height: 2;
 }
 
-.invitation p {
-  font-size: 1.1rem;
+..invitation p {
+  font-size: 1rem;
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.9;
