@@ -69,7 +69,7 @@ function createGrid() {
 
   if (GALLERY_ITEMS.length > initialCount) {
     const wrapper = document.createElement('div');
-    wrapper.className = 'gallery-more';
+    wrapper.className = 'gallery-more scroll-reveal';
 
     const button = document.createElement('button');
     button.type = 'button';
