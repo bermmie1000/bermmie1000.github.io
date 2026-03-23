@@ -165,21 +165,6 @@
   }
 }
 
-@keyframes handwriting {
-  0% {
-    stroke-dashoffset: 1200;
-    fill: transparent;
-  }
-  70% {
-    stroke-dashoffset: 0;
-    fill: transparent;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    fill: rgba(255, 255, 255, 0.88);
-  }
-}
-
 @keyframes heart-twinkle {
   0%, 100% {
     text-shadow:
@@ -199,12 +184,6 @@
   .hero-sparkles .petal {
     animation: none;
     opacity: 0;
-  }
-
-  .subtitle-text {
-    animation: none;
-    stroke-dashoffset: 0;
-    fill: rgba(255, 255, 255, 0.88);
   }
 }
 
@@ -245,9 +224,6 @@
   color: var(--white);
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .hero-bottom {
@@ -258,41 +234,24 @@
   transform: translateY(-20px);
 }
 
-.subtitle-svg {
-  width: 100%;
-  max-width: 520px;
-  height: 120px;
-  margin-top: 1.85rem;
-  display: block;
-  overflow: visible;
-}
-
-.subtitle-svg--kr {
-  height: 42px;
-  margin-top: -0.25rem;
-}
-
-.subtitle-text {
+.subtitle {
   font-family: 'LuxuriousScript', 'Cafe24LovingU', cursive;
-  font-size: 72px;
+  font-size: 3.8rem;
   font-weight: 200;
-  fill: transparent;
-  stroke: rgba(255, 255, 255, 0.9);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.25));
-  animation: handwriting 2.6s ease forwards;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1;
+  margin-top: 1.85rem;
+  position: relative;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+  animation: none;
 }
 
-.subtitle-text--kr {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 32px;
-  font-weight: 500;
-  stroke-width: 1.6;
-  animation-delay: 0.35s;
+.subtitle-kr {
+  font-size: 1rem;
+  color: var(--white);
+  margin-top: -0.25rem;
+  display: inline-block;
+  transform: skewX(-8deg);
 }
 
 .names {
