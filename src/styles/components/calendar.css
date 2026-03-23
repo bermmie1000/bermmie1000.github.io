@@ -87,6 +87,22 @@
   /* slightly less saturated / softer */
   opacity: 0.6;
   z-index: -1;
+  animation: wedding-heart-glow 2.2s ease-in-out infinite;
+}
+
+@keyframes wedding-heart-glow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.96);
+    opacity: 0.45;
+    filter: drop-shadow(0 0 2px rgba(231, 144, 144, 0.35))
+            drop-shadow(0 0 6px rgba(231, 144, 144, 0.25));
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 6px rgba(231, 144, 144, 0.6))
+            drop-shadow(0 0 14px rgba(231, 144, 144, 0.4));
+  }
 }
 
 .dday-counter {
