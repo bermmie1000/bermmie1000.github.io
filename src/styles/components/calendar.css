@@ -132,6 +132,25 @@
   text-size-adjust: 100%;
 }
 
+#dday-count {
+  display: inline-block;
+  color: #fff7f0;
+  animation: dday-glow 2.8s ease-in-out infinite;
+}
+
+@keyframes dday-glow {
+  0%, 100% {
+    transform: scale(0.98);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.25), 0 0 8px rgba(231, 144, 144, 0.15);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.04);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.45), 0 0 16px rgba(231, 144, 144, 0.25);
+    opacity: 1;
+  }
+}
+
 /* mobile dday overrides removed to match desktop */
 
 .dday-overlay #dday-count {
