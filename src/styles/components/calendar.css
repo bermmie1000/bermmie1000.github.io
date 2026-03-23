@@ -93,15 +93,15 @@
 @keyframes wedding-heart-glow {
   0%, 100% {
     transform: translate(-50%, -50%) scale(0.98);
-    opacity: 0.4;
-    filter: drop-shadow(0 0 2px rgba(231, 144, 144, 0.28))
-            drop-shadow(0 0 5px rgba(231, 144, 144, 0.18));
+    opacity: 0.5;
+    filter: drop-shadow(0 0 2px rgba(231, 144, 144, 0.35))
+            drop-shadow(0 0 6px rgba(231, 144, 144, 0.22));
   }
   50% {
     transform: translate(-50%, -50%) scale(1.02);
-    opacity: 0.65;
-    filter: drop-shadow(0 0 4px rgba(231, 144, 144, 0.45))
-            drop-shadow(0 0 10px rgba(231, 144, 144, 0.28));
+    opacity: 0.75;
+    filter: drop-shadow(0 0 5px rgba(231, 144, 144, 0.55))
+            drop-shadow(0 0 12px rgba(231, 144, 144, 0.32));
   }
 }
 
