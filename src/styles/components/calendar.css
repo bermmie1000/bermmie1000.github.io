@@ -89,29 +89,6 @@
   z-index: -1;
 }
 
-.calendar .wedding-day::after {
-  content: '✦';
-  position: absolute;
-  left: 50%;
-  top: -12px;
-  transform: translateX(-50%);
-  font-size: 0.9rem;
-  color: #f8c7c7;
-  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8), 0 0 12px rgba(231, 144, 144, 0.6);
-  animation: wedding-sparkle 1.8s ease-in-out infinite;
-}
-
-@keyframes wedding-sparkle {
-  0%, 100% {
-    transform: translateX(-50%) scale(0.8);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateX(-50%) scale(1.25);
-    opacity: 1;
-  }
-}
-
 .dday-counter {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
