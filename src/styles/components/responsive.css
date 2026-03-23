@@ -10,6 +10,8 @@
 
   .date {
     font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
   }
 
   .location {
