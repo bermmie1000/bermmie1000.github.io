@@ -29,6 +29,11 @@
     font-size: 1.3rem;
   }
 
+  .modal-title,
+  .contact-section-title {
+    font-weight: 500;
+  }
+
   .invitation {
     padding: 2rem;
   }
