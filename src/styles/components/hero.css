@@ -47,11 +47,11 @@
 }
 
 .hero-sparkles {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
-  height: 85svh;
+  height: 100%;
   z-index: 1; /* above hero background layers */
   pointer-events: none;
   overflow: hidden;
@@ -70,7 +70,7 @@
 
 /* Drifting stars overlay (white, glossy) */
 .hero-sparkles {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 1; /* above hero background layers */
   pointer-events: none;
