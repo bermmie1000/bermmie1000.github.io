@@ -35,8 +35,8 @@ export function shareKakao() {
   Kakao.Share.sendDefault({
     objectType: 'feed',
     content: {
-      title: `${WEDDING.groom} ♥ ${WEDDING.bride}`,
-      description: `2026.05.23(토) 11:30\n양재 엘타워 7층 그랜드홀`,
+      title: '창범♥하영 결혼합니다',
+      description: '2026.05.23(토) 11:30',
       imageUrl,
       link: { mobileWebUrl: currentUrl, webUrl: currentUrl },
     },
